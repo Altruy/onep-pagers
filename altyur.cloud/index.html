@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>altyur.cloud — AI Automation & Business Optimisation | Turyal Neeshat</title>
+<meta name="description" content="We help businesses automate and optimise with AI — from workflow automation to multi-agent systems, RevOps, voice AI, and executive intelligence. Discovery to deployment.">
+<meta name="keywords" content="AI automation consultant, business process automation, n8n automation, Claude MCP, LangGraph, RevOps AI, workflow automation, AI strategy, HubSpot automation">
+<link rel="canonical" href="https://altyur.cloud">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  --bg:       #fafaf9;
+  --bg2:      #f5f4f2;
+  --bg3:      #eeecea;
+  --white:    #ffffff;
+  --text:     #1a1a1a;
+  --text2:    #3d3d3d;
+  --muted:    #6b7280;
+  --light:    #9ca3af;
+  --border:   #e5e3df;
+  --border2:  #d1cfc9;
+  --accent:   #1d4ed8;
+  --accent2:  #2563eb;
+  --accent3:  #dbeafe;
+  --green:    #166534;
+  --green-bg: #dcfce7;
+  --amber:    #92400e;
+  --amber-bg: #fef3c7;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,249,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em}
+.nav-logo span{color:var(--accent)}
+.nav-center{display:flex;align-items:center;gap:36px}
+.nav-center a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;letter-spacing:.01em}
+.nav-center a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-ghost{font-size:13px;font-weight:500;color:var(--text);text-decoration:none;padding:8px 16px;border:1px solid var(--border2);border-radius:4px;transition:all .2s}
+.btn-ghost:hover{border-color:var(--text);background:var(--text);color:#fff}
+.btn-dark{font-size:13px;font-weight:600;color:#fff;text-decoration:none;padding:8px 18px;background:var(--text);border-radius:4px;border:1px solid var(--text);transition:all .2s}
+.btn-dark:hover{background:var(--accent);border-color:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--text);transition:all .3s}
+
+/* ── PAGE ROUTER ── */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* ── HERO ── */
+#hero-section{padding:140px 48px 100px;max-width:1200px;margin:0 auto}
+.hero-kicker{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;padding:5px 12px;background:var(--accent3);border-radius:2px}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(44px,5.5vw,72px);font-weight:700;line-height:1.06;letter-spacing:-.025em;color:var(--text);max-width:700px;margin-bottom:24px}
+.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:40px;font-weight:400}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+.hero-creds{display:flex;align-items:center;gap:24px;padding-top:24px;border-top:1px solid var(--border)}
+.cred-item{display:flex;flex-direction:column;gap:2px}
+.cred-num{font-size:20px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.cred-lab{font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.cred-sep{width:1px;height:36px;background:var(--border)}
+
+/* ── AUTOMATION DEMO ── */
+#demo-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 48px}
+.demo-wrap{max-width:1100px;margin:0 auto}
+.demo-header{max-width:560px;margin-bottom:52px}
+.demo-tabs{display:flex;gap:0;border:1px solid var(--border2);border-radius:6px;overflow:hidden;margin-bottom:40px;width:fit-content}
+.demo-tab{font-size:12px;font-weight:600;padding:10px 20px;background:var(--white);color:var(--muted);border:none;cursor:pointer;transition:all .2s;letter-spacing:.04em;text-transform:uppercase;border-right:1px solid var(--border2)}
+.demo-tab:last-child{border-right:none}
+.demo-tab.active{background:var(--text);color:#fff}
+.demo-canvas{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:40px;position:relative;overflow:hidden;min-height:320px}
+
+/* Flow animation */
+.flow-container{position:relative;width:100%;height:280px}
+.flow-node{position:absolute;background:var(--white);border:1.5px solid var(--border2);border-radius:6px;padding:12px 16px;font-size:12px;font-weight:600;color:var(--text2);white-space:nowrap;transition:all .4s ease;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.flow-node.trigger{border-color:var(--accent);background:var(--accent3);color:var(--accent)}
+.flow-node.process{border-color:var(--border2)}
+.flow-node.output{border-color:#166534;background:#dcfce7;color:#166534}
+.flow-node.highlight{transform:scale(1.03);box-shadow:0 4px 16px rgba(29,78,216,.12);border-color:var(--accent)}
+.flow-label{font-size:10px;font-weight:400;color:var(--muted);margin-top:3px}
+.flow-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.flow-path{stroke:var(--border2);stroke-width:1.5;fill:none;stroke-dasharray:4 3}
+.flow-path.active{stroke:var(--accent);stroke-dasharray:none;animation:dash 1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-12}}
+.flow-dot{fill:var(--accent);r:4;opacity:0;transition:opacity .3s}
+.flow-dot.visible{opacity:1}
+.pulse-ring{fill:none;stroke:var(--accent);stroke-width:1;opacity:0}
+.pulse-ring.active{animation:pulse-ring 1.4s ease-out infinite}
+@keyframes pulse-ring{0%{r:6;opacity:.6}100%{r:14;opacity:0}}
+
+/* Timeline strip */
+.timeline-strip{display:flex;align-items:flex-start;gap:0;margin-top:32px;position:relative;overflow-x:auto;padding-bottom:8px}
+.tl-step{flex:1;min-width:130px;position:relative;text-align:center;padding:0 8px}
+.tl-step::before{content:'';position:absolute;top:14px;left:50%;right:-50%;height:1px;background:var(--border2);z-index:0}
+.tl-step:last-child::before{display:none}
+.tl-dot{width:28px;height:28px;border-radius:50%;background:var(--white);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;z-index:1;transition:all .4s}
+.tl-dot.done{background:var(--accent);border-color:var(--accent)}
+.tl-dot.done::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff}
+.tl-dot.active{background:var(--white);border-color:var(--accent);box-shadow:0 0 0 4px rgba(29,78,216,.1)}
+.tl-dot.active::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.tl-label{font-size:11px;font-weight:600;color:var(--text2)}
+.tl-sub{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ── PAIN POINTS / CASE STUDIES ── */
+#problems-section{padding:100px 48px}
+.problems-wrap{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-h2{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,46px);font-weight:700;line-height:1.12;letter-spacing:-.02em;color:var(--text);margin-bottom:16px}
+.section-h2 em{font-style:italic;color:var(--accent)}
+.section-sub{font-size:15px;color:var(--muted);max-width:520px;line-height:1.8;margin-bottom:52px}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.case-card{background:var(--white);padding:32px 28px;cursor:pointer;transition:background .2s;position:relative}
+.case-card:hover{background:var(--bg2)}
+.case-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-bottom:16px}
+.tag-revenue{background:#fef3c7;color:#92400e}
+.tag-ops{background:#dcfce7;color:#166534}
+.tag-sales{background:#ede9fe;color:#4c1d95}
+.tag-finance{background:#fce7f3;color:#9d174d}
+.tag-inventory{background:#e0f2fe;color:#075985}
+.tag-hr{background:#f3f4f6;color:#374151}
+.case-question{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;line-height:1.4;color:var(--text);margin-bottom:12px}
+.case-teaser{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:20px}
+.case-link{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.case-link::after{content:'→';transition:transform .2s}
+.case-card:hover .case-link::after{transform:translateX(4px)}
+.case-metrics{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.metric{text-align:left}
+.metric-val{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.metric-lab{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* ── PROCESS ── */
+#process-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 48px}
+.process-wrap{max-width:1100px;margin:0 auto}
+.process-steps{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.p-step{position:relative}
+.p-step::after{content:'';position:absolute;top:20px;left:calc(100% - 0px);width:40px;height:1px;background:var(--border2)}
+.p-step:last-child::after{display:none}
+.p-num{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.12em;margin-bottom:20px}
+.p-circle{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:var(--white)}
+.p-circle-inner{width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.p-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px;font-family:'Playfair Display',serif}
+.p-desc{font-size:13px;color:var(--muted);line-height:1.82}
+.p-items{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.p-item{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.p-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
+
+/* ── SERVICES LIST ── */
+#services-section{padding:100px 48px}
+.services-wrap{max-width:1100px;margin:0 auto}
+.services-list{margin-top:56px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.service-row{display:grid;grid-template-columns:200px 1fr auto;align-items:center;padding:28px 32px;border-bottom:1px solid var(--border);background:var(--white);transition:background .2s;gap:32px}
+.service-row:last-child{border-bottom:none}
+.service-row:hover{background:var(--bg2)}
+.srv-cat{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.srv-name{font-size:15px;font-weight:600;color:var(--text);margin-bottom:5px}
+.srv-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.srv-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.srv-tool{font-size:10px;font-weight:600;padding:3px 8px;border:1px solid var(--border2);color:var(--muted);border-radius:2px;letter-spacing:.04em;text-transform:uppercase}
+.srv-arrow{color:var(--border2);font-size:18px;transition:all .2s;font-weight:300}
+.service-row:hover .srv-arrow{color:var(--text);transform:translateX(4px)}
+
+/* ── STACK ── */
+#stack-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 48px}
+.stack-wrap{max-width:1100px;margin:0 auto}
+.stack-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.stack-col{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:28px 24px}
+.stack-col-title{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.stack-items{display:flex;flex-direction:column;gap:0}
+.stack-item{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);font-weight:500}
+.stack-item:last-child{border-bottom:none}
+.stack-badge{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:2px}
+.badge-core{background:var(--accent3);color:var(--accent)}
+.badge-pro{background:#dcfce7;color:#166534}
+
+/* ── ABOUT / CTA ── */
+#about-section{padding:100px 48px}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.about-h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--text);margin-bottom:20px}
+.about-body{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:28px}
+.about-links{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.about-right{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.booking-head{padding:24px 28px;border-bottom:1px solid var(--border)}
+.booking-head h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
+.booking-head p{font-size:13px;color:var(--muted)}
+.calendly-area{min-height:460px;display:flex;flex-direction:column}
+
+/* ── CONTACT FORM ── */
+.contact-form{padding:24px 28px;border-top:1px solid var(--border)}
+.form-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:block;margin-top:12px}
+.form-label:first-child{margin-top:0}
+.form-input{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:4px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);background:var(--bg);outline:none;transition:border .2s}
+.form-input:focus{border-color:var(--accent)}
+textarea.form-input{min-height:90px;resize:vertical}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ── FOOTER ── */
+footer{background:var(--text);color:#fff;padding:64px 48px 32px}
+.footer-top{display:grid;grid-template-columns:280px 1fr;gap:64px;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:12px;color:#fff}
+.footer-brand-name span{color:#93c5fd}
+.footer-brand-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.35)}
+
+/* ── CASE STUDY PAGE ── */
+#case-page{padding-top:60px}
+.case-hero{padding:80px 48px 60px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--border)}
+.case-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:32px;background:none;border:none;font-family:'Inter',sans-serif;transition:color .2s}
+.case-back:hover{color:var(--text)}
+.case-page-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-bottom:20px}
+.case-page-h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:20px}
+.case-page-sub{font-size:16px;color:var(--muted);line-height:1.85;max-width:640px}
+.case-stats-row{display:flex;gap:40px;padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:40px 0;flex-wrap:wrap}
+.case-stat{display:flex;flex-direction:column;gap:4px}
+.case-stat-val{font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.03em}
+.case-stat-lab{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.case-body{padding:60px 48px;max-width:900px;margin:0 auto}
+.case-body h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin:36px 0 14px}
+.case-body h3:first-child{margin-top:0}
+.case-body p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px}
+
+/* ── AUTOMATION TIMELINE in case study ── */
+.auto-timeline{margin:40px 0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:32px;overflow-x:auto}
+.auto-timeline-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.auto-flow{display:flex;align-items:flex-start;gap:0;min-width:600px}
+.auto-node{flex:1;position:relative;text-align:center;padding:0 12px}
+.auto-node::after{content:'';position:absolute;top:28px;left:50%;right:-50%;height:1.5px;background:var(--border2);z-index:0}
+.auto-node:last-child::after{display:none}
+.auto-node-dot{width:56px;height:56px;border-radius:50%;border:2px solid var(--border2);background:var(--white);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;z-index:1;transition:all .5s}
+.auto-node-dot.lit{border-color:var(--accent);box-shadow:0 0 0 6px rgba(29,78,216,.08);background:var(--accent3)}
+.auto-node-dot.lit-green{border-color:#166534;box-shadow:0 0 0 6px rgba(22,101,52,.08);background:#dcfce7}
+.auto-node-icon{font-size:11px;font-weight:700;color:var(--muted);transition:color .5s}
+.auto-node-dot.lit .auto-node-icon{color:var(--accent)}
+.auto-node-dot.lit-green .auto-node-icon{color:#166534}
+.auto-node-label{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:4px}
+.auto-node-sub{font-size:10px;color:var(--muted);line-height:1.4}
+.auto-connector{flex:0 0 0px;position:relative;align-self:center}
+
+/* ── PROBLEM HIGHLIGHT BOX ── */
+.problem-box{background:#fffbeb;border:1px solid #fbbf24;border-left:4px solid #f59e0b;border-radius:4px;padding:20px 24px;margin:28px 0}
+.problem-box p{font-size:14px;color:#92400e;line-height:1.8;margin:0}
+.solution-box{background:#f0fdf4;border:1px solid #86efac;border-left:4px solid #22c55e;border-radius:4px;padding:20px 24px;margin:28px 0}
+.solution-box p{font-size:14px;color:#166534;line-height:1.8;margin:0}
+
+/* ── UTILS ── */
+.rev{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.rev.vis{opacity:1;transform:translateY(0)}
+.rev.d1{transition-delay:.08s}.rev.d2{transition-delay:.16s}.rev.d3{transition-delay:.24s}.rev.d4{transition-delay:.32s}
+.divider{height:1px;background:var(--border)}
+.mt-8{margin-top:8px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mt-32{margin-top:32px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero-inner,.about-wrap{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .case-grid{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-cols{grid-template-columns:1fr 1fr}
+  nav{padding:0 20px}
+  .nav-center{display:none}
+  .hamburger{display:flex}
+  #hero-section,#demo-section,#problems-section,#process-section,#services-section,#stack-section,#about-section{padding-left:20px;padding-right:20px}
+  footer{padding:40px 20px 24px}
+  .service-row{grid-template-columns:1fr;gap:8px}
+  .srv-arrow{display:none}
+  .case-hero,.case-body{padding-left:20px;padding-right:20px}
+}
+@media(max-width:600px){
+  .process-steps{grid-template-columns:1fr}
+  .footer-cols{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .hero-creds{flex-wrap:wrap;gap:16px}
+  .demo-tabs{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo" onclick="showPage('home')">altyur<span>.cloud</span></a>
+  <div class="nav-center">
+    <a href="#" onclick="scrollTo('demo-section')">How it works</a>
+    <a href="#" onclick="scrollTo('problems-section')">Case studies</a>
+    <a href="#" onclick="scrollTo('services-section')">Services</a>
+    <a href="#" onclick="scrollTo('stack-section')">Stack</a>
+    <a href="#" onclick="scrollTo('about-section')">About</a>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="btn-ghost" onclick="scrollTo('about-section')">Send a message</a>
+    <a href="https://calendly.com/turyal" target="_blank" class="btn-dark">Book a session</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section>
+    <div id="hero-section">
+      <div class="hero-kicker">AI Automation & Process Optimisation</div>
+      <h1 class="hero-h1">Your business runs on<br>processes. Ours run on<br><em>intelligence.</em></h1>
+      <p class="hero-sub">We map your operations, identify where AI creates measurable leverage, and build it — from automated RevOps to multi-agent systems, voice AI, and executive intelligence pipelines.</p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
+        <a href="#" class="btn-ghost" style="font-size:14px;padding:12px 24px" onclick="scrollTo('problems-section')">See case studies</a>
+      </div>
+      <div class="hero-creds">
+        <div class="cred-item"><div class="cred-num">50+</div><div class="cred-lab">Solutions deployed</div></div>
+        <div class="cred-sep"></div>
+        <div class="cred-item"><div class="cred-num">Top 1%</div><div class="cred-lab">Upwork Expert Vetted</div></div>
+        <div class="cred-sep"></div>
+        <div class="cred-item"><div class="cred-num">200+</div><div class="cred-lab">Tasks automated daily</div></div>
+        <div class="cred-sep"></div>
+        <div class="cred-item"><div class="cred-num">CTO</div><div class="cred-lab">hytGenX.ai</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTOMATION DEMO -->
+  <section id="demo-section">
+    <div class="demo-wrap">
+      <div class="demo-header rev">
+        <div class="section-eyebrow">Live automation preview</div>
+        <h2 class="section-h2" style="margin-bottom:12px">See how your operations<br><em>transform.</em></h2>
+        <p style="font-size:14px;color:var(--muted);line-height:1.8">Select an operation type below to see how AI automation replaces manual effort at each stage.</p>
+      </div>
+
+      <div class="demo-tabs rev d1">
+        <button class="demo-tab active" onclick="switchDemo('revops')">Revenue Ops</button>
+        <button class="demo-tab" onclick="switchDemo('invoice')">Invoicing</button>
+        <button class="demo-tab" onclick="switchDemo('inventory')">Inventory</button>
+        <button class="demo-tab" onclick="switchDemo('followup')">Follow-ups</button>
+      </div>
+
+      <div class="demo-canvas rev d2">
+        <div id="demo-display"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="problems-section">
+    <div class="problems-wrap">
+      <div class="rev">
+        <div class="section-eyebrow">Case studies</div>
+        <h2 class="section-h2">Are these the problems<br><em>slowing you down?</em></h2>
+        <p class="section-sub">Every business we work with starts with at least one of these. Click to see how we solved it.</p>
+      </div>
+      <div class="case-grid rev d1">
+        <div class="case-card" onclick="openCase('revenue')">
+          <span class="case-tag tag-revenue">Revenue Operations</span>
+          <div class="case-question">"Our revenue data lives in five different places and no one has the full picture."</div>
+          <div class="case-teaser">Disconnected CRMs, spreadsheets, and accounting tools meant leadership was always flying blind. We unified everything into a single intelligence layer.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">94%</div><div class="metric-lab">Reporting time saved</div></div>
+            <div class="metric"><div class="metric-val">Real-time</div><div class="metric-lab">Revenue visibility</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('invoice')">
+          <span class="case-tag tag-finance">Finance & Accounting</span>
+          <div class="case-question">"Invoice generation takes our team two full days every month."</div>
+          <div class="case-teaser">Manual invoice creation, chasing approvals, and reconciling payments was burning hours every billing cycle. We automated the entire pipeline end to end.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">2 days</div><div class="metric-lab">Saved per cycle</div></div>
+            <div class="metric"><div class="metric-val">Zero</div><div class="metric-lab">Manual errors</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('commission')">
+          <span class="case-tag tag-sales">Sales Commission</span>
+          <div class="case-question">"Calculating commissions every month is a spreadsheet nightmare. Sales reps don't trust the numbers."</div>
+          <div class="case-teaser">Tiered commission structures, split deals, and clawbacks were calculated manually. We built an automated engine that updates in real time.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">100%</div><div class="metric-lab">Accuracy rate</div></div>
+            <div class="metric"><div class="metric-val">Live</div><div class="metric-lab">Commission tracking</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('inventory')">
+          <span class="case-tag tag-inventory">Inventory</span>
+          <div class="case-question">"We keep running out of stock without warning — or sitting on inventory we don't need."</div>
+          <div class="case-teaser">No predictive visibility meant reactive purchasing decisions. We built an AI-driven inventory monitor with automatic reorder triggers and demand forecasting.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">68%</div><div class="metric-lab">Stockout reduction</div></div>
+            <div class="metric"><div class="metric-val">Auto</div><div class="metric-lab">Reorder triggers</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('followup')">
+          <span class="case-tag tag-sales">Sales Follow-ups</span>
+          <div class="case-question">"Leads go cold because no one followed up. Our response rate is embarrassing."</div>
+          <div class="case-teaser">Hot leads were slipping through the cracks because follow-ups depended on human memory. We deployed a voice AI agent that never misses a follow-up.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">3.4x</div><div class="metric-lab">Response rate lift</div></div>
+            <div class="metric"><div class="metric-val">60s</div><div class="metric-lab">First contact time</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('reporting')">
+          <span class="case-tag tag-ops">Executive Reporting</span>
+          <div class="case-question">"Our board packs take three days to prepare and are outdated by the time they're done."</div>
+          <div class="case-teaser">Manual data gathering, slide building, and narrative writing consumed the finance team every month. We automated the entire executive summary generation pipeline.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">3 days</div><div class="metric-lab">Saved per cycle</div></div>
+            <div class="metric"><div class="metric-val">Always</div><div class="metric-lab">Current data</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process-section">
+    <div class="process-wrap">
+      <div class="rev">
+        <div class="section-eyebrow">The engagement model</div>
+        <h2 class="section-h2">From discovery to<br><em>deployed and running.</em></h2>
+      </div>
+      <div class="process-steps">
+        <div class="p-step rev d1">
+          <div class="p-num">01</div>
+          <div class="p-circle"><div class="p-circle-inner"></div></div>
+          <div class="p-name">Discovery</div>
+          <div class="p-desc">A focused 60-minute session to map your current operations, identify bottlenecks, and find where AI creates the most leverage.</div>
+          <div class="p-items">
+            <div class="p-item">Workflow and stack audit</div>
+            <div class="p-item">Priority opportunity mapping</div>
+            <div class="p-item">ROI and effort estimation</div>
+          </div>
+        </div>
+        <div class="p-step rev d2">
+          <div class="p-num">02</div>
+          <div class="p-circle"><div class="p-circle-inner"></div></div>
+          <div class="p-name">Strategy Sessions</div>
+          <div class="p-desc">Two working sessions to design the architecture, validate the approach, and align on tooling before any build begins.</div>
+          <div class="p-items">
+            <div class="p-item">Architecture and tool selection</div>
+            <div class="p-item">Integration and data mapping</div>
+            <div class="p-item">Risk and dependency review</div>
+          </div>
+        </div>
+        <div class="p-step rev d3">
+          <div class="p-num">03</div>
+          <div class="p-circle"><div class="p-circle-inner"></div></div>
+          <div class="p-name">The Plan</div>
+          <div class="p-desc">A clear, phased implementation roadmap — with timelines, milestones, and an executive summary ready for internal presentation.</div>
+          <div class="p-items">
+            <div class="p-item">Phased roadmap document</div>
+            <div class="p-item">Executive summary for leadership</div>
+            <div class="p-item">Cost and resource breakdown</div>
+          </div>
+        </div>
+        <div class="p-step rev d4">
+          <div class="p-num">04</div>
+          <div class="p-circle"><div class="p-circle-inner"></div></div>
+          <div class="p-name">Implementation</div>
+          <div class="p-desc">We build, test, and deploy — whether that is a multi-agent system, a workflow pipeline, a dashboard, or an MCP integration for Claude.</div>
+          <div class="p-items">
+            <div class="p-item">Full build and deployment</div>
+            <div class="p-item">QA, testing and handover</div>
+            <div class="p-item">Ongoing support available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services-section">
+    <div class="services-wrap">
+      <div class="rev">
+        <div class="section-eyebrow">Services</div>
+        <h2 class="section-h2">What we build<br>for <em>clients.</em></h2>
+      </div>
+      <div class="services-list rev d1">
+        <div class="service-row">
+          <div class="srv-cat">Automation</div>
+          <div>
+            <div class="srv-name">Workflow & Process Automation</div>
+            <div class="srv-desc">End-to-end automation of repetitive business processes — CRM updates, reporting, notifications, approvals, and data syncing across your stack.</div>
+            <div class="srv-tools"><span class="srv-tool">n8n</span><span class="srv-tool">Zapier</span><span class="srv-tool">Make</span><span class="srv-tool">HubSpot</span><span class="srv-tool">GHL</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+        <div class="service-row">
+          <div class="srv-cat">AI Agents</div>
+          <div>
+            <div class="srv-name">Multi-Agent Conversational Systems</div>
+            <div class="srv-desc">Orchestrated agent pipelines using LangGraph and Claude that research, validate, decide, and deliver — replacing manual analyst workflows in production environments.</div>
+            <div class="srv-tools"><span class="srv-tool">LangGraph</span><span class="srv-tool">LangChain</span><span class="srv-tool">Claude</span><span class="srv-tool">OpenAI</span><span class="srv-tool">FastAPI</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+        <div class="service-row">
+          <div class="srv-cat">RevOps</div>
+          <div>
+            <div class="srv-name">Claude via MCP — RevOps Monitoring</div>
+            <div class="srv-desc">Expose your existing stack to Claude using Model Context Protocol. Your team queries live revenue data, pipeline health, and operations in plain language — no SQL required.</div>
+            <div class="srv-tools"><span class="srv-tool">MCP</span><span class="srv-tool">Claude</span><span class="srv-tool">OpenClaw</span><span class="srv-tool">Python</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+        <div class="service-row">
+          <div class="srv-cat">Analytics</div>
+          <div>
+            <div class="srv-name">Visibility Dashboards & Executive Intelligence</div>
+            <div class="srv-desc">Custom dashboards that surface revenue operations, pipeline health, and team performance — with automated AI-generated executive summaries on your schedule.</div>
+            <div class="srv-tools"><span class="srv-tool">Python</span><span class="srv-tool">Looker</span><span class="srv-tool">G Suite</span><span class="srv-tool">Office 365</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+        <div class="service-row">
+          <div class="srv-cat">Voice AI</div>
+          <div>
+            <div class="srv-name">Voice AI Agents</div>
+            <div class="srv-desc">Inbound and outbound voice agents that qualify leads, handle support, and update CRMs in real time — operating around the clock without human intervention.</div>
+            <div class="srv-tools"><span class="srv-tool">Vapi</span><span class="srv-tool">Retell</span><span class="srv-tool">Twilio</span><span class="srv-tool">LangGraph</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+        <div class="service-row">
+          <div class="srv-cat">Knowledge</div>
+          <div>
+            <div class="srv-name">RAG Knowledge Systems</div>
+            <div class="srv-desc">AI trained on your internal documentation, policies, and SOPs. Staff get source-cited answers in seconds. Works with G Suite, SharePoint, Notion, and custom document stores.</div>
+            <div class="srv-tools"><span class="srv-tool">LangChain</span><span class="srv-tool">Pinecone</span><span class="srv-tool">FAISS</span><span class="srv-tool">G Suite</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+        <div class="service-row">
+          <div class="srv-cat">Personal AI</div>
+          <div>
+            <div class="srv-name">Personal Agents & AI Memory Systems</div>
+            <div class="srv-desc">AI assistants with persistent memory that learn your context and preferences over time — integrated directly into your email, calendar, and productivity tools.</div>
+            <div class="srv-tools"><span class="srv-tool">Claude</span><span class="srv-tool">MCP</span><span class="srv-tool">G Suite</span><span class="srv-tool">Office 365</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+        <div class="service-row">
+          <div class="srv-cat">Strategy</div>
+          <div>
+            <div class="srv-name">AI Strategy & Implementation Roadmapping</div>
+            <div class="srv-desc">Not ready to build yet? We map your AI opportunity landscape, prioritise by business impact, and deliver a phased roadmap your leadership team can act on.</div>
+            <div class="srv-tools"><span class="srv-tool">Discovery</span><span class="srv-tool">Roadmap</span><span class="srv-tool">Executive Plan</span></div>
+          </div>
+          <div class="srv-arrow">›</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack-section">
+    <div class="stack-wrap">
+      <div class="rev">
+        <div class="section-eyebrow">Technical expertise</div>
+        <h2 class="section-h2">Tools used in<br><em>production.</em></h2>
+      </div>
+      <div class="stack-grid rev d1">
+        <div class="stack-col">
+          <div class="stack-col-title">AI & Agent Frameworks</div>
+          <div class="stack-items">
+            <div class="stack-item">Claude AI (Anthropic) <span class="stack-badge badge-core">Core</span></div>
+            <div class="stack-item">Model Context Protocol (MCP) <span class="stack-badge badge-core">Core</span></div>
+            <div class="stack-item">LangGraph <span class="stack-badge badge-core">Core</span></div>
+            <div class="stack-item">LangChain <span class="stack-badge badge-core">Core</span></div>
+            <div class="stack-item">OpenAI / GPT-4o <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">OpenClaw <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Vapi / Retell AI <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">RAG Pipelines <span class="stack-badge badge-core">Core</span></div>
+          </div>
+        </div>
+        <div class="stack-col">
+          <div class="stack-col-title">Automation & CRM</div>
+          <div class="stack-items">
+            <div class="stack-item">n8n <span class="stack-badge badge-core">Core</span></div>
+            <div class="stack-item">Zapier <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Make (Integromat) <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">HubSpot <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">GoHighLevel (GHL) <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Google Workspace <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Microsoft 365 <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Twilio <span class="stack-badge badge-pro">Expert</span></div>
+          </div>
+        </div>
+        <div class="stack-col">
+          <div class="stack-col-title">Engineering & Data</div>
+          <div class="stack-items">
+            <div class="stack-item">Python <span class="stack-badge badge-core">Core</span></div>
+            <div class="stack-item">FastAPI <span class="stack-badge badge-core">Core</span></div>
+            <div class="stack-item">JavaScript / Node.js <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Pinecone / FAISS / Qdrant <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Data Visualisation <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">Looker Studio <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">SQL <span class="stack-badge badge-pro">Expert</span></div>
+            <div class="stack-item">REST APIs / Webhooks <span class="stack-badge badge-core">Core</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / BOOKING -->
+  <section id="about-section">
+    <div class="about-wrap">
+      <div>
+        <div class="about-label rev">About</div>
+        <h2 class="about-h2 rev">Turyal Neeshat</h2>
+        <p class="about-body rev">I am an AI automation consultant and the CTO of HytgenX.ai. I work with businesses to identify where AI creates the most measurable leverage in their operations, design the right architecture, and build it — from first session to production deployment.</p>
+        <p class="about-body rev" style="margin-top:-16px">My background spans multi-agent systems, RevOps intelligence, voice AI, workflow automation, and LLM infrastructure. I have delivered over 50 production AI systems across marketing, real estate, healthcare, finance, education, and SaaS.</p>
+        <div class="about-links rev">
+          <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">LinkedIn</a>
+          <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">Upwork Profile</a>
+          <a href="https://hytgenx.ai" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">hytGenX.ai</a>
+        </div>
+        <div class="rev" style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:20px 24px">
+          <p style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">Send a message</p>
+          <div class="form-row-2">
+            <div><label class="form-label">Name</label><input class="form-input" id="fn" placeholder="Your name"></div>
+            <div><label class="form-label">Email</label><input class="form-input" id="fe" placeholder="your@email.com" type="email"></div>
+          </div>
+          <label class="form-label">Company</label>
+          <input class="form-input" id="fc" placeholder="Company (optional)">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" id="fm" placeholder="Tell me what you are working on..." style="min-height:80px"></textarea>
+          <button class="btn-dark" onclick="sendMsg()" style="margin-top:12px;font-size:13px;padding:10px 20px;border:none;cursor:pointer;font-family:inherit">Send message</button>
+        </div>
+      </div>
+      <div class="about-right rev d2">
+        <div class="booking-head">
+          <h3>Book a session</h3>
+          <p>20-minute discovery. Pick a time that works.</p>
+        </div>
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+      </div>
+    </div>
+  </section>
+
+</div><!-- end home page -->
+
+<!-- ===================== CASE STUDY PAGE ===================== -->
+<div class="page" id="page-case">
+  <div id="case-content"></div>
+</div>
+
+<!-- FOOTER (shared) -->
+<footer id="main-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">altyur<span>.cloud</span></div>
+      <p class="footer-brand-desc">AI automation consulting — discovery to deployment. Helping businesses operate with intelligence rather than effort.</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:16px">CTO at <a href="https://hytgenx.ai" style="color:rgba(255,255,255,.5);text-decoration:none">hytGenX.ai</a></p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Workflow Automation</a>
+        <a href="#">Multi-Agent Systems</a>
+        <a href="#">Voice AI Agents</a>
+        <a href="#">RevOps via MCP</a>
+        <a href="#">RAG Knowledge Systems</a>
+        <a href="#">Executive Intelligence</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#" onclick="scrollTo('about-section')">About</a>
+        <a href="https://hytgenx.ai" target="_blank">hytGenX.ai</a>
+        <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
+        <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get started</h4>
+        <a href="https://calendly.com/turyal" target="_blank">Book a session</a>
+        <a href="#" onclick="scrollTo('about-section')">Send a message</a>
+        <a href="#" onclick="scrollTo('problems-section')">Case studies</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 altyur.cloud — Turyal Neeshat</p>
+    <p>Built with intent. Powered by AI.</p>
+  </div>
+</footer>
+
+<!-- Calendly -->
+<script>
+
+// ── CASE STUDY DATA ──
+const cases = {
+  revenue: {
+    tag: 'Revenue Operations', tagClass: 'tag-revenue',
+    question: 'Are you flying blind on revenue?',
+    h1: 'Unified RevOps Intelligence for a B2B SaaS Company',
+    sub: 'Revenue data scattered across HubSpot, QuickBooks, and five spreadsheets meant leadership had no real-time view of business health. We built a unified intelligence layer that ended the guesswork.',
+    stats: [{val:'94%',lab:'Reporting time saved'},{val:'Real-time',lab:'Revenue visibility'},{val:'1 source',lab:'Of truth for all data'},{val:'8 hrs/wk',lab:'Given back to finance'}],
+    sections: [
+      { h: 'The problem', body: 'The finance and operations team at a 40-person B2B SaaS company spent eight hours every week pulling data from HubSpot, QuickBooks, a Google Sheet shared across three teams, and two other internal tools. By the time the weekly revenue report was ready, the numbers were already 48 hours old. Leadership was making decisions on stale data.', problem: 'Every Monday, the ops lead would spend three to four hours just aggregating numbers. We would have a meeting at 2pm, and the data in the deck was from Friday. Deals had closed since then. Refunds had been processed. The picture was always incomplete.' },
+      { h: 'What we built', solution: 'We connected all five data sources into a unified pipeline using n8n and Python, with Claude via MCP sitting on top as a natural language interface. Leadership can now ask questions like "what is our net new ARR this week" or "show me churn by segment for Q2" and receive accurate, real-time answers without touching a spreadsheet.', body: 'The dashboard is updated continuously throughout the day. An automated executive summary is generated every Monday morning before 8am, pulling from live data, flagging anomalies, and surfacing the three most important trends — ready in the inbox before anyone sits down.' },
+      { h: 'The automation timeline', timeline: 'revenue' },
+      { h: 'Results', body: 'The finance team reclaimed eight hours per week. Leadership now has a single URL they open on Monday morning. The company moved from weekly manual reporting to continuous operational awareness.' }
+    ]
+  },
+  invoice: {
+    tag: 'Finance & Accounting', tagClass: 'tag-finance',
+    question: 'Is invoicing eating your team alive?',
+    h1: 'End-to-End Invoice Automation for a Professional Services Firm',
+    sub: 'Generating, approving, sending, and reconciling invoices was a two-day manual process every billing cycle. We reduced it to a background task that runs itself.',
+    stats: [{val:'2 days',lab:'Saved per billing cycle'},{val:'Zero',lab:'Manual errors post-launch'},{val:'4 hrs',lab:'Finance team freed weekly'},{val:'Automatic',lab:'Payment reconciliation'}],
+    sections: [
+      { h: 'The problem', body: 'A professional services firm billing 60 to 80 clients monthly was running their entire invoicing operation through a combination of QuickBooks, a shared Google Sheet, and manual email drafts. Each billing cycle required two days of concentrated effort from their finance associate — pulling project data, calculating billable hours, generating PDFs, chasing approvals, sending emails, and manually reconciling payments as they arrived.', problem: 'The worst part was chasing approvals internally. A partner would be in client meetings for three days, and invoices would just sit there. Then we would send late, and then clients would pay late. The whole cycle was broken.' },
+      { h: 'What we built', solution: 'We built a fully automated invoicing pipeline using n8n, integrated with their project management tool, QuickBooks, and their email system. When a project milestone is marked complete, the workflow automatically calculates billable amounts, generates a formatted invoice, routes it for approval via Slack, and sends it to the client on approval — all without human input.', body: 'Payment reconciliation is handled automatically when payments are received, with exceptions flagged and escalated. Monthly revenue summaries are generated and sent to leadership with no manual preparation required.' },
+      { h: 'The automation timeline', timeline: 'invoice' },
+      { h: 'Results', body: 'The billing cycle went from two days to approximately 20 minutes of exception handling. The finance team now focuses on analysis rather than administration, and on-time invoice dispatch improved from 71% to 99%.' }
+    ]
+  },
+  commission: {
+    tag: 'Sales Commission', tagClass: 'tag-sales',
+    question: 'Do your sales reps argue about their commission numbers?',
+    h1: 'Automated Commission Engine for a 25-Person Sales Team',
+    sub: 'Tiered structures, split deals, clawbacks, and accelerators were all calculated manually in Excel. Reps did not trust the numbers. We rebuilt it as a real-time automated system.',
+    stats: [{val:'100%',lab:'Calculation accuracy'},{val:'Real-time',lab:'Commission visibility'},{val:'40 hrs',lab:'Saved per quarter'},{val:'Zero',lab:'Commission disputes post-launch'}],
+    sections: [
+      { h: 'The problem', body: 'With 25 sales reps across three tiers, multiple product lines, split deal rules, and quarterly accelerators, commission calculation had become a quarterly nightmare. The operations manager spent two full days each quarter running Excel macros, and reps routinely challenged the numbers — sometimes correctly.', problem: 'We had three commission disputes in one quarter. One was a real error. The others were just reps not trusting a spreadsheet they could not see into. It was creating tension with the sales team at exactly the wrong time.' },
+      { h: 'What we built', solution: 'We built a commission calculation engine in Python integrated with HubSpot, which reads deal data in real time. Reps have a personal dashboard showing their current commission, projected payout, and the underlying deal breakdown — fully transparent and updated live as deals close.', body: 'Clawback tracking, split deal attribution, and accelerator thresholds are all handled automatically. Quarter-end payroll exports are generated in the format the payroll provider requires, eliminating manual transfer.' },
+      { h: 'The automation timeline', timeline: 'followup' },
+      { h: 'Results', body: 'Commission disputes dropped to zero. The ops manager recovered two full days per quarter. Sales reps report higher trust in the numbers and spend less time questioning their payouts.' }
+    ]
+  },
+  inventory: {
+    tag: 'Inventory', tagClass: 'tag-inventory',
+    question: 'Are stockouts costing you customers?',
+    h1: 'AI-Driven Inventory Monitoring and Reorder Automation',
+    sub: 'Reactive inventory purchasing meant frequent stockouts and overordering. We built predictive monitoring with automatic reorder triggers that eliminated both problems.',
+    stats: [{val:'68%',lab:'Stockout reduction'},{val:'Auto',lab:'Reorder triggers'},{val:'22%',lab:'Carrying cost reduction'},{val:'Real-time',lab:'Stock visibility'}],
+    sections: [
+      { h: 'The problem', body: 'A product company with 200 SKUs was managing inventory using a combination of gut instinct and weekly manual counts. Stockouts of popular items were common. At the same time, slow-moving inventory was tying up working capital. There was no system connecting sales velocity data to purchasing decisions.', problem: 'We would run out of our best-selling product on a Tuesday and not realise until Thursday when a customer complained. Then we would overorder to compensate and sit on stock for months. It was expensive in both directions.' },
+      { h: 'What we built', solution: 'We built an inventory intelligence layer connected to their point-of-sale system, supplier portal, and accounting platform. An AI model monitors sales velocity for each SKU, calculates dynamic reorder points based on lead times and demand patterns, and automatically triggers purchase orders when thresholds are crossed.', body: 'Weekly inventory health reports are generated automatically, flagging slow-moving stock, identifying seasonal demand patterns, and surfacing reorder recommendations for review.' },
+      { h: 'The automation timeline', timeline: 'inventory' },
+      { h: 'Results', body: 'Stockouts on key SKUs dropped by 68% in the first quarter. Carrying costs reduced by 22% as overordering was eliminated. The operations team now spends time on supplier relationships rather than stock counting.' }
+    ]
+  },
+  followup: {
+    tag: 'Sales Follow-ups', tagClass: 'tag-sales',
+    question: 'How many leads went cold this week because no one followed up?',
+    h1: 'Voice AI Follow-up Agent for a Real Estate Brokerage',
+    sub: 'Inbound leads were going cold because human capacity could not keep up. We deployed a voice AI agent that responds within 60 seconds, qualifies leads, and updates the CRM automatically.',
+    stats: [{val:'3.4x',lab:'Response rate lift'},{val:'60s',lab:'First contact time'},{val:'200+',lab:'Leads handled daily'},{val:'Zero',lab:'Manual CRM updates'}],
+    sections: [
+      { h: 'The problem', body: 'A real estate brokerage generating 60 to 80 inbound leads per day could not respond fast enough. Research consistently shows that response speed within the first five minutes is a primary driver of conversion in real estate. Their average response time was four hours. Agents were overwhelmed, and leads were going cold before anyone called.', problem: 'We were spending money on lead generation and then letting those leads sit. By the time an agent called, the person had already spoken to two competitors. The leads were not bad. Our process was.' },
+      { h: 'What we built', solution: 'We deployed a Vapi voice AI agent integrated with their CRM. When a lead submits an enquiry, the agent calls them within 60 seconds, introduces itself naturally, asks qualifying questions, captures the key information, and creates or updates the CRM record automatically. Qualified leads are flagged and a notification is sent to the next available agent.', body: 'The agent handles objections, schedules call-backs for agents, and manages follow-up sequences for leads that do not answer — all without human intervention. Agents now only pick up warm, qualified conversations.' },
+      { h: 'The automation timeline', timeline: 'followup' },
+      { h: 'Results', body: 'Response rate lifted 3.4x in the first month. The team now handles over 200 leads per day with zero manual CRM input. Agent time shifted from data entry and cold calling to high-value conversations.' }
+    ]
+  },
+  reporting: {
+    tag: 'Executive Reporting', tagClass: 'tag-ops',
+    question: 'Is your board pack three days late and already outdated?',
+    h1: 'Automated Executive Summary Pipeline for a Private Equity-Backed Company',
+    sub: 'Monthly board packs were consuming three days of finance team effort. By the time they were ready, the data was stale. We automated the entire pipeline — from data ingestion to narrative generation.',
+    stats: [{val:'3 days',lab:'Saved per cycle'},{val:'Always current',lab:'Data as of generation time'},{val:'Automated',lab:'Narrative generation'},{val:'6 hrs',lab:'Finance team freed monthly'}],
+    sections: [
+      { h: 'The problem', body: 'A PE-backed portfolio company was producing monthly board packs manually — pulling financials from accounting software, sales data from HubSpot, operational KPIs from various internal tools, and then writing narrative commentary in Google Slides. The process took three days, involved four people, and the finished pack reflected data that was 48 to 72 hours old by the time it reached the board.', problem: 'The CFO was spending a day and a half on the board pack every month. That is time she should have been spending on analysis and decisions, not on moving numbers from one system to another and writing sentences about them.' },
+      { h: 'What we built', solution: 'We built an automated executive summary pipeline using Claude and Python. On the first of each month, the system automatically pulls data from all connected sources, calculates period-over-period variances, identifies the top three operational risks and highlights based on threshold rules, and generates a structured narrative in the company tone and format.', body: 'The output is a fully formatted Google Slides board pack, ready in the CFO inbox before 7am on the first of every month. The finance team reviews for context and edge cases — a 30-minute task rather than a three-day project.' },
+      { h: 'The automation timeline', timeline: 'revenue' },
+      { h: 'Results', body: 'The board pack is now ready on time, every time, with same-day data. The CFO reclaimed six hours per month. The board has noted the improvement in data currency and consistency of presentation.' }
+    ]
+  }
+};
+
+const timelines = {
+  revenue: ['Data Sources Connect','Normalisation Layer','KPI Calculation','Anomaly Detection','Dashboard Refresh','Executive Summary'],
+  invoice: ['Project Milestone Hit','Hours Calculated','Invoice Generated','Approval Routed','Client Email Sent','Payment Reconciled'],
+  inventory: ['Sales Velocity Tracked','Reorder Point Calculated','Stock Alert Triggered','PO Auto-generated','Supplier Notified','Inventory Updated'],
+  followup: ['Lead Form Submitted','CRM Record Created','Voice Agent Calls','Lead Qualified','Agent Notified','Follow-up Scheduled']
+};
+
+function openCase(key) {
+  const c = cases[key];
+  const tl = timelines[c.sections.find(s=>s.timeline)?.timeline || 'revenue'];
+  let html = `
+    <div class="case-hero">
+      <button class="case-back" onclick="showPage('home')">← Back to all case studies</button>
+      <span class="case-tag ${c.tagClass} case-page-tag">${c.tag}</span>
+      <div class="case-page-h1">${c.h1}</div>
+      <p class="case-page-sub">${c.sub}</p>
+      <div class="case-stats-row">
+        ${c.stats.map(s=>`<div class="case-stat"><div class="case-stat-val">${s.val}</div><div class="case-stat-lab">${s.lab}</div></div>`).join('')}
+      </div>
+    </div>
+    <div class="case-body">`;
+  c.sections.forEach(sec => {
+    html += `<h3>${sec.h}</h3>`;
+    if(sec.body) html += `<p>${sec.body}</p>`;
+    if(sec.problem) html += `<div class="problem-box"><p>"${sec.problem}"</p></div>`;
+    if(sec.solution) html += `<div class="solution-box"><p>${sec.solution}</p></div>`;
+    if(sec.timeline) {
+      const steps = timelines[sec.timeline];
+      html += `<div class="auto-timeline">
+        <div class="auto-timeline-title">Automation flow — how it runs</div>
+        <div class="auto-flow">
+          ${steps.map((s,i)=>`
+          <div class="auto-node">
+            <div class="auto-node-dot ${i===0?'lit':i===steps.length-1?'lit-green':''}">
+              <span class="auto-node-icon">${i+1}</span>
+            </div>
+            <div class="auto-node-label">${s}</div>
+            <div class="auto-node-sub">${i===0?'Trigger':'Auto'}</div>
+          </div>`).join('')}
+        </div>
+      </div>`;
+    }
+  });
+  html += `<div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+    <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
+    <button onclick="showPage('home');setTimeout(()=>scrollTo('problems-section'),300)" class="btn-ghost" style="font-size:14px;padding:12px 24px;cursor:pointer;font-family:inherit">See more case studies</button>
+  </div></div>`;
+  document.getElementById('case-content').innerHTML = html;
+  showPage('case');
+  window.scrollTo(0,0);
+  // Animate nodes
+  setTimeout(()=>{
+    const nodes = document.querySelectorAll('.auto-node-dot:not(.lit):not(.lit-green)');
+    nodes.forEach((n,i)=>setTimeout(()=>n.classList.add('lit'),i*400+300));
+  },400);
+}
+
+// ── PAGE ROUTING ──
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='home') setTimeout(initReveal,100);
+}
+
+function scrollTo(id) {
+  showPage('home');
+  setTimeout(()=>{
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  },100);
+}
+
+// ── DEMO ANIMATIONS ──
+const demos = {
+  revops: {
+    nodes: [
+      {label:'HubSpot CRM',sub:'Deal data',cls:'trigger',x:3,y:35},
+      {label:'QuickBooks',sub:'Financials',cls:'process',x:3,y:65},
+      {label:'Normalisation',sub:'n8n pipeline',cls:'process',x:23,y:50},
+      {label:'KPI Engine',sub:'Python',cls:'process',x:43,y:50},
+      {label:'Claude MCP',sub:'Intelligence layer',cls:'process',x:63,y:50},
+      {label:'Live Dashboard',sub:'Always current',cls:'output',x:83,y:35},
+      {label:'Executive Summary',sub:'Auto-generated',cls:'output',x:83,y:65},
+    ],
+    edges:[[0,2],[1,2],[2,3],[3,4],[4,5],[4,6]],
+    steps:['HubSpot','QuickBooks','Normalise','Calculate KPIs','AI Intelligence','Dashboard & Report']
+  },
+  invoice: {
+    nodes: [
+      {label:'Milestone Complete',sub:'Trigger',cls:'trigger',x:5,y:50},
+      {label:'Calculate Hours',sub:'Project tool',cls:'process',x:23,y:50},
+      {label:'Generate Invoice',sub:'Auto PDF',cls:'process',x:41,y:50},
+      {label:'Route Approval',sub:'Slack',cls:'process',x:59,y:50},
+      {label:'Send to Client',sub:'Email',cls:'process',x:77,y:35},
+      {label:'Reconcile Payment',sub:'QuickBooks',cls:'output',x:77,y:65},
+    ],
+    edges:[[0,1],[1,2],[2,3],[3,4],[3,5]],
+    steps:['Milestone','Hours Calc','Invoice Gen','Approval','Send & Reconcile']
+  },
+  inventory: {
+    nodes: [
+      {label:'Sales Data',sub:'POS feed',cls:'trigger',x:5,y:50},
+      {label:'Velocity Model',sub:'AI prediction',cls:'process',x:25,y:50},
+      {label:'Threshold Check',sub:'Dynamic rules',cls:'process',x:45,y:35},
+      {label:'Overstock Alert',sub:'Flag & report',cls:'process',x:45,y:65},
+      {label:'Auto PO',sub:'Supplier API',cls:'process',x:65,y:35},
+      {label:'Inventory Updated',sub:'Real-time',cls:'output',x:83,y:50},
+    ],
+    edges:[[0,1],[1,2],[1,3],[2,4],[4,5],[3,5]],
+    steps:['Sales Feed','AI Model','Threshold','PO Generated','Stock Updated']
+  },
+  followup: {
+    nodes: [
+      {label:'Lead Submitted',sub:'Form trigger',cls:'trigger',x:5,y:50},
+      {label:'CRM Record',sub:'Auto-created',cls:'process',x:23,y:50},
+      {label:'Voice Agent Calls',sub:'Within 60s',cls:'process',x:41,y:50},
+      {label:'Lead Qualified',sub:'AI conversation',cls:'process',x:59,y:35},
+      {label:'Unqualified',sub:'Nurture sequence',cls:'process',x:59,y:65},
+      {label:'Agent Notified',sub:'Hot lead ready',cls:'output',x:80,y:50},
+    ],
+    edges:[[0,1],[1,2],[2,3],[2,4],[3,5],[4,5]],
+    steps:['Form Submit','CRM Create','AI Calls','Qualify','Agent Notified']
+  }
+};
+
+let currentDemo = 'revops';
+let demoAnim = null;
+
+function switchDemo(key) {
+  currentDemo = key;
+  document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderDemo(key);
+}
+
+function renderDemo(key) {
+  const d = demos[key];
+  const W=100, H=100;
+  let html = `<div style="position:relative;height:250px;margin-bottom:24px">
+  <svg style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible" viewBox="0 0 100 100" preserveAspectRatio="none">`;
+  d.edges.forEach(([a,b])=>{
+    const na=d.nodes[a], nb=d.nodes[b];
+    html+=`<line class="flow-path" x1="${na.x+8}%" y1="${na.y}%" x2="${nb.x}%" y2="${nb.y}%" vector-effect="non-scaling-stroke"/>`;
+  });
+  html += `</svg>`;
+  d.nodes.forEach((n,i)=>{
+    html+=`<div class="flow-node ${n.cls}" id="dn${i}" style="left:${n.x}%;top:${n.y}%;transform:translateY(-50%)">${n.label}<div class="flow-label">${n.sub}</div></div>`;
+  });
+  html+=`</div>`;
+  // timeline strip
+  html+=`<div style="margin-top:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Automation sequence</div><div class="timeline-strip">`;
+  d.steps.forEach((s,i)=>{
+    html+=`<div class="tl-step"><div class="tl-dot" id="td${i}"></div><div class="tl-label">${s}</div></div>`;
+  });
+  html+=`</div></div>`;
+  document.getElementById('demo-display').innerHTML = html;
+  animateDemo(d);
+}
+
+function animateDemo(d) {
+  if(demoAnim) clearInterval(demoAnim);
+  let step = 0;
+  const total = d.nodes.length;
+  function tick() {
+    d.nodes.forEach((_,i)=>{
+      const el = document.getElementById('dn'+i);
+      if(el) el.classList.toggle('highlight', i===step);
+    });
+    d.steps.forEach((_,i)=>{
+      const dot = document.getElementById('td'+i);
+      if(!dot) return;
+      dot.className = 'tl-dot' + (i<step?' done':i===step?' active':'');
+    });
+    step = (step+1) % total;
+  }
+  tick();
+  demoAnim = setInterval(tick, 1400);
+}
+
+// init
+renderDemo('revops');
+
+// ── SCROLL REVEAL ──
+function initReveal(){
+  const els = document.querySelectorAll('.rev');
+  const io = new IntersectionObserver(e=>{
+    e.forEach(el=>{ if(el.isIntersecting) el.target.classList.add('vis'); });
+  },{threshold:.06});
+  els.forEach(el=>{ el.classList.remove('vis'); io.observe(el); });
+}
+initReveal();
+
+// ── CALENDLY ──
+window.addEventListener('load',()=>{
+  if(typeof Calendly!=='undefined'){
+    Calendly.initInlineWidget({
+      url:'https://calendly.com/turyal',
+      parentElement:document.getElementById('cal-widget')
+    });
+  } else {
+    document.getElementById('cal-widget').innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;gap:16px;padding:32px">
+      <p style="color:var(--muted);font-size:14px;text-align:center">Schedule directly on Calendly</p>
+      <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Open Calendly</a>
+    </div>`;
+  }
+});
+
+// ── MOBILE MENU ──
+function toggleMenu(){
+  const c = document.querySelector('.nav-center');
+  const open = c.style.display==='flex';
+  c.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--white);padding:20px;gap:20px;border-bottom:1px solid var(--border);z-index:199;box-shadow:0 8px 24px rgba(0,0,0,.08)';
+}
+
+// ── SEND MESSAGE ──
+function sendMsg(){
+  const n=document.getElementById('fn').value;
+  const e=document.getElementById('fe').value;
+  const c=document.getElementById('fc').value;
+  const m=document.getElementById('fm').value;
+  if(!n||!e||!m){alert('Please fill in your name, email, and message.');return;}
+  const s=encodeURIComponent('Enquiry from altyur.cloud'+(c?' — '+c:''));
+  const b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nCompany: '+(c||'—')+'\n\n'+m);
+  window.location.href=`mailto:turyal@hytgenx.ai?subject=${s}&body=${b}`;
+}
+</script>
+</body>
+</html>
