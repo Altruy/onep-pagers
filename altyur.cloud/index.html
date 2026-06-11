@@ -43,7 +43,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webk
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,249,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em}
 .nav-logo span{color:var(--accent)}
-.nav-center{display:flex;align-items:center;gap:36px}
+.nav-center{display:flex;align-items:center;gap:28px}
 .nav-center a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;letter-spacing:.01em}
 .nav-center a:hover{color:var(--text)}
 .nav-right{display:flex;align-items:center;gap:12px}
@@ -265,12 +265,55 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 .divider{height:1px;background:var(--border)}
 .mt-8{margin-top:8px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mt-32{margin-top:32px}
 
+/* ── INDUSTRIES PAGE ── */
+#page-industries{padding-top:60px}
+.ind-hero{padding:80px 48px 48px;max-width:1100px;margin:0 auto}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:0 48px 80px}
+.ind-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px 28px}
+.ind-icon{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.ind-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--text);margin-bottom:10px}
+.ind-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.ind-uses{display:flex;flex-direction:column;gap:7px;margin-bottom:20px;padding-top:18px;border-top:1px solid var(--border)}
+.ind-use{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.ind-use::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
+
+/* ── INSIGHTS PAGE ── */
+#page-insights{padding-top:60px}
+.insights-hero{padding:80px 48px 48px;max-width:800px;margin:0 auto}
+.articles-list{max-width:800px;margin:0 auto;padding:0 48px 80px}
+.article-card{padding:36px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.article-card:first-child{border-top:1px solid var(--border)}
+.article-meta{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.article-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;background:var(--accent3);color:var(--accent)}
+.article-read{font-size:12px;color:var(--muted)}
+.article-date{font-size:12px;color:var(--light)}
+.article-h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:10px;transition:color .2s}
+.article-card:hover .article-h2{color:var(--accent)}
+.article-excerpt{font-size:14px;color:var(--muted);line-height:1.8;max-width:640px}
+.article-cta{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;margin-top:14px}
+.article-cta::after{content:'→';transition:transform .2s}
+.article-card:hover .article-cta::after{transform:translateX(4px)}
+
+/* ── ARTICLE PAGE ── */
+#page-article{padding-top:60px}
+.article-hero{padding:80px 48px 40px;max-width:800px;margin:0 auto}
+.article-body-wrap{max-width:800px;margin:0 auto;padding:0 48px 80px}
+.article-body-wrap h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin:36px 0 14px}
+.article-body-wrap h3:first-child{margin-top:0}
+.article-body-wrap p{font-size:15px;color:var(--muted);line-height:1.95;margin-bottom:20px}
+.article-body-wrap ul{margin:0 0 20px;padding-left:0;list-style:none}
+.article-body-wrap ul li{font-size:14px;color:var(--muted);line-height:1.8;padding-left:16px;position:relative;margin-bottom:8px}
+.article-body-wrap ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);position:absolute;left:0;top:10px}
+.article-callout{background:var(--accent3);border-left:4px solid var(--accent);border-radius:4px;padding:20px 24px;margin:28px 0}
+.article-callout p{font-size:14px;color:var(--accent);line-height:1.8;margin:0;font-weight:500}
+
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   .hero-inner,.about-wrap{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr 1fr}
   .case-grid{grid-template-columns:1fr}
   .stack-grid{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:1fr 1fr;padding-left:20px;padding-right:20px}
   .footer-top{grid-template-columns:1fr}
   .footer-cols{grid-template-columns:1fr 1fr}
   nav{padding:0 20px}
@@ -280,10 +323,11 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
   footer{padding:40px 20px 24px}
   .service-row{grid-template-columns:1fr;gap:8px}
   .srv-arrow{display:none}
-  .case-hero,.case-body{padding-left:20px;padding-right:20px}
+  .case-hero,.case-body,.article-hero,.article-body-wrap,.ind-hero,.insights-hero,.articles-list{padding-left:20px;padding-right:20px}
 }
 @media(max-width:600px){
   .process-steps{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:1fr}
   .footer-cols{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:8px;text-align:center}
   .hero-creds{flex-wrap:wrap;gap:16px}
@@ -300,7 +344,8 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
     <a href="#" onclick="scrollTo('demo-section')">How it works</a>
     <a href="#" onclick="scrollTo('problems-section')">Case studies</a>
     <a href="#" onclick="scrollTo('services-section')">Services</a>
-    <a href="#" onclick="scrollTo('stack-section')">Stack</a>
+    <a href="#" onclick="showPage('industries')">Industries</a>
+    <a href="#" onclick="showPage('insights')">Insights</a>
     <a href="#" onclick="scrollTo('about-section')">About</a>
   </div>
   <div class="nav-right">
@@ -423,6 +468,36 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
           <div class="case-metrics">
             <div class="metric"><div class="metric-val">3 days</div><div class="metric-lab">Saved per cycle</div></div>
             <div class="metric"><div class="metric-val">Always</div><div class="metric-lab">Current data</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('healthcare')">
+          <span class="case-tag tag-ops">Healthcare</span>
+          <div class="case-question">"Our front desk spends four hours a day on scheduling calls and still misses 30% of them."</div>
+          <div class="case-teaser">A multi-specialty clinic was haemorrhaging new patient bookings after hours. We deployed a voice AI scheduling agent that answers every call within two rings, around the clock.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">73%</div><div class="metric-lab">Call deflection</div></div>
+            <div class="metric"><div class="metric-val">24/7</div><div class="metric-lab">Scheduling availability</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('ecommerce')">
+          <span class="case-tag tag-inventory">E-Commerce</span>
+          <div class="case-question">"We are paying for great acquisition and then losing 78% of carts. Our support team is at breaking point."</div>
+          <div class="case-teaser">A DTC brand with a strong funnel had two critical leaks — abandoned carts and an 18-hour support response time. We automated both ends simultaneously.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">31%</div><div class="metric-lab">Cart recovery rate</div></div>
+            <div class="metric"><div class="metric-val">6x</div><div class="metric-lab">Support capacity</div></div>
+          </div>
+          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+        </div>
+        <div class="case-card" onclick="openCase('recruiting')">
+          <span class="case-tag tag-hr">Talent & Recruiting</span>
+          <div class="case-question">"By the time we call a qualified candidate, they have already accepted another offer."</div>
+          <div class="case-teaser">A specialist staffing agency was sitting on a 48-to-72-hour screening lag. We built an AI pipeline that scores, ranks, and initiates personalised outreach within 12 minutes of application.</div>
+          <div class="case-metrics">
+            <div class="metric"><div class="metric-val">87%</div><div class="metric-lab">Screening time saved</div></div>
+            <div class="metric"><div class="metric-val">12 min</div><div class="metric-lab">Application to contact</div></div>
           </div>
           <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
         </div>
@@ -667,6 +742,109 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
   <div id="case-content"></div>
 </div>
 
+<!-- ===================== INDUSTRIES PAGE ===================== -->
+<div class="page" id="page-industries">
+  <div class="ind-hero">
+    <button class="case-back" onclick="showPage('home')">← Back to home</button>
+    <div class="section-eyebrow">Industry expertise</div>
+    <h1 class="section-h2" style="max-width:640px">We have built in<br><em>your vertical.</em></h1>
+    <p class="section-sub" style="margin-bottom:0">Every industry has its own workflow patterns, compliance requirements, and failure modes. The use cases below reflect what we have actually shipped — not hypotheticals.</p>
+  </div>
+  <div class="ind-grid">
+    <div class="ind-card">
+      <div class="ind-icon">Real Estate</div>
+      <div class="ind-name">Real Estate & Brokerage</div>
+      <div class="ind-desc">High lead volume, time-sensitive follow-up, and complex client journeys make real estate one of the highest-ROI verticals for AI automation.</div>
+      <div class="ind-uses">
+        <div class="ind-use">Voice AI that calls inbound leads within 60 seconds and qualifies them before a human gets involved</div>
+        <div class="ind-use">Automated listing alerts and personalised nurture sequences based on buyer behaviour</div>
+        <div class="ind-use">CRM pipeline intelligence — no manual update required after every call or showing</div>
+        <div class="ind-use">Document processing for offer submissions, leases, and contract reviews</div>
+      </div>
+      <a href="#" class="case-link" onclick="openCase('followup');return false;">See the follow-up case study</a>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">Healthcare</div>
+      <div class="ind-name">Healthcare & Clinics</div>
+      <div class="ind-desc">Scheduling bottlenecks, intake inefficiency, and after-hours missed calls are addressable with AI without touching clinical workflows or compliance boundaries.</div>
+      <div class="ind-uses">
+        <div class="ind-use">24/7 voice AI for patient scheduling, rescheduling, and reminder calls</div>
+        <div class="ind-use">Automated intake form routing and structured data capture before the appointment</div>
+        <div class="ind-use">Insurance verification workflows triggered automatically on booking</div>
+        <div class="ind-use">Post-visit follow-up sequences and care gap alert pipelines</div>
+      </div>
+      <a href="#" class="case-link" onclick="openCase('healthcare');return false;">See the scheduling case study</a>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">Professional Services</div>
+      <div class="ind-name">Professional Services</div>
+      <div class="ind-desc">Consulting, legal, accounting, and agency businesses all share the same structural problem: senior time spent on production work that should be automated.</div>
+      <div class="ind-uses">
+        <div class="ind-use">Proposal generation pipelines that produce structured drafts from CRM data and past wins</div>
+        <div class="ind-use">Automated time tracking, billing calculations, and invoice dispatch</div>
+        <div class="ind-use">Client status report automation with AI-written commentary</div>
+        <div class="ind-use">Internal knowledge base — staff get source-cited answers from SOPs and past work</div>
+      </div>
+      <a href="#" class="case-link" onclick="openCase('invoice');return false;">See the billing case study</a>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">SaaS & Technology</div>
+      <div class="ind-name">SaaS & Technology</div>
+      <div class="ind-desc">Product-led growth companies have the data to detect expansion and churn signals early — but only if that data is connected to an intelligence layer that acts on it.</div>
+      <div class="ind-uses">
+        <div class="ind-use">Product usage signal monitoring with automated expansion and churn risk alerts</div>
+        <div class="ind-use">Onboarding sequence automation triggered by in-app behaviour milestones</div>
+        <div class="ind-use">Claude via MCP for revenue and pipeline queries in plain English — no SQL</div>
+        <div class="ind-use">Support ticket triage, auto-resolution for common issues, and escalation routing</div>
+      </div>
+      <a href="#" class="case-link" onclick="openCase('revenue');return false;">See the RevOps case study</a>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">Finance & Accounting</div>
+      <div class="ind-name">Finance & Accounting</div>
+      <div class="ind-desc">Finance teams spend a disproportionate amount of time on data aggregation and formatting. The analysis and judgment they were hired for ends up being a fraction of their day.</div>
+      <div class="ind-uses">
+        <div class="ind-use">End-to-end invoice automation from milestone to payment reconciliation</div>
+        <div class="ind-use">Commission calculation engines that update in real time as deals close</div>
+        <div class="ind-use">Automated board pack and executive summary generation on a fixed schedule</div>
+        <div class="ind-use">Spend categorisation, anomaly detection, and variance commentary</div>
+      </div>
+      <a href="#" class="case-link" onclick="openCase('reporting');return false;">See the reporting case study</a>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">E-Commerce & Retail</div>
+      <div class="ind-name">E-Commerce & Retail</div>
+      <div class="ind-desc">Acquisition is expensive. The margin is won or lost in the post-click experience — recovery, support, and retention — all of which are automatable at scale.</div>
+      <div class="ind-uses">
+        <div class="ind-use">Behaviour-triggered cart abandonment sequences personalised by product and purchase history</div>
+        <div class="ind-use">AI customer support agent handling enquiries, returns, and product questions autonomously</div>
+        <div class="ind-use">Inventory demand forecasting and automatic reorder point management</div>
+        <div class="ind-use">Post-purchase loyalty and upsell sequences based on order data</div>
+      </div>
+      <a href="#" class="case-link" onclick="openCase('ecommerce');return false;">See the e-commerce case study</a>
+    </div>
+  </div>
+  <div style="text-align:center;padding:0 48px 80px">
+    <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session for your industry</a>
+  </div>
+</div>
+
+<!-- ===================== INSIGHTS PAGE ===================== -->
+<div class="page" id="page-insights">
+  <div class="insights-hero">
+    <button class="case-back" onclick="showPage('home')">← Back to home</button>
+    <div class="section-eyebrow">Insights</div>
+    <h1 class="section-h2" style="max-width:560px">Practical notes on<br><em>building with AI.</em></h1>
+    <p style="font-size:15px;color:var(--muted);line-height:1.8;max-width:500px">Lessons from 50+ production AI deployments — what works, what does not, and what to think about before you start.</p>
+  </div>
+  <div class="articles-list" id="articles-list-content"></div>
+</div>
+
+<!-- ===================== ARTICLE PAGE ===================== -->
+<div class="page" id="page-article">
+  <div id="article-content"></div>
+</div>
+
 <!-- FOOTER (shared) -->
 <footer id="main-footer">
   <div class="footer-top">
@@ -688,6 +866,8 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
       <div class="footer-col">
         <h4>Company</h4>
         <a href="#" onclick="scrollTo('about-section')">About</a>
+        <a href="#" onclick="showPage('industries')">Industries</a>
+        <a href="#" onclick="showPage('insights')">Insights</a>
         <a href="https://hytgenx.ai" target="_blank">hytGenX.ai</a>
         <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
         <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a>
@@ -788,6 +968,45 @@ const cases = {
       { h: 'The automation timeline', timeline: 'revenue' },
       { h: 'Results', body: 'The board pack is now ready on time, every time, with same-day data. The CFO reclaimed six hours per month. The board has noted the improvement in data currency and consistency of presentation.' }
     ]
+  },
+  healthcare: {
+    tag: 'Healthcare', tagClass: 'tag-ops',
+    question: 'Is your front desk turning away patients after hours?',
+    h1: 'Voice AI Patient Scheduling for a Multi-Specialty Clinic',
+    sub: 'Inbound scheduling calls were overwhelming front desk staff and going unanswered after hours. We deployed a voice AI agent that handles booking, rescheduling, and reminders around the clock — without touching clinical systems.',
+    stats: [{val:'73%',lab:'Call deflection'},{val:'24/7',lab:'Scheduling availability'},{val:'4.5 hrs',lab:'Front desk saved daily'},{val:'18%',lab:'Bookings now after-hours'}],
+    sections: [
+      { h: 'The problem', body: 'A multi-specialty clinic with eight practitioners was receiving 80 to 120 scheduling calls per day. Front desk staff spent four to five hours on scheduling calls alone, with a meaningful share going to voicemail after 5pm and never being returned. New patient acquisition was suffering — prospective patients who could not get through often booked with a competitor the same day.', problem: 'We calculated we were missing roughly 25 to 30 calls every day because they came in after hours or while the phones were busy. These were not cold leads — these were people actively trying to book. We were turning away revenue without realising it.' },
+      { h: 'What we built', solution: 'We deployed a Vapi voice AI agent integrated with the clinic\'s scheduling platform (Jane App). The agent answers every call within two rings, confirms real-time availability, books appointments, handles rescheduling requests, and sends automated confirmation and reminder messages — including after hours, on weekends, and on holidays.', body: 'The system handles insurance verification questions, provider-specific scheduling rules, and appointment type routing without human involvement. A daily digest is sent to the clinic manager showing call volumes, booking outcomes, and any escalations that required staff intervention. Edge cases — complex clinical questions, billing disputes, and distressed callers — are flagged and transferred to staff with a full call transcript.' },
+      { h: 'The automation timeline', timeline: 'healthcare' },
+      { h: 'Results', body: 'Front desk call volume dropped by 73%. Staff redirected their time to in-clinic patient experience rather than phone administration. After-hours bookings now account for 18% of total appointment volume — revenue that was previously lost entirely. Patient satisfaction scores improved due to faster response times and consistent communication at every hour of the day.' }
+    ]
+  },
+  ecommerce: {
+    tag: 'E-Commerce', tagClass: 'tag-inventory',
+    question: 'Are you paying for acquisition and then losing customers at checkout and support?',
+    h1: 'AI-Powered Cart Recovery and Customer Support Automation for a DTC Brand',
+    sub: 'A direct-to-consumer brand with strong acquisition was recovering under 5% of abandoned carts and running an 18-hour support response time. We automated both ends of the leakage problem simultaneously.',
+    stats: [{val:'31%',lab:'Cart recovery rate'},{val:'6x',lab:'Support capacity'},{val:'2.4x',lab:'Avg order value lift'},{val:'Under 90s',lab:'First support response'}],
+    sections: [
+      { h: 'The problem', body: 'A DTC health and wellness brand was generating strong top-of-funnel traffic through paid social. Their acquisition metrics looked good. But cart abandonment was sitting above 78%, their automated recovery emails were generic and untimed, and a two-person support team was responding to enquiries with an average turnaround of 18 hours. The Trustpilot score was slipping. The problem was not the product — it was what happened after the click.', problem: 'We were spending heavily on paid acquisition, running great campaigns, and then losing people at checkout. And when customers had questions, we were too slow to convert them. The funnel had holes at both ends and we did not have the headcount to plug them.' },
+      { h: 'What we built', solution: 'We built a multi-layered recovery and support system. For cart abandonment, we implemented behaviour-triggered email and SMS sequences personalised by product category, abandonment timing, and purchase history — with message copy generated dynamically by Claude for each segment. Sequences adapt based on whether the customer opens, clicks, or ignores each message.', body: 'For customer support, we deployed an AI agent trained on product documentation, FAQ history, and 18 months of past support tickets. The agent resolves 68% of enquiries autonomously — including order status, returns, sizing, and ingredient questions. It hands off to the human team only when it detects payment disputes, medical questions, or negative emotional signals, with full conversation context so customers never need to repeat themselves.' },
+      { h: 'The automation timeline', timeline: 'ecommerce' },
+      { h: 'Results', body: 'Cart recovery climbed from 4.8% to 31.2% within six weeks of deployment. Average order value increased 2.4x because personalised sequences effectively surfaced complementary products at the right moment. The support team now handles 32% of their previous ticket volume — the remainder is resolved autonomously. First response time dropped from 18 hours to under 90 seconds.' }
+    ]
+  },
+  recruiting: {
+    tag: 'Talent & Recruiting', tagClass: 'tag-hr',
+    question: 'Are your best candidates accepting offers while sitting in your unread pile?',
+    h1: 'AI Candidate Screening and Outreach Pipeline for a Specialist Staffing Agency',
+    sub: 'Manual CV screening was creating a 48-to-72-hour lag between application and first contact. In a competitive talent market, that lag was costing placements. We built an automated pipeline that scores, ranks, and initiates outreach within 12 minutes of application.',
+    stats: [{val:'87%',lab:'Screening time saved'},{val:'12 min',lab:'Application to contact'},{val:'3.2x',lab:'Qualified pipeline growth'},{val:'Zero',lab:'Qualified CVs missed'}],
+    sections: [
+      { h: 'The problem', body: 'A specialist technology staffing agency processing 150 to 200 applications per week was operating on a 48 to 72-hour initial screening cycle. Three recruiters were spending half their working day on CV review — a task that required genuine expertise to do well, but that was consuming time that should have been spent on client relationships and closing. In a market where top candidates are off the board in days, the lag was directly costing placements.', problem: 'We lost three strong placements in one quarter because we were too slow to call. These were people who applied to us first. We just did not move fast enough. In this market, 48 hours is an eternity — and the candidates knew they had options.' },
+      { h: 'What we built', solution: 'We built a multi-agent screening pipeline using LangGraph and Claude. Applications are ingested automatically from all channels — job boards, email, referrals — normalised into a structured format, and evaluated against configurable role-specific criteria. Each candidate receives a score, a plain-language reasoning summary, and a tier classification. Top-tier candidates receive a personalised outreach message within 12 minutes of application.', body: 'Recruiters start each morning with a ranked shortlist, a brief on each candidate including conversation starters drawn from their CV, and a log of which outreach messages have been sent and opened. The pipeline learns from recruiter feedback — when a recruiter overrides a tier decision, the reasoning is captured and fed back into future scoring logic for that role type.' },
+      { h: 'The automation timeline', timeline: 'recruiting' },
+      { h: 'Results', body: 'Recruiter screening time dropped 87%. The qualified pipeline tripled because the agency could now process volume they previously could not staff for. Time to first contact fell from 48 to 72 hours to 12 minutes on average. The agency reports that client satisfaction scores improved due to faster candidate presentation, and that recruiter morale improved because senior time shifted from administration to relationship work.' }
+    ]
   }
 };
 
@@ -795,7 +1014,10 @@ const timelines = {
   revenue: ['Data Sources Connect','Normalisation Layer','KPI Calculation','Anomaly Detection','Dashboard Refresh','Executive Summary'],
   invoice: ['Project Milestone Hit','Hours Calculated','Invoice Generated','Approval Routed','Client Email Sent','Payment Reconciled'],
   inventory: ['Sales Velocity Tracked','Reorder Point Calculated','Stock Alert Triggered','PO Auto-generated','Supplier Notified','Inventory Updated'],
-  followup: ['Lead Form Submitted','CRM Record Created','Voice Agent Calls','Lead Qualified','Agent Notified','Follow-up Scheduled']
+  followup: ['Lead Form Submitted','CRM Record Created','Voice Agent Calls','Lead Qualified','Agent Notified','Follow-up Scheduled'],
+  healthcare: ['Call Received','Availability Checked','Appointment Booked','Confirmation Sent','Reminder Scheduled','Staff Digest Sent'],
+  ecommerce: ['Cart Abandoned','Behaviour Scored','Sequence Triggered','Personalised Message Sent','Recovery Detected','Order Confirmed'],
+  recruiting: ['CV Received','Skills Extracted','Role Matching','Candidate Scored','Outreach Sent','Recruiter Briefed']
 };
 
 function openCase(key) {
@@ -854,6 +1076,7 @@ function showPage(id) {
   document.getElementById('page-'+id).classList.add('active');
   window.scrollTo(0,0);
   if(id==='home') setTimeout(initReveal,100);
+  if(id==='insights') renderArticlesList();
 }
 
 function scrollTo(id) {
@@ -989,6 +1212,149 @@ function toggleMenu(){
   const c = document.querySelector('.nav-center');
   const open = c.style.display==='flex';
   c.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--white);padding:20px;gap:20px;border-bottom:1px solid var(--border);z-index:199;box-shadow:0 8px 24px rgba(0,0,0,.08)';
+}
+
+// ── ARTICLES DATA ──
+const articles = [
+  {
+    key: 'fail',
+    tag: 'Strategy',
+    read: '5 min read',
+    date: 'May 2025',
+    h1: 'Why Most AI Automation Projects Fail Before They Start',
+    excerpt: 'After 50+ production deployments, the failure pattern is consistent — and it almost never has anything to do with the technology.',
+    sections: [
+      { h: 'The pattern', paras: [
+        'In almost every engagement I take on, the client arrives with the same framing: "We want to automate X." They have identified a tool. Sometimes they have already paid for a subscription. What they have not done is map the process they are trying to automate.',
+        'This is where most AI projects fail. Not during implementation, and not because the technology is limited. They fail in the first conversation — when everyone nods along to a tool name without asking the prior question: what does this process actually look like today, step by step, exception by exception?'
+      ]},
+      { h: 'Process mapping is not a preamble. It is the work.', paras: [
+        'When I sit down with a client for a discovery session, I spend the first 40 minutes asking one question in many forms: "What actually happens?" Not what should happen. Not what the SOP says. What actually happens — including the exceptions, the workarounds, the steps only one person knows how to do.',
+        'This is where you find the real complexity. A straightforward invoicing automation project reveals that 20% of invoices require a manual override because one client negotiated a custom billing structure four years ago. An inventory reorder project reveals that one supplier has a 10-week lead time and must be treated differently from all others. A CRM automation project reveals that two team members have been entering data inconsistently for years.',
+        'None of this is in the SOP. All of it will break your automation if you do not account for it.'
+      ]},
+      { callout: 'Rule of thumb: if you cannot draw the current process on a whiteboard with the person who does it every day, including every exception they can name, you are not ready to automate it.' },
+      { h: 'The data readiness problem', paras: [
+        'The second place projects stall is data quality. You cannot automate a process that relies on data that does not exist in structured form, or that exists in three different places with three different formats.',
+        'Data readiness is a prerequisite for automation, not a detail to sort out later. When we take on an engagement, we assess data quality in week one. If the data is not ready, the first deliverable is a data normalisation plan — not automation code.'
+      ]},
+      { h: 'The constraint-first principle', paras: [
+        'The third failure mode is automating the wrong thing first. Teams typically automate the most visible pain point, or the thing that is easiest to automate, rather than the highest-value constraint.',
+        'I use a simple filter: identify the constraint in the workflow — the step that limits the throughput of everything downstream. Automate at the constraint first. Automating anywhere else is optimisation. Automating the constraint is transformation.',
+        'An invoicing automation that saves four hours per cycle is meaningful. But if the process it feeds — cash collection — is still manual, the compounding benefit is limited. Fix the constraint, not the symptom.'
+      ]},
+      { h: 'The question worth asking before you start', paras: [
+        'Before engaging any consultant, vendor, or tool, sit down with the people who actually do the work and ask: "If we could not change this process for the next six months, what would break first?" The answer is almost always the highest-priority automation candidate — and almost always the last place anyone was looking.'
+      ]}
+    ]
+  },
+  {
+    key: 'mcp',
+    tag: 'Technical',
+    read: '6 min read',
+    date: 'April 2025',
+    h1: 'MCP in Production: Giving Your Team a Natural Language Interface to Their Own Business',
+    excerpt: 'Most dashboards answer the questions you thought to ask when you built them. MCP changes that — your data becomes something you can have a conversation with.',
+    sections: [
+      { h: 'What MCP actually is', paras: [
+        'Model Context Protocol (MCP) is a standard that lets AI models like Claude connect directly to external tools and data sources — databases, CRMs, APIs, file systems — in a structured, repeatable way. Instead of copying data into a chat window or waiting for a report, a user can ask a question and the model fetches live data to answer it.',
+        'In practical terms: a finance lead opens Claude, asks "what is our net new ARR this week compared to last week, broken down by segment," and gets a real answer drawn from live HubSpot and accounting data — not an export from three days ago.'
+      ]},
+      { h: 'Why dashboards are not enough', paras: [
+        'Dashboards are good at answering the questions you thought to ask when you built them. They are static by design. The moment a stakeholder asks a question that was not anticipated in the original build — and they always do — someone needs to write a query, export the data, or ask an analyst.',
+        'This creates a dependency bottleneck. The people who need information most are often the least technical, and the people who can retrieve it are always busy. The lag between question and answer is where decisions get made on old data or on instinct.'
+      ]},
+      { callout: 'What MCP enables is not just faster data retrieval. It is a shift from "I need to ask someone to pull this for me" to "I can just ask."' },
+      { h: 'What a RevOps MCP implementation looks like', paras: [
+        'In one recent engagement, we connected Claude to a client\'s HubSpot instance, their accounting platform, and a Google Sheet they used for headcount planning. We built MCP server endpoints for each, exposed them to Claude, and gave the operations and finance team access.',
+        'Within a week, the questions they were asking had changed. Instead of monthly pipeline reviews, they were doing ad-hoc checks throughout the week. Instead of waiting for the weekly revenue report, the CFO was pulling deal velocity data before board calls. The behaviour shift was immediate and visible.'
+      ]},
+      { h: 'What it takes to build it', paras: [
+        'An MCP implementation requires three things: a clear map of which data sources will be connected and what queries they need to support, a set of well-designed server endpoints that handle authentication and data normalisation, and a testing process that validates the model\'s responses against known-correct data.',
+        'The last point is the most important. The model is only as reliable as the data it is reading and the instructions it is given about how to interpret it. We spend significant time on prompt design and response validation before handing over access to a finance team.'
+      ]},
+      { h: 'Who this is for', paras: [
+        'MCP is highest value for teams that have good data but poor access to it — where the information exists but retrieving it requires a technical intermediary. Finance teams, operations leads, and founders who want operational awareness without building a dedicated analytics function are the primary beneficiaries.',
+        'It is not a replacement for structured reporting or for teams that need auditable, timestamped data exports. It is a complement — a way to make the data you already have accessible to the people who need it most, on demand, in plain language.'
+      ]}
+    ]
+  },
+  {
+    key: 'voice',
+    tag: 'Voice AI',
+    read: '7 min read',
+    date: 'March 2025',
+    h1: 'Voice AI in 2025: Lessons from Live Deployments',
+    excerpt: 'Voice AI has moved from demo to production. These are the lessons that do not show up in the product demos — latency, fallback design, CRM integration, and when not to deploy it.',
+    sections: [
+      { h: 'Where voice AI actually works in 2025', paras: [
+        'Voice AI is genuinely production-ready for a specific category of use case: high-volume, time-sensitive outbound or inbound calls where the conversation is bounded and the outcome is structured. Lead qualification, appointment scheduling, follow-up sequences, and inbound FAQ handling are all solid deployments I have seen work well in production.',
+        'Where it struggles: open-ended discovery conversations, emotionally charged support interactions, and any call where the required information is not consistently available to the agent in real time. The model can handle nuance — but it cannot handle data it does not have access to.'
+      ]},
+      { h: 'The latency problem and how to handle it', paras: [
+        'The most common complaint from early voice AI deployments is latency — the pause between the user finishing a sentence and the agent responding. This is improving rapidly with newer models, but it is still a design consideration.',
+        'The practical fix is in prompt engineering and conversation architecture. Agents should be designed to respond with a brief acknowledgement before computing a longer response. Filler phrases like "let me check that for you" buy 800 to 1200 milliseconds without creating an uncomfortable silence. More importantly, the agent should be designed to minimise the number of real-time lookups required in the critical path of a conversation.'
+      ]},
+      { callout: 'The biggest voice AI mistakes I see: overloading the agent with too many tasks, not designing for the fallback case, and treating it as a drop-in replacement for a human rather than a different kind of interaction.' },
+      { h: 'CRM integration is non-negotiable', paras: [
+        'A voice AI agent that does not write back to the CRM is a partial solution. The value of a voice follow-up agent is not just the conversation — it is that the outcome of every conversation is captured, structured, and actionable without human transcription.',
+        'In every deployment we run, CRM write-back is built into the success criteria from day one. The agent captures qualification status, key responses, objections raised, and next steps — and creates or updates the CRM record in real time. The human team picks up from a warm, documented context rather than a cold call.'
+      ]},
+      { h: 'Designing the fallback correctly', paras: [
+        'Every voice AI deployment needs a clearly designed fallback path — not as an afterthought, but as a core part of the architecture. The agent will encounter calls it cannot handle: technical failures, caller distress, legal questions, or simply a caller who wants a human.',
+        'A bad fallback is silence, a generic error message, or a long hold. A good fallback is a smooth, natural transfer to a human with a real-time summary of what has been discussed, and a follow-up task created so nothing falls through the cracks.',
+        'We test fallback paths explicitly before any deployment goes live. They are the highest-risk moments in the experience and the ones most likely to damage trust with the caller.'
+      ]},
+      { h: 'When not to deploy voice AI', paras: [
+        'Voice AI is not always the right answer. If call volume is low, the ROI is limited. If the conversation genuinely requires human judgment and empathy — a complaint, a complex service issue, a high-value relationship — voice AI in those moments can actively damage the customer relationship.',
+        'The deployments that work best are the ones where the use case is genuinely bounded, the caller expectation is set correctly, and the human team is freed up to focus on the conversations that actually require them. Voice AI is a leverage tool, not a replacement strategy.'
+      ]}
+    ]
+  }
+];
+
+function renderArticlesList() {
+  const el = document.getElementById('articles-list-content');
+  if (!el) return;
+  el.innerHTML = articles.map(a => `
+    <div class="article-card" onclick="openArticle('${a.key}')">
+      <div class="article-meta">
+        <span class="article-tag">${a.tag}</span>
+        <span class="article-read">${a.read}</span>
+        <span class="article-date">${a.date}</span>
+      </div>
+      <div class="article-h2">${a.h1}</div>
+      <div class="article-excerpt">${a.excerpt}</div>
+      <span class="article-cta">Read article</span>
+    </div>`).join('');
+}
+
+function openArticle(key) {
+  const a = articles.find(x => x.key === key);
+  if (!a) return;
+  let html = `<div class="article-hero">
+    <button class="case-back" onclick="showPage('insights')">← Back to insights</button>
+    <div class="article-meta" style="margin-bottom:20px">
+      <span class="article-tag">${a.tag}</span>
+      <span class="article-read">${a.read}</span>
+      <span class="article-date">${a.date}</span>
+    </div>
+    <h1 class="case-page-h1" style="font-size:clamp(24px,3.5vw,40px)">${a.h1}</h1>
+    <p class="case-page-sub">${a.excerpt}</p>
+  </div>
+  <div class="article-body-wrap">`;
+  a.sections.forEach(sec => {
+    if (sec.h) html += `<h3>${sec.h}</h3>`;
+    if (sec.paras) sec.paras.forEach(p => { html += `<p>${p}</p>`; });
+    if (sec.callout) html += `<div class="article-callout"><p>${sec.callout}</p></div>`;
+  });
+  html += `<div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+    <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
+    <button onclick="showPage('insights')" class="btn-ghost" style="font-size:14px;padding:12px 24px;cursor:pointer;font-family:inherit">More insights</button>
+  </div></div>`;
+  document.getElementById('article-content').innerHTML = html;
+  showPage('article');
+  window.scrollTo(0,0);
 }
 
 // ── SEND MESSAGE ──
