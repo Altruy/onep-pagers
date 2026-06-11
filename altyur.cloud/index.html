@@ -984,21 +984,6 @@ function initReveal(){
 }
 initReveal();
 
-// ── CALENDLY ──
-window.addEventListener('load',()=>{
-  if(typeof Calendly!=='undefined'){
-    Calendly.initInlineWidget({
-      url:'https://calendly.com/turyal',
-      parentElement:document.getElementById('cal-widget')
-    });
-  } else {
-    document.getElementById('cal-widget').innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;gap:16px;padding:32px">
-      <p style="color:var(--muted);font-size:14px;text-align:center">Schedule directly on Calendly</p>
-      <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Open Calendly</a>
-    </div>`;
-  }
-});
-
 // ── MOBILE MENU ──
 function toggleMenu(){
   const c = document.querySelector('.nav-center');
