@@ -190,13 +190,13 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 .case-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color .2s}
 .case-back:hover{color:var(--text)}
 .case-page-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-bottom:20px}
-.case-hero{padding:80px 48px 60px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--border)}
+.case-hero{padding:80px 48px 60px;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border)}
 .case-page-h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:20px}
 .case-page-sub{font-size:16px;color:var(--muted);line-height:1.85;max-width:640px}
 .case-stats-row{display:flex;gap:40px;padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:40px 0;flex-wrap:wrap}
 .case-stat-val{font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.03em}
 .case-stat-lab{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.case-body{padding:60px 48px;max-width:900px;margin:0 auto}
+.case-body{padding:60px 48px;max-width:1100px;margin:0 auto}
 .case-body h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin:36px 0 14px}
 .case-body h3:first-child{margin-top:0}
 .case-body p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px}
@@ -220,7 +220,7 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 .auto-node-sub{font-size:10px;color:var(--muted);line-height:1.4}
 
 /* ── INDUSTRIES ── */
-.ind-hero{padding:80px 48px 48px;max-width:1100px;margin:0 auto}
+.ind-hero{padding:80px 48px 60px;max-width:1100px;margin:0 auto}
 .ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:0 48px 80px}
 .ind-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px 28px}
 .ind-icon{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
@@ -231,8 +231,8 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 .ind-use::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
 
 /* ── INSIGHTS ── */
-.insights-hero{padding:80px 48px 48px;max-width:800px;margin:0 auto}
-.articles-list{max-width:800px;margin:0 auto;padding:0 48px 80px}
+.insights-hero{padding:80px 48px 60px;max-width:1100px;margin:0 auto}
+.articles-list{max-width:1100px;margin:0 auto;padding:0 48px 80px}
 .article-card{padding:36px 0;border-bottom:1px solid var(--border);display:block;text-decoration:none;color:inherit}
 .article-card:first-child{border-top:1px solid var(--border)}
 .article-meta{display:flex;align-items:center;gap:14px;margin-bottom:12px}
@@ -247,8 +247,8 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 .article-card:hover .article-cta::after{transform:translateX(4px)}
 
 /* ── ARTICLE DETAIL ── */
-.article-hero{padding:80px 48px 40px;max-width:800px;margin:0 auto}
-.article-body-wrap{max-width:800px;margin:0 auto;padding:0 48px 80px}
+.article-hero{padding:80px 48px 60px;max-width:1100px;margin:0 auto}
+.article-body-wrap{max-width:720px;margin:0 auto;padding:0 48px 80px}
 .article-body-wrap h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin:36px 0 14px}
 .article-body-wrap h3:first-child{margin-top:0}
 .article-body-wrap p{font-size:15px;color:var(--muted);line-height:1.95;margin-bottom:20px}
@@ -256,8 +256,8 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 .article-callout p{font-size:14px;color:var(--accent);line-height:1.8;margin:0;font-weight:500}
 
 /* ── OFFER PAGE ── */
-.offer-hero{padding:90px 48px 80px;border-bottom:1px solid var(--border)}
-.offer-hero-inner{max-width:900px;margin:0 auto}
+.offer-hero{padding:80px 48px 60px;border-bottom:1px solid var(--border)}
+.offer-hero-inner{max-width:1100px;margin:0 auto}
 .offer-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.025em;color:var(--text);max-width:760px;margin-bottom:20px}
 .offer-sub{font-size:17px;color:var(--muted);max-width:560px;line-height:1.85;margin-bottom:36px}
 .offer-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
@@ -322,6 +322,25 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 .offer-close-section .btn-ghost:hover{border-color:rgba(255,255,255,.6);background:transparent;color:#fff}
 .offer-close-section .section-eyebrow{color:rgba(255,255,255,.45)}
 
+/* ── ABOUT PAGE ── */
+.about-hero{padding:80px 48px 60px;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border)}
+.about-body-wrap{max-width:1100px;margin:0 auto;padding:60px 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-bio h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--text);margin-bottom:20px}
+.about-bio p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px}
+.about-bio-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.about-contact{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.about-contact-head{padding:24px 28px;border-bottom:1px solid var(--border)}
+.about-contact-head h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
+.about-contact-head p{font-size:13px;color:var(--muted)}
+.about-contact-form{padding:24px 28px}
+
+/* ── PROCESS / HOW IT WORKS PAGE ── */
+.process-hero{padding:80px 48px 60px;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border)}
+
+/* ── CASE STUDIES LISTING PAGE ── */
+.case-studies-hero{padding:80px 48px 60px;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border)}
+.case-studies-grid{max-width:1100px;margin:0 auto;padding:60px 48px 80px}
+
 /* ── SCROLL REVEAL ── */
 .rev{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
 .rev.vis{opacity:1;transform:translateY(0)}
@@ -338,6 +357,7 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
   .offer-hero,.offer-stages-section,.offer-guarantee-section,.offer-fit-section,.offer-faq-section,.offer-close-section{padding-left:20px;padding-right:20px}
   .offer-guarantee-card{padding:28px 24px}
   .about-wrap{grid-template-columns:1fr}
+  .about-body-wrap{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr 1fr}
   .case-grid{grid-template-columns:1fr}
   .stack-grid{grid-template-columns:1fr}
@@ -348,7 +368,7 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
   footer{padding:40px 20px 24px}
   .service-row{grid-template-columns:1fr;gap:8px}
   .srv-arrow{display:none}
-  .case-hero,.case-body,.article-hero,.article-body-wrap,.ind-hero,.insights-hero,.articles-list{padding-left:20px;padding-right:20px}
+  .case-hero,.case-body,.article-hero,.article-body-wrap,.ind-hero,.insights-hero,.articles-list,.about-hero,.about-body-wrap,.process-hero,.case-studies-hero{padding-left:20px;padding-right:20px}
 }
 @media(max-width:600px){
   .process-steps{grid-template-columns:1fr}
