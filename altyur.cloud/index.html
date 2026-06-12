@@ -1292,7 +1292,7 @@ const timelines = {
   recruiting: ['CV Received','Skills Extracted','Role Matching','Candidate Scored','Outreach Sent','Recruiter Briefed']
 };
 
-function openCase(key) {
+function openCase(key, push = true) {
   const c = cases[key];
   const tl = timelines[c.sections.find(s=>s.timeline)?.timeline || 'revenue'];
   let html = `
@@ -1333,7 +1333,8 @@ function openCase(key) {
     <button onclick="showPage('home');setTimeout(()=>scrollTo('problems-section'),300)" class="btn-ghost" style="font-size:14px;padding:12px 24px;cursor:pointer;font-family:inherit">See more case studies</button>
   </div></div>`;
   document.getElementById('case-content').innerHTML = html;
-  showPage('case');
+  showPage('case', false);
+  if (push) history.pushState({page:'case', key}, '', '/case/'+key);
   window.scrollTo(0,0);
   // Animate nodes
   setTimeout(()=>{
@@ -1343,14 +1344,20 @@ function openCase(key) {
 }
 
 // ── PAGE ROUTING ──
-function showPage(id) {
+const ROUTES = {
+  home: '/', offer: '/offer', industries: '/industries',
+  insights: '/insights', case: '/case', article: '/insights'
+};
+
+function showPage(id, push = true) {
   const target = document.getElementById('page-'+id);
   if (!target) return;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   target.classList.add('active');
   window.scrollTo(0,0);
-  if(id==='home') setTimeout(initReveal,100);
-  if(id==='insights') renderArticlesList();
+  if (push && ROUTES[id]) history.pushState({page: id}, '', ROUTES[id]);
+  if (id==='home') setTimeout(initReveal,100);
+  if (id==='insights') renderArticlesList();
 }
 
 function scrollTo(id) {
@@ -1359,6 +1366,33 @@ function scrollTo(id) {
     const el = document.getElementById(id);
     if(el) el.scrollIntoView({behavior:'smooth'});
   },100);
+}
+
+window.addEventListener('popstate', e => {
+  const s = e.state;
+  if (!s) { showPage('home', false); return; }
+  if (s.page === 'case' && s.key) openCase(s.key, false);
+  else if (s.page === 'article' && s.key) openArticle(s.key, false);
+  else showPage(s.page || 'home', false);
+});
+
+function initRoute() {
+  const p = window.location.pathname;
+  if (p === '/offer') { showPage('offer', false); history.replaceState({page:'offer'}, '', p); }
+  else if (p === '/industries') { showPage('industries', false); history.replaceState({page:'industries'}, '', p); }
+  else if (p === '/insights') { showPage('insights', false); history.replaceState({page:'insights'}, '', p); }
+  else if (p.startsWith('/case/')) {
+    const key = p.slice(6);
+    if (cases[key]) { openCase(key, false); history.replaceState({page:'case', key}, '', p); }
+    else showPage('home', false);
+  } else if (p.startsWith('/insights/')) {
+    const key = p.slice(10);
+    if (articles.find(a => a.key === key)) { openArticle(key, false); history.replaceState({page:'article', key}, '', p); }
+    else showPage('home', false);
+  } else {
+    showPage('home', false);
+    history.replaceState({page:'home'}, '', '/');
+  }
 }
 
 // ── DEMO ANIMATIONS ──
@@ -1479,7 +1513,8 @@ function initReveal(){
   },{threshold:.06});
   els.forEach(el=>{ el.classList.remove('vis'); io.observe(el); });
 }
-initReveal();
+
+initRoute();
 
 // ── MOBILE MENU ──
 function toggleMenu(){
@@ -1603,7 +1638,7 @@ function renderArticlesList() {
     </div>`).join('');
 }
 
-function openArticle(key) {
+function openArticle(key, push = true) {
   const a = articles.find(x => x.key === key);
   if (!a) return;
   let html = `<div class="article-hero">
@@ -1627,7 +1662,8 @@ function openArticle(key) {
     <button onclick="showPage('insights')" class="btn-ghost" style="font-size:14px;padding:12px 24px;cursor:pointer;font-family:inherit">More insights</button>
   </div></div>`;
   document.getElementById('article-content').innerHTML = html;
-  showPage('article');
+  showPage('article', false);
+  if (push) history.pushState({page:'article', key}, '', '/insights/'+key);
   window.scrollTo(0,0);
 }
 
