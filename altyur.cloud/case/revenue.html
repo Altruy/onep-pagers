@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unified RevOps Intelligence for a B2B SaaS Company — altyur.cloud</title>
+<meta name="description" content="Revenue data scattered across HubSpot, QuickBooks, and five spreadsheets meant leadership had no real-time view of business health. We built a unified intelligence layer that ended the guesswork.">
+<link rel="canonical" href="https://altyur.cloud/case/revenue">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav id="main-nav">
+  <a href="/" class="nav-logo">altyur<span>.cloud</span></a>
+  <div class="nav-center">
+    <a href="/#demo-section">How it works</a>
+    <a href="/#problems-section">Case studies</a>
+    <a href="/#services-section">Services</a>
+    <a href="/industries">Industries</a>
+    <a href="/insights">Insights</a>
+    <a href="/#about-section">About</a>
+  </div>
+  <div class="nav-right">
+    <a href="/#about-section" class="btn-ghost">Send a message</a>
+    <a href="/offer" class="btn-dark">Work with me</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="page-top">
+  <div class="case-hero">
+    <a href="/#problems-section" class="case-back">← Back to case studies</a>
+    <span class="case-tag tag-revenue case-page-tag">Revenue Operations</span>
+    <h1 class="case-page-h1">Unified RevOps Intelligence for a B2B SaaS Company</h1>
+    <p class="case-page-sub">Revenue data scattered across HubSpot, QuickBooks, and five spreadsheets meant leadership had no real-time view of business health. We built a unified intelligence layer that ended the guesswork.</p>
+    <div class="case-stats-row">
+      <div><div class="case-stat-val">94%</div><div class="case-stat-lab">Reporting time saved</div></div>
+      <div><div class="case-stat-val">Real-time</div><div class="case-stat-lab">Revenue visibility</div></div>
+      <div><div class="case-stat-val">1</div><div class="case-stat-lab">source Of truth</div></div>
+      <div><div class="case-stat-val">8 hrs/wk</div><div class="case-stat-lab">Given back to finance</div></div>
+    </div>
+  </div>
+  <div class="case-body">
+    <h3>The problem</h3>
+    <p>The finance and operations team at a 40-person B2B SaaS company spent eight hours every week pulling data from HubSpot, QuickBooks, a Google Sheet shared across three teams, and two other internal tools. By the time the weekly revenue report was ready, the numbers were already 48 hours old. Leadership was making decisions on stale data.</p>
+    <div class="problem-box"><p>"Every Monday, the ops lead would spend three to four hours just aggregating numbers. We would have a meeting at 2pm, and the data in the deck was from Friday. Deals had closed since then. Refunds had been processed. The picture was always incomplete."</p></div>
+    <h3>What we built</h3>
+    <div class="solution-box"><p>We connected all five data sources into a unified pipeline using n8n and Python, with Claude via MCP sitting on top as a natural language interface. Leadership can now ask questions like "what is our net new ARR this week" and receive accurate, real-time answers without touching a spreadsheet. The dashboard is updated continuously. An automated executive summary is generated every Monday morning before 8am, pulling from live data, flagging anomalies, and surfacing the three most important trends.</p></div>
+    <h3>The automation timeline</h3>
+    <div class="auto-timeline">
+      <div class="auto-timeline-title">Automation flow — how it runs</div>
+      <div class="auto-flow">
+        <div class="auto-node">
+          <div class="auto-node-dot lit">
+            <span class="auto-node-icon">1</span>
+          </div>
+          <div class="auto-node-label">Data Sources Connect</div>
+          <div class="auto-node-sub">Trigger</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">2</span>
+          </div>
+          <div class="auto-node-label">Normalisation Layer</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">3</span>
+          </div>
+          <div class="auto-node-label">KPI Calculation</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">4</span>
+          </div>
+          <div class="auto-node-label">Anomaly Detection</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">5</span>
+          </div>
+          <div class="auto-node-label">Dashboard Refresh</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot lit-green">
+            <span class="auto-node-icon">6</span>
+          </div>
+          <div class="auto-node-label">Executive Summary</div>
+          <div class="auto-node-sub">Complete</div>
+        </div>
+      </div>
+    </div>
+    <h3>Results</h3>
+    <p>The finance team reclaimed eight hours per week. Leadership now has a single URL they open on Monday morning. The company moved from weekly manual reporting to continuous operational awareness.</p>
+    <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
+      <a href="/#problems-section" class="btn-ghost" style="font-size:14px;padding:12px 24px">See more case studies</a>
+    </div>
+  </div>
+</div>
+<footer id="main-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">altyur<span>.cloud</span></div>
+      <p class="footer-brand-desc">AI automation consulting — discovery to deployment.</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:16px">CTO at <a href="https://hytgenx.ai" style="color:rgba(255,255,255,.5);text-decoration:none">hytGenX.ai</a></p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="/#services-section">Workflow Automation</a>
+        <a href="/#services-section">Multi-Agent Systems</a>
+        <a href="/#services-section">Voice AI Agents</a>
+        <a href="/#services-section">RevOps via MCP</a>
+      </div>
+      <div class="footer-col">
+        <h4>Work</h4>
+        <a href="/#problems-section">Case Studies</a>
+        <a href="/industries">Industries</a>
+        <a href="/insights">Insights</a>
+        <a href="/offer">Work with me</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/#about-section">About</a>
+        <a href="https://hytgenx.ai" target="_blank">hytGenX.ai</a>
+        <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
+        <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 altyur.cloud — Turyal Neeshat</p>
+    <p>Built with intent. Powered by AI.</p>
+  </div>
+</footer>
+<script src="/shared.js"></script>
+<script>
+setTimeout(()=>{
+  const nodes = document.querySelectorAll('.auto-node-dot:not(.lit):not(.lit-green)');
+  nodes.forEach((n,i) => setTimeout(()=>n.classList.add('lit'), i*400+300));
+},400);
+</script>
+</body>
+</html>

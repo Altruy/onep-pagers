@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>End-to-End Invoice Automation for a Professional Services Firm — altyur.cloud</title>
+<meta name="description" content="A professional services firm billing 60–80 clients monthly was running their entire invoicing operation through QuickBooks, a shared Google Sheet, and manual email drafts. We automated it end to end.">
+<link rel="canonical" href="https://altyur.cloud/case/invoice">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav id="main-nav">
+  <a href="/" class="nav-logo">altyur<span>.cloud</span></a>
+  <div class="nav-center">
+    <a href="/#demo-section">How it works</a>
+    <a href="/#problems-section">Case studies</a>
+    <a href="/#services-section">Services</a>
+    <a href="/industries">Industries</a>
+    <a href="/insights">Insights</a>
+    <a href="/#about-section">About</a>
+  </div>
+  <div class="nav-right">
+    <a href="/#about-section" class="btn-ghost">Send a message</a>
+    <a href="/offer" class="btn-dark">Work with me</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="page-top">
+  <div class="case-hero">
+    <a href="/#problems-section" class="case-back">← Back to case studies</a>
+    <span class="case-tag tag-finance case-page-tag">Finance &amp; Accounting</span>
+    <h1 class="case-page-h1">End-to-End Invoice Automation for a Professional Services Firm</h1>
+    <p class="case-page-sub">A professional services firm billing 60–80 clients monthly was running their entire invoicing operation through QuickBooks, a shared Google Sheet, and manual email drafts. Each billing cycle required two days of concentrated effort. We eliminated it.</p>
+    <div class="case-stats-row">
+      <div><div class="case-stat-val">2 days</div><div class="case-stat-lab">Saved per billing cycle</div></div>
+      <div><div class="case-stat-val">Zero</div><div class="case-stat-lab">Manual errors</div></div>
+      <div><div class="case-stat-val">4 hrs</div><div class="case-stat-lab">Finance team freed weekly</div></div>
+      <div><div class="case-stat-val">Automatic</div><div class="case-stat-lab">Payment reconciliation</div></div>
+    </div>
+  </div>
+  <div class="case-body">
+    <h3>The problem</h3>
+    <p>A professional services firm billing 60–80 clients monthly was running their entire invoicing operation through QuickBooks, a shared Google Sheet, and manual email drafts. Each billing cycle required two days of concentrated effort — pulling project data, calculating billable hours, generating PDFs, chasing approvals, sending emails, and reconciling payments manually.</p>
+    <div class="problem-box"><p>"The worst part was chasing approvals internally. A partner would be in client meetings for three days, and invoices would just sit there. Then we would send late, and then clients would pay late. The whole cycle was broken."</p></div>
+    <h3>What we built</h3>
+    <div class="solution-box"><p>We built a fully automated invoicing pipeline using n8n, integrated with their project management tool, QuickBooks, and email. When a project milestone is marked complete, the workflow automatically calculates billable amounts, generates a formatted invoice, routes it for Slack approval, and sends it on approval — all without human input.</p></div>
+    <h3>The automation timeline</h3>
+    <div class="auto-timeline">
+      <div class="auto-timeline-title">Automation flow — how it runs</div>
+      <div class="auto-flow">
+        <div class="auto-node">
+          <div class="auto-node-dot lit">
+            <span class="auto-node-icon">1</span>
+          </div>
+          <div class="auto-node-label">Project Milestone Hit</div>
+          <div class="auto-node-sub">Trigger</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">2</span>
+          </div>
+          <div class="auto-node-label">Hours Calculated</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">3</span>
+          </div>
+          <div class="auto-node-label">Invoice Generated</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">4</span>
+          </div>
+          <div class="auto-node-label">Approval Routed</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot">
+            <span class="auto-node-icon">5</span>
+          </div>
+          <div class="auto-node-label">Client Email Sent</div>
+          <div class="auto-node-sub">Auto</div>
+        </div>
+        <div class="auto-node">
+          <div class="auto-node-dot lit-green">
+            <span class="auto-node-icon">6</span>
+          </div>
+          <div class="auto-node-label">Payment Reconciled</div>
+          <div class="auto-node-sub">Complete</div>
+        </div>
+      </div>
+    </div>
+    <h3>Results</h3>
+    <p>The billing cycle went from two days to approximately 20 minutes of exception handling. On-time invoice dispatch improved from 71% to 99%.</p>
+    <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
+      <a href="/#problems-section" class="btn-ghost" style="font-size:14px;padding:12px 24px">See more case studies</a>
+    </div>
+  </div>
+</div>
+<footer id="main-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">altyur<span>.cloud</span></div>
+      <p class="footer-brand-desc">AI automation consulting — discovery to deployment.</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:16px">CTO at <a href="https://hytgenx.ai" style="color:rgba(255,255,255,.5);text-decoration:none">hytGenX.ai</a></p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="/#services-section">Workflow Automation</a>
+        <a href="/#services-section">Multi-Agent Systems</a>
+        <a href="/#services-section">Voice AI Agents</a>
+        <a href="/#services-section">RevOps via MCP</a>
+      </div>
+      <div class="footer-col">
+        <h4>Work</h4>
+        <a href="/#problems-section">Case Studies</a>
+        <a href="/industries">Industries</a>
+        <a href="/insights">Insights</a>
+        <a href="/offer">Work with me</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/#about-section">About</a>
+        <a href="https://hytgenx.ai" target="_blank">hytGenX.ai</a>
+        <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
+        <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 altyur.cloud — Turyal Neeshat</p>
+    <p>Built with intent. Powered by AI.</p>
+  </div>
+</footer>
+<script src="/shared.js"></script>
+<script>
+setTimeout(()=>{
+  const nodes = document.querySelectorAll('.auto-node-dot:not(.lit):not(.lit-green)');
+  nodes.forEach((n,i) => setTimeout(()=>n.classList.add('lit'), i*400+300));
+},400);
+</script>
+</body>
+</html>

@@ -7,1117 +7,398 @@
 <meta name="description" content="We help businesses automate and optimise with AI — from workflow automation to multi-agent systems, RevOps, voice AI, and executive intelligence. Discovery to deployment.">
 <meta name="keywords" content="AI automation consultant, business process automation, n8n automation, Claude MCP, LangGraph, RevOps AI, workflow automation, AI strategy, HubSpot automation">
 <link rel="canonical" href="https://altyur.cloud">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
-
-:root {
-  --bg:       #fafaf9;
-  --bg2:      #f5f4f2;
-  --bg3:      #eeecea;
-  --white:    #ffffff;
-  --text:     #1a1a1a;
-  --text2:    #3d3d3d;
-  --muted:    #6b7280;
-  --light:    #9ca3af;
-  --border:   #e5e3df;
-  --border2:  #d1cfc9;
-  --accent:   #1d4ed8;
-  --accent2:  #2563eb;
-  --accent3:  #dbeafe;
-  --green:    #166534;
-  --green-bg: #dcfce7;
-  --amber:    #92400e;
-  --amber-bg: #fef3c7;
-}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,249,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em}
-.nav-logo span{color:var(--accent)}
-.nav-center{display:flex;align-items:center;gap:28px}
-.nav-center a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;letter-spacing:.01em}
-.nav-center a:hover{color:var(--text)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.btn-ghost{font-size:13px;font-weight:500;color:var(--text);text-decoration:none;padding:8px 16px;border:1px solid var(--border2);border-radius:4px;transition:all .2s}
-.btn-ghost:hover{border-color:var(--text);background:var(--text);color:#fff}
-.btn-dark{font-size:13px;font-weight:600;color:#fff;text-decoration:none;padding:8px 18px;background:var(--text);border-radius:4px;border:1px solid var(--text);transition:all .2s}
-.btn-dark:hover{background:var(--accent);border-color:var(--accent)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
-.hamburger span{display:block;width:20px;height:1.5px;background:var(--text);transition:all .3s}
-
-/* ── PAGE ROUTER ── */
-.page{display:none;min-height:100vh}
-.page.active{display:block}
-
-/* ── HERO ── */
-#hero-section{padding:140px 48px 100px;max-width:1200px;margin:0 auto}
-.hero-kicker{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;padding:5px 12px;background:var(--accent3);border-radius:2px}
-.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(44px,5.5vw,72px);font-weight:700;line-height:1.06;letter-spacing:-.025em;color:var(--text);max-width:700px;margin-bottom:24px}
-.hero-h1 em{font-style:italic;color:var(--accent)}
-.hero-sub{font-size:17px;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:40px;font-weight:400}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
-.hero-creds{display:flex;align-items:center;gap:24px;padding-top:24px;border-top:1px solid var(--border)}
-.cred-item{display:flex;flex-direction:column;gap:2px}
-.cred-num{font-size:20px;font-weight:700;color:var(--text);letter-spacing:-.02em}
-.cred-lab{font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.cred-sep{width:1px;height:36px;background:var(--border)}
-
-/* ── AUTOMATION DEMO ── */
-#demo-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 48px}
-.demo-wrap{max-width:1100px;margin:0 auto}
-.demo-header{max-width:560px;margin-bottom:52px}
-.demo-tabs{display:flex;gap:0;border:1px solid var(--border2);border-radius:6px;overflow:hidden;margin-bottom:40px;width:fit-content}
-.demo-tab{font-size:12px;font-weight:600;padding:10px 20px;background:var(--white);color:var(--muted);border:none;cursor:pointer;transition:all .2s;letter-spacing:.04em;text-transform:uppercase;border-right:1px solid var(--border2)}
-.demo-tab:last-child{border-right:none}
-.demo-tab.active{background:var(--text);color:#fff}
-.demo-canvas{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:40px;position:relative;overflow:hidden;min-height:320px}
-
-/* Flow animation */
-.flow-container{position:relative;width:100%;height:280px}
-.flow-node{position:absolute;background:var(--white);border:1.5px solid var(--border2);border-radius:6px;padding:12px 16px;font-size:12px;font-weight:600;color:var(--text2);white-space:nowrap;transition:all .4s ease;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.flow-node.trigger{border-color:var(--accent);background:var(--accent3);color:var(--accent)}
-.flow-node.process{border-color:var(--border2)}
-.flow-node.output{border-color:#166534;background:#dcfce7;color:#166534}
-.flow-node.highlight{transform:scale(1.03);box-shadow:0 4px 16px rgba(29,78,216,.12);border-color:var(--accent)}
-.flow-label{font-size:10px;font-weight:400;color:var(--muted);margin-top:3px}
-.flow-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
-.flow-path{stroke:var(--border2);stroke-width:1.5;fill:none;stroke-dasharray:4 3}
-.flow-path.active{stroke:var(--accent);stroke-dasharray:none;animation:dash 1s linear infinite}
-@keyframes dash{to{stroke-dashoffset:-12}}
-.flow-dot{fill:var(--accent);r:4;opacity:0;transition:opacity .3s}
-.flow-dot.visible{opacity:1}
-.pulse-ring{fill:none;stroke:var(--accent);stroke-width:1;opacity:0}
-.pulse-ring.active{animation:pulse-ring 1.4s ease-out infinite}
-@keyframes pulse-ring{0%{r:6;opacity:.6}100%{r:14;opacity:0}}
-
-/* Timeline strip */
-.timeline-strip{display:flex;align-items:flex-start;gap:0;margin-top:32px;position:relative;overflow-x:auto;padding-bottom:8px}
-.tl-step{flex:1;min-width:130px;position:relative;text-align:center;padding:0 8px}
-.tl-step::before{content:'';position:absolute;top:14px;left:50%;right:-50%;height:1px;background:var(--border2);z-index:0}
-.tl-step:last-child::before{display:none}
-.tl-dot{width:28px;height:28px;border-radius:50%;background:var(--white);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;z-index:1;transition:all .4s}
-.tl-dot.done{background:var(--accent);border-color:var(--accent)}
-.tl-dot.done::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff}
-.tl-dot.active{background:var(--white);border-color:var(--accent);box-shadow:0 0 0 4px rgba(29,78,216,.1)}
-.tl-dot.active::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent)}
-.tl-label{font-size:11px;font-weight:600;color:var(--text2)}
-.tl-sub{font-size:10px;color:var(--muted);margin-top:2px}
-
-/* ── PAIN POINTS / CASE STUDIES ── */
-#problems-section{padding:100px 48px}
-.problems-wrap{max-width:1100px;margin:0 auto}
-.section-eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-.section-h2{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,46px);font-weight:700;line-height:1.12;letter-spacing:-.02em;color:var(--text);margin-bottom:16px}
-.section-h2 em{font-style:italic;color:var(--accent)}
-.section-sub{font-size:15px;color:var(--muted);max-width:520px;line-height:1.8;margin-bottom:52px}
-.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.case-card{background:var(--white);padding:32px 28px;cursor:pointer;transition:background .2s;position:relative}
-.case-card:hover{background:var(--bg2)}
-.case-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-bottom:16px}
-.tag-revenue{background:#fef3c7;color:#92400e}
-.tag-ops{background:#dcfce7;color:#166534}
-.tag-sales{background:#ede9fe;color:#4c1d95}
-.tag-finance{background:#fce7f3;color:#9d174d}
-.tag-inventory{background:#e0f2fe;color:#075985}
-.tag-hr{background:#f3f4f6;color:#374151}
-.case-question{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;line-height:1.4;color:var(--text);margin-bottom:12px}
-.case-teaser{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:20px}
-.case-link{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
-.case-link::after{content:'→';transition:transform .2s}
-.case-card:hover .case-link::after{transform:translateX(4px)}
-.case-metrics{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
-.metric{text-align:left}
-.metric-val{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.02em}
-.metric-lab{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-
-/* ── PROCESS ── */
-#process-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 48px}
-.process-wrap{max-width:1100px;margin:0 auto}
-.process-steps{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
-.p-step{position:relative}
-.p-step::after{content:'';position:absolute;top:20px;left:calc(100% - 0px);width:40px;height:1px;background:var(--border2)}
-.p-step:last-child::after{display:none}
-.p-num{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.12em;margin-bottom:20px}
-.p-circle{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:var(--white)}
-.p-circle-inner{width:12px;height:12px;border-radius:50%;background:var(--accent)}
-.p-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px;font-family:'Playfair Display',serif}
-.p-desc{font-size:13px;color:var(--muted);line-height:1.82}
-.p-items{margin-top:16px;display:flex;flex-direction:column;gap:7px}
-.p-item{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.p-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
-
-/* ── SERVICES LIST ── */
-#services-section{padding:100px 48px}
-.services-wrap{max-width:1100px;margin:0 auto}
-.services-list{margin-top:56px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.service-row{display:grid;grid-template-columns:200px 1fr auto;align-items:center;padding:28px 32px;border-bottom:1px solid var(--border);background:var(--white);transition:background .2s;gap:32px}
-.service-row:last-child{border-bottom:none}
-.service-row:hover{background:var(--bg2)}
-.srv-cat{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.srv-name{font-size:15px;font-weight:600;color:var(--text);margin-bottom:5px}
-.srv-desc{font-size:13px;color:var(--muted);line-height:1.7}
-.srv-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.srv-tool{font-size:10px;font-weight:600;padding:3px 8px;border:1px solid var(--border2);color:var(--muted);border-radius:2px;letter-spacing:.04em;text-transform:uppercase}
-.srv-arrow{color:var(--border2);font-size:18px;transition:all .2s;font-weight:300}
-.service-row:hover .srv-arrow{color:var(--text);transform:translateX(4px)}
-
-/* ── STACK ── */
-#stack-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 48px}
-.stack-wrap{max-width:1100px;margin:0 auto}
-.stack-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.stack-col{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:28px 24px}
-.stack-col-title{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.stack-items{display:flex;flex-direction:column;gap:0}
-.stack-item{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);font-weight:500}
-.stack-item:last-child{border-bottom:none}
-.stack-badge{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:2px}
-.badge-core{background:var(--accent3);color:var(--accent)}
-.badge-pro{background:#dcfce7;color:#166534}
-
-/* ── ABOUT / CTA ── */
-#about-section{padding:100px 48px}
-.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-.about-h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--text);margin-bottom:20px}
-.about-body{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:28px}
-.about-links{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
-.about-right{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.booking-head{padding:24px 28px;border-bottom:1px solid var(--border)}
-.booking-head h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
-.booking-head p{font-size:13px;color:var(--muted)}
-.calendly-area{min-height:460px;display:flex;flex-direction:column}
-
-/* ── CONTACT FORM ── */
-.contact-form{padding:24px 28px;border-top:1px solid var(--border)}
-.form-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:block;margin-top:12px}
-.form-label:first-child{margin-top:0}
-.form-input{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:4px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);background:var(--bg);outline:none;transition:border .2s}
-.form-input:focus{border-color:var(--accent)}
-textarea.form-input{min-height:90px;resize:vertical}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
-/* ── FOOTER ── */
-footer{background:var(--text);color:#fff;padding:64px 48px 32px}
-.footer-top{display:grid;grid-template-columns:280px 1fr;gap:64px;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
-.footer-brand-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:12px;color:#fff}
-.footer-brand-name span{color:#93c5fd}
-.footer-brand-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8}
-.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-.footer-col h4{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center}
-.footer-bottom p{font-size:12px;color:rgba(255,255,255,.35)}
-
-/* ── CASE STUDY PAGE ── */
-#case-page{padding-top:60px}
-.case-hero{padding:80px 48px 60px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--border)}
-.case-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:32px;background:none;border:none;font-family:'Inter',sans-serif;transition:color .2s}
-.case-back:hover{color:var(--text)}
-.case-page-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-bottom:20px}
-.case-page-h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:20px}
-.case-page-sub{font-size:16px;color:var(--muted);line-height:1.85;max-width:640px}
-.case-stats-row{display:flex;gap:40px;padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:40px 0;flex-wrap:wrap}
-.case-stat{display:flex;flex-direction:column;gap:4px}
-.case-stat-val{font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.03em}
-.case-stat-lab{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.case-body{padding:60px 48px;max-width:900px;margin:0 auto}
-.case-body h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin:36px 0 14px}
-.case-body h3:first-child{margin-top:0}
-.case-body p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px}
-
-/* ── AUTOMATION TIMELINE in case study ── */
-.auto-timeline{margin:40px 0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:32px;overflow-x:auto}
-.auto-timeline-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
-.auto-flow{display:flex;align-items:flex-start;gap:0;min-width:600px}
-.auto-node{flex:1;position:relative;text-align:center;padding:0 12px}
-.auto-node::after{content:'';position:absolute;top:28px;left:50%;right:-50%;height:1.5px;background:var(--border2);z-index:0}
-.auto-node:last-child::after{display:none}
-.auto-node-dot{width:56px;height:56px;border-radius:50%;border:2px solid var(--border2);background:var(--white);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;z-index:1;transition:all .5s}
-.auto-node-dot.lit{border-color:var(--accent);box-shadow:0 0 0 6px rgba(29,78,216,.08);background:var(--accent3)}
-.auto-node-dot.lit-green{border-color:#166534;box-shadow:0 0 0 6px rgba(22,101,52,.08);background:#dcfce7}
-.auto-node-icon{font-size:11px;font-weight:700;color:var(--muted);transition:color .5s}
-.auto-node-dot.lit .auto-node-icon{color:var(--accent)}
-.auto-node-dot.lit-green .auto-node-icon{color:#166534}
-.auto-node-label{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:4px}
-.auto-node-sub{font-size:10px;color:var(--muted);line-height:1.4}
-.auto-connector{flex:0 0 0px;position:relative;align-self:center}
-
-/* ── PROBLEM HIGHLIGHT BOX ── */
-.problem-box{background:#fffbeb;border:1px solid #fbbf24;border-left:4px solid #f59e0b;border-radius:4px;padding:20px 24px;margin:28px 0}
-.problem-box p{font-size:14px;color:#92400e;line-height:1.8;margin:0}
-.solution-box{background:#f0fdf4;border:1px solid #86efac;border-left:4px solid #22c55e;border-radius:4px;padding:20px 24px;margin:28px 0}
-.solution-box p{font-size:14px;color:#166534;line-height:1.8;margin:0}
-
-/* ── UTILS ── */
-.rev{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
-.rev.vis{opacity:1;transform:translateY(0)}
-.rev.d1{transition-delay:.08s}.rev.d2{transition-delay:.16s}.rev.d3{transition-delay:.24s}.rev.d4{transition-delay:.32s}
-.divider{height:1px;background:var(--border)}
-.mt-8{margin-top:8px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mt-32{margin-top:32px}
-
-/* ── INDUSTRIES PAGE ── */
-#page-industries{padding-top:60px}
-.ind-hero{padding:80px 48px 48px;max-width:1100px;margin:0 auto}
-.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:0 48px 80px}
-.ind-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px 28px}
-.ind-icon{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.ind-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--text);margin-bottom:10px}
-.ind-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:18px}
-.ind-uses{display:flex;flex-direction:column;gap:7px;margin-bottom:20px;padding-top:18px;border-top:1px solid var(--border)}
-.ind-use{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.ind-use::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
-
-/* ── INSIGHTS PAGE ── */
-#page-insights{padding-top:60px}
-.insights-hero{padding:80px 48px 48px;max-width:800px;margin:0 auto}
-.articles-list{max-width:800px;margin:0 auto;padding:0 48px 80px}
-.article-card{padding:36px 0;border-bottom:1px solid var(--border);cursor:pointer}
-.article-card:first-child{border-top:1px solid var(--border)}
-.article-meta{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.article-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;background:var(--accent3);color:var(--accent)}
-.article-read{font-size:12px;color:var(--muted)}
-.article-date{font-size:12px;color:var(--light)}
-.article-h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:10px;transition:color .2s}
-.article-card:hover .article-h2{color:var(--accent)}
-.article-excerpt{font-size:14px;color:var(--muted);line-height:1.8;max-width:640px}
-.article-cta{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;margin-top:14px}
-.article-cta::after{content:'→';transition:transform .2s}
-.article-card:hover .article-cta::after{transform:translateX(4px)}
-
-/* ── ARTICLE PAGE ── */
-#page-article{padding-top:60px}
-.article-hero{padding:80px 48px 40px;max-width:800px;margin:0 auto}
-.article-body-wrap{max-width:800px;margin:0 auto;padding:0 48px 80px}
-.article-body-wrap h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin:36px 0 14px}
-.article-body-wrap h3:first-child{margin-top:0}
-.article-body-wrap p{font-size:15px;color:var(--muted);line-height:1.95;margin-bottom:20px}
-.article-body-wrap ul{margin:0 0 20px;padding-left:0;list-style:none}
-.article-body-wrap ul li{font-size:14px;color:var(--muted);line-height:1.8;padding-left:16px;position:relative;margin-bottom:8px}
-.article-body-wrap ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);position:absolute;left:0;top:10px}
-.article-callout{background:var(--accent3);border-left:4px solid var(--accent);border-radius:4px;padding:20px 24px;margin:28px 0}
-.article-callout p{font-size:14px;color:var(--accent);line-height:1.8;margin:0;font-weight:500}
-
-/* ── OFFER / WORK WITH ME PAGE ── */
-#page-offer{padding-top:60px}
-.offer-hero{padding:90px 48px 80px;border-bottom:1px solid var(--border)}
-.offer-hero-inner{max-width:900px;margin:0 auto}
-.offer-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.025em;color:var(--text);max-width:760px;margin-bottom:20px}
-.offer-sub{font-size:17px;color:var(--muted);max-width:560px;line-height:1.85;margin-bottom:36px}
-.offer-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
-.offer-proof{display:flex;align-items:center;gap:24px;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap}
-.offer-proof-item{display:flex;flex-direction:column;gap:2px}
-.offer-proof-val{font-size:20px;font-weight:700;color:var(--text);letter-spacing:-.02em}
-.offer-proof-lab{font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.offer-proof-sep{width:1px;height:32px;background:var(--border)}
-
-.offer-stages-section{padding:100px 48px}
-.offer-stages-wrap{max-width:1200px;margin:0 auto}
-.offer-stages-header{margin-bottom:60px;max-width:500px}
-.offer-stages-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-top:12px}
-.stages-grid{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr 32px 1fr;align-items:start;gap:0}
-.stage-connector{display:flex;align-items:flex-start;justify-content:center;padding-top:58px;color:var(--border2);font-size:20px;font-weight:300;user-select:none}
-.stage-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:28px 24px}
-.stage-card-final{border-color:var(--accent);background:var(--accent3)}
-.stage-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.stage-num{font-size:11px;font-weight:700;color:var(--light);letter-spacing:.14em}
-.stage-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
-.stage-badge.free{background:#dcfce7;color:#166534}
-.stage-badge.paid{background:#f3f4f6;color:var(--muted)}
-.stage-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:12px;letter-spacing:-.01em}
-.stage-card-final .stage-name{color:var(--accent)}
-.stage-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:20px}
-.stage-deliverable{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:14px 16px;margin-bottom:14px}
-.stage-card-final .stage-deliverable{background:rgba(255,255,255,.7);border-color:rgba(29,78,216,.15)}
-.stage-del-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.stage-del-body{font-size:12px;color:var(--text2);line-height:1.7}
-.stage-gate{font-size:11px;color:var(--light);font-style:italic;line-height:1.5}
-
-.offer-guarantee-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 48px}
-.offer-guarantee-wrap{max-width:760px;margin:0 auto}
-.offer-guarantee-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:52px 56px}
-.og-eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-.og-h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.18;color:var(--text);margin-bottom:20px;letter-spacing:-.02em}
-.og-body{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:18px}
-
-.offer-fit-section{padding:100px 48px}
-.offer-fit-wrap{max-width:1000px;margin:0 auto}
-.offer-fit-header{margin-bottom:48px}
-.offer-fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.fit-col{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:36px 32px}
-.fit-yes{border-top:3px solid #22c55e}
-.fit-no{border-top:3px solid var(--border2)}
-.fit-h3{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
-.fit-items{display:flex;flex-direction:column;gap:14px}
-.fit-item{font-size:13px;color:var(--text2);line-height:1.75;padding-left:14px;position:relative}
-.fit-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);position:absolute;left:0;top:8px}
-.fit-no .fit-item::before{background:var(--border2)}
-
-.offer-faq-section{background:var(--bg2);border-top:1px solid var(--border);padding:100px 48px}
-.offer-faq-wrap{max-width:680px;margin:0 auto}
-.faq-list{display:flex;flex-direction:column;margin-top:40px}
-.faq-item{padding:28px 0;border-bottom:1px solid var(--border)}
-.faq-item:first-child{border-top:1px solid var(--border)}
-.faq-q{font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.4}
-.faq-a{font-size:14px;color:var(--muted);line-height:1.88}
-
-.offer-close-section{padding:120px 48px;background:var(--text)}
-.offer-close-inner{max-width:700px;margin:0 auto;text-align:center}
-.offer-close-h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.22;color:#fff;letter-spacing:-.02em;margin:14px auto 36px;max-width:620px}
-.offer-close-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.offer-close-section .btn-dark{background:#fff;color:var(--text);border-color:#fff}
-.offer-close-section .btn-dark:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-.offer-close-section .btn-ghost{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)}
-.offer-close-section .btn-ghost:hover{border-color:rgba(255,255,255,.6);background:transparent;color:#fff}
-.offer-close-section .section-eyebrow{color:rgba(255,255,255,.45)}
-
-/* ── RESPONSIVE ── */
-@media(max-width:960px){
-  .stages-grid{grid-template-columns:1fr;gap:16px}
-  .stage-connector{display:none}
-  .offer-fit-grid{grid-template-columns:1fr}
-  .offer-hero,.offer-stages-section,.offer-guarantee-section,.offer-fit-section,.offer-faq-section,.offer-close-section{padding-left:20px;padding-right:20px}
-  .offer-guarantee-card{padding:28px 24px}
-  .hero-inner,.about-wrap{grid-template-columns:1fr}
-  .process-steps{grid-template-columns:1fr 1fr}
-  .case-grid{grid-template-columns:1fr}
-  .stack-grid{grid-template-columns:1fr}
-  .ind-grid{grid-template-columns:1fr 1fr;padding-left:20px;padding-right:20px}
-  .footer-top{grid-template-columns:1fr}
-  .footer-cols{grid-template-columns:1fr 1fr}
-  nav{padding:0 20px}
-  .nav-center{display:none}
-  .hamburger{display:flex}
-  #hero-section,#demo-section,#problems-section,#process-section,#services-section,#stack-section,#about-section{padding-left:20px;padding-right:20px}
-  footer{padding:40px 20px 24px}
-  .service-row{grid-template-columns:1fr;gap:8px}
-  .srv-arrow{display:none}
-  .case-hero,.case-body,.article-hero,.article-body-wrap,.ind-hero,.insights-hero,.articles-list{padding-left:20px;padding-right:20px}
-}
-@media(max-width:600px){
-  .process-steps{grid-template-columns:1fr}
-  .ind-grid{grid-template-columns:1fr}
-  .footer-cols{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
-  .hero-creds{flex-wrap:wrap;gap:16px}
-  .demo-tabs{flex-wrap:wrap}
-}
-</style>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="main-nav">
-  <a href="javascript:void(0)" class="nav-logo" onclick="showPage('home')">altyur<span>.cloud</span></a>
+  <a href="/" class="nav-logo">altyur<span>.cloud</span></a>
   <div class="nav-center">
-    <a href="javascript:void(0)" onclick="scrollTo('demo-section')">How it works</a>
-    <a href="javascript:void(0)" onclick="scrollTo('problems-section')">Case studies</a>
-    <a href="javascript:void(0)" onclick="scrollTo('services-section')">Services</a>
-    <a href="javascript:void(0)" onclick="showPage('industries')">Industries</a>
-    <a href="javascript:void(0)" onclick="showPage('insights')">Insights</a>
-    <a href="javascript:void(0)" onclick="scrollTo('about-section')">About</a>
+    <a href="#demo-section">How it works</a>
+    <a href="#problems-section">Case studies</a>
+    <a href="#services-section">Services</a>
+    <a href="/industries">Industries</a>
+    <a href="/insights">Insights</a>
+    <a href="#about-section">About</a>
   </div>
   <div class="nav-right">
-    <a href="javascript:void(0)" class="btn-ghost" onclick="scrollTo('about-section')">Send a message</a>
-    <a href="javascript:void(0)" class="btn-dark" onclick="showPage('offer')">Work with me</a>
+    <a href="#about-section" class="btn-ghost">Send a message</a>
+    <a href="/offer" class="btn-dark">Work with me</a>
   </div>
   <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- ===================== HOME PAGE ===================== -->
-<div class="page active" id="page-home">
-
-  <!-- HERO -->
-  <section>
-    <div id="hero-section">
-      <div class="hero-kicker">AI Automation & Process Optimisation</div>
-      <h1 class="hero-h1">Your business runs on<br>processes. Ours run on<br><em>intelligence.</em></h1>
-      <p class="hero-sub">We map your operations, identify where AI creates measurable leverage, and build it — from automated RevOps to multi-agent systems, voice AI, and executive intelligence pipelines.</p>
-      <div class="hero-actions">
-        <a href="javascript:void(0)" class="btn-dark" style="font-size:14px;padding:12px 24px" onclick="showPage('offer')">Work with me →</a>
-        <a href="javascript:void(0)" class="btn-ghost" style="font-size:14px;padding:12px 24px" onclick="scrollTo('problems-section')">See case studies</a>
-      </div>
-      <div class="hero-creds">
-        <div class="cred-item"><div class="cred-num">50+</div><div class="cred-lab">Solutions deployed</div></div>
-        <div class="cred-sep"></div>
-        <div class="cred-item"><div class="cred-num">Top 1%</div><div class="cred-lab">Upwork Expert Vetted</div></div>
-        <div class="cred-sep"></div>
-        <div class="cred-item"><div class="cred-num">200+</div><div class="cred-lab">Tasks automated daily</div></div>
-        <div class="cred-sep"></div>
-        <div class="cred-item"><div class="cred-num">CTO</div><div class="cred-lab">hytGenX.ai</div></div>
-      </div>
+<!-- HERO -->
+<section>
+  <div id="hero-section">
+    <div class="hero-kicker">AI Automation & Process Optimisation</div>
+    <h1 class="hero-h1">Your business runs on<br>processes. Ours run on<br><em>intelligence.</em></h1>
+    <p class="hero-sub">We map your operations, identify where AI creates measurable leverage, and build it — from automated RevOps to multi-agent systems, voice AI, and executive intelligence pipelines.</p>
+    <div class="hero-actions">
+      <a href="/offer" class="btn-dark" style="font-size:14px;padding:12px 24px">Work with me →</a>
+      <a href="#problems-section" class="btn-ghost" style="font-size:14px;padding:12px 24px">See case studies</a>
     </div>
-  </section>
-
-  <!-- AUTOMATION DEMO -->
-  <section id="demo-section">
-    <div class="demo-wrap">
-      <div class="demo-header rev">
-        <div class="section-eyebrow">Live automation preview</div>
-        <h2 class="section-h2" style="margin-bottom:12px">See how your operations<br><em>transform.</em></h2>
-        <p style="font-size:14px;color:var(--muted);line-height:1.8">Select an operation type below to see how AI automation replaces manual effort at each stage.</p>
-      </div>
-
-      <div class="demo-tabs rev d1">
-        <button class="demo-tab active" onclick="switchDemo('revops')">Revenue Ops</button>
-        <button class="demo-tab" onclick="switchDemo('invoice')">Invoicing</button>
-        <button class="demo-tab" onclick="switchDemo('inventory')">Inventory</button>
-        <button class="demo-tab" onclick="switchDemo('followup')">Follow-ups</button>
-      </div>
-
-      <div class="demo-canvas rev d2">
-        <div id="demo-display"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section id="problems-section">
-    <div class="problems-wrap">
-      <div class="rev">
-        <div class="section-eyebrow">Case studies</div>
-        <h2 class="section-h2">Are these the problems<br><em>slowing you down?</em></h2>
-        <p class="section-sub">Every business we work with starts with at least one of these. Click to see how we solved it.</p>
-      </div>
-      <div class="case-grid rev d1">
-        <div class="case-card" onclick="openCase('revenue')">
-          <span class="case-tag tag-revenue">Revenue Operations</span>
-          <div class="case-question">"Our revenue data lives in five different places and no one has the full picture."</div>
-          <div class="case-teaser">Disconnected CRMs, spreadsheets, and accounting tools meant leadership was always flying blind. We unified everything into a single intelligence layer.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">94%</div><div class="metric-lab">Reporting time saved</div></div>
-            <div class="metric"><div class="metric-val">Real-time</div><div class="metric-lab">Revenue visibility</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('invoice')">
-          <span class="case-tag tag-finance">Finance & Accounting</span>
-          <div class="case-question">"Invoice generation takes our team two full days every month."</div>
-          <div class="case-teaser">Manual invoice creation, chasing approvals, and reconciling payments was burning hours every billing cycle. We automated the entire pipeline end to end.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">2 days</div><div class="metric-lab">Saved per cycle</div></div>
-            <div class="metric"><div class="metric-val">Zero</div><div class="metric-lab">Manual errors</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('commission')">
-          <span class="case-tag tag-sales">Sales Commission</span>
-          <div class="case-question">"Calculating commissions every month is a spreadsheet nightmare. Sales reps don't trust the numbers."</div>
-          <div class="case-teaser">Tiered commission structures, split deals, and clawbacks were calculated manually. We built an automated engine that updates in real time.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">100%</div><div class="metric-lab">Accuracy rate</div></div>
-            <div class="metric"><div class="metric-val">Live</div><div class="metric-lab">Commission tracking</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('inventory')">
-          <span class="case-tag tag-inventory">Inventory</span>
-          <div class="case-question">"We keep running out of stock without warning — or sitting on inventory we don't need."</div>
-          <div class="case-teaser">No predictive visibility meant reactive purchasing decisions. We built an AI-driven inventory monitor with automatic reorder triggers and demand forecasting.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">68%</div><div class="metric-lab">Stockout reduction</div></div>
-            <div class="metric"><div class="metric-val">Auto</div><div class="metric-lab">Reorder triggers</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('followup')">
-          <span class="case-tag tag-sales">Sales Follow-ups</span>
-          <div class="case-question">"Leads go cold because no one followed up. Our response rate is embarrassing."</div>
-          <div class="case-teaser">Hot leads were slipping through the cracks because follow-ups depended on human memory. We deployed a voice AI agent that never misses a follow-up.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">3.4x</div><div class="metric-lab">Response rate lift</div></div>
-            <div class="metric"><div class="metric-val">60s</div><div class="metric-lab">First contact time</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('reporting')">
-          <span class="case-tag tag-ops">Executive Reporting</span>
-          <div class="case-question">"Our board packs take three days to prepare and are outdated by the time they're done."</div>
-          <div class="case-teaser">Manual data gathering, slide building, and narrative writing consumed the finance team every month. We automated the entire executive summary generation pipeline.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">3 days</div><div class="metric-lab">Saved per cycle</div></div>
-            <div class="metric"><div class="metric-val">Always</div><div class="metric-lab">Current data</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('healthcare')">
-          <span class="case-tag tag-ops">Healthcare</span>
-          <div class="case-question">"Our front desk spends four hours a day on scheduling calls and still misses 30% of them."</div>
-          <div class="case-teaser">A multi-specialty clinic was haemorrhaging new patient bookings after hours. We deployed a voice AI scheduling agent that answers every call within two rings, around the clock.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">73%</div><div class="metric-lab">Call deflection</div></div>
-            <div class="metric"><div class="metric-val">24/7</div><div class="metric-lab">Scheduling availability</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('ecommerce')">
-          <span class="case-tag tag-inventory">E-Commerce</span>
-          <div class="case-question">"We are paying for great acquisition and then losing 78% of carts. Our support team is at breaking point."</div>
-          <div class="case-teaser">A DTC brand with a strong funnel had two critical leaks — abandoned carts and an 18-hour support response time. We automated both ends simultaneously.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">31%</div><div class="metric-lab">Cart recovery rate</div></div>
-            <div class="metric"><div class="metric-val">6x</div><div class="metric-lab">Support capacity</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-        <div class="case-card" onclick="openCase('recruiting')">
-          <span class="case-tag tag-hr">Talent & Recruiting</span>
-          <div class="case-question">"By the time we call a qualified candidate, they have already accepted another offer."</div>
-          <div class="case-teaser">A specialist staffing agency was sitting on a 48-to-72-hour screening lag. We built an AI pipeline that scores, ranks, and initiates personalised outreach within 12 minutes of application.</div>
-          <div class="case-metrics">
-            <div class="metric"><div class="metric-val">87%</div><div class="metric-lab">Screening time saved</div></div>
-            <div class="metric"><div class="metric-val">12 min</div><div class="metric-lab">Application to contact</div></div>
-          </div>
-          <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="process-section">
-    <div class="process-wrap">
-      <div class="rev">
-        <div class="section-eyebrow">The engagement model</div>
-        <h2 class="section-h2">From discovery to<br><em>deployed and running.</em></h2>
-      </div>
-      <div class="process-steps">
-        <div class="p-step rev d1">
-          <div class="p-num">01</div>
-          <div class="p-circle"><div class="p-circle-inner"></div></div>
-          <div class="p-name">Discovery</div>
-          <div class="p-desc">A focused 60-minute session to map your current operations, identify bottlenecks, and find where AI creates the most leverage.</div>
-          <div class="p-items">
-            <div class="p-item">Workflow and stack audit</div>
-            <div class="p-item">Priority opportunity mapping</div>
-            <div class="p-item">ROI and effort estimation</div>
-          </div>
-        </div>
-        <div class="p-step rev d2">
-          <div class="p-num">02</div>
-          <div class="p-circle"><div class="p-circle-inner"></div></div>
-          <div class="p-name">Strategy Sessions</div>
-          <div class="p-desc">Two working sessions to design the architecture, validate the approach, and align on tooling before any build begins.</div>
-          <div class="p-items">
-            <div class="p-item">Architecture and tool selection</div>
-            <div class="p-item">Integration and data mapping</div>
-            <div class="p-item">Risk and dependency review</div>
-          </div>
-        </div>
-        <div class="p-step rev d3">
-          <div class="p-num">03</div>
-          <div class="p-circle"><div class="p-circle-inner"></div></div>
-          <div class="p-name">The Plan</div>
-          <div class="p-desc">A clear, phased implementation roadmap — with timelines, milestones, and an executive summary ready for internal presentation.</div>
-          <div class="p-items">
-            <div class="p-item">Phased roadmap document</div>
-            <div class="p-item">Executive summary for leadership</div>
-            <div class="p-item">Cost and resource breakdown</div>
-          </div>
-        </div>
-        <div class="p-step rev d4">
-          <div class="p-num">04</div>
-          <div class="p-circle"><div class="p-circle-inner"></div></div>
-          <div class="p-name">Implementation</div>
-          <div class="p-desc">We build, test, and deploy — whether that is a multi-agent system, a workflow pipeline, a dashboard, or an MCP integration for Claude.</div>
-          <div class="p-items">
-            <div class="p-item">Full build and deployment</div>
-            <div class="p-item">QA, testing and handover</div>
-            <div class="p-item">Ongoing support available</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services-section">
-    <div class="services-wrap">
-      <div class="rev">
-        <div class="section-eyebrow">Services</div>
-        <h2 class="section-h2">What we build<br>for <em>clients.</em></h2>
-      </div>
-      <div class="services-list rev d1">
-        <div class="service-row">
-          <div class="srv-cat">Automation</div>
-          <div>
-            <div class="srv-name">Workflow & Process Automation</div>
-            <div class="srv-desc">End-to-end automation of repetitive business processes — CRM updates, reporting, notifications, approvals, and data syncing across your stack.</div>
-            <div class="srv-tools"><span class="srv-tool">n8n</span><span class="srv-tool">Zapier</span><span class="srv-tool">Make</span><span class="srv-tool">HubSpot</span><span class="srv-tool">GHL</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-        <div class="service-row">
-          <div class="srv-cat">AI Agents</div>
-          <div>
-            <div class="srv-name">Multi-Agent Conversational Systems</div>
-            <div class="srv-desc">Orchestrated agent pipelines using LangGraph and Claude that research, validate, decide, and deliver — replacing manual analyst workflows in production environments.</div>
-            <div class="srv-tools"><span class="srv-tool">LangGraph</span><span class="srv-tool">LangChain</span><span class="srv-tool">Claude</span><span class="srv-tool">OpenAI</span><span class="srv-tool">FastAPI</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-        <div class="service-row">
-          <div class="srv-cat">RevOps</div>
-          <div>
-            <div class="srv-name">Claude via MCP — RevOps Monitoring</div>
-            <div class="srv-desc">Expose your existing stack to Claude using Model Context Protocol. Your team queries live revenue data, pipeline health, and operations in plain language — no SQL required.</div>
-            <div class="srv-tools"><span class="srv-tool">MCP</span><span class="srv-tool">Claude</span><span class="srv-tool">OpenClaw</span><span class="srv-tool">Python</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-        <div class="service-row">
-          <div class="srv-cat">Analytics</div>
-          <div>
-            <div class="srv-name">Visibility Dashboards & Executive Intelligence</div>
-            <div class="srv-desc">Custom dashboards that surface revenue operations, pipeline health, and team performance — with automated AI-generated executive summaries on your schedule.</div>
-            <div class="srv-tools"><span class="srv-tool">Python</span><span class="srv-tool">Looker</span><span class="srv-tool">G Suite</span><span class="srv-tool">Office 365</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-        <div class="service-row">
-          <div class="srv-cat">Voice AI</div>
-          <div>
-            <div class="srv-name">Voice AI Agents</div>
-            <div class="srv-desc">Inbound and outbound voice agents that qualify leads, handle support, and update CRMs in real time — operating around the clock without human intervention.</div>
-            <div class="srv-tools"><span class="srv-tool">Vapi</span><span class="srv-tool">Retell</span><span class="srv-tool">Twilio</span><span class="srv-tool">LangGraph</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-        <div class="service-row">
-          <div class="srv-cat">Knowledge</div>
-          <div>
-            <div class="srv-name">RAG Knowledge Systems</div>
-            <div class="srv-desc">AI trained on your internal documentation, policies, and SOPs. Staff get source-cited answers in seconds. Works with G Suite, SharePoint, Notion, and custom document stores.</div>
-            <div class="srv-tools"><span class="srv-tool">LangChain</span><span class="srv-tool">Pinecone</span><span class="srv-tool">FAISS</span><span class="srv-tool">G Suite</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-        <div class="service-row">
-          <div class="srv-cat">Personal AI</div>
-          <div>
-            <div class="srv-name">Personal Agents & AI Memory Systems</div>
-            <div class="srv-desc">AI assistants with persistent memory that learn your context and preferences over time — integrated directly into your email, calendar, and productivity tools.</div>
-            <div class="srv-tools"><span class="srv-tool">Claude</span><span class="srv-tool">MCP</span><span class="srv-tool">G Suite</span><span class="srv-tool">Office 365</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-        <div class="service-row">
-          <div class="srv-cat">Strategy</div>
-          <div>
-            <div class="srv-name">AI Strategy & Implementation Roadmapping</div>
-            <div class="srv-desc">Not ready to build yet? We map your AI opportunity landscape, prioritise by business impact, and deliver a phased roadmap your leadership team can act on.</div>
-            <div class="srv-tools"><span class="srv-tool">Discovery</span><span class="srv-tool">Roadmap</span><span class="srv-tool">Executive Plan</span></div>
-          </div>
-          <div class="srv-arrow">›</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STACK -->
-  <section id="stack-section">
-    <div class="stack-wrap">
-      <div class="rev">
-        <div class="section-eyebrow">Technical expertise</div>
-        <h2 class="section-h2">Tools used in<br><em>production.</em></h2>
-      </div>
-      <div class="stack-grid rev d1">
-        <div class="stack-col">
-          <div class="stack-col-title">AI & Agent Frameworks</div>
-          <div class="stack-items">
-            <div class="stack-item">Claude AI (Anthropic) <span class="stack-badge badge-core">Core</span></div>
-            <div class="stack-item">Model Context Protocol (MCP) <span class="stack-badge badge-core">Core</span></div>
-            <div class="stack-item">LangGraph <span class="stack-badge badge-core">Core</span></div>
-            <div class="stack-item">LangChain <span class="stack-badge badge-core">Core</span></div>
-            <div class="stack-item">OpenAI / GPT-4o <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">OpenClaw <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Vapi / Retell AI <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">RAG Pipelines <span class="stack-badge badge-core">Core</span></div>
-          </div>
-        </div>
-        <div class="stack-col">
-          <div class="stack-col-title">Automation & CRM</div>
-          <div class="stack-items">
-            <div class="stack-item">n8n <span class="stack-badge badge-core">Core</span></div>
-            <div class="stack-item">Zapier <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Make (Integromat) <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">HubSpot <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">GoHighLevel (GHL) <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Google Workspace <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Microsoft 365 <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Twilio <span class="stack-badge badge-pro">Expert</span></div>
-          </div>
-        </div>
-        <div class="stack-col">
-          <div class="stack-col-title">Engineering & Data</div>
-          <div class="stack-items">
-            <div class="stack-item">Python <span class="stack-badge badge-core">Core</span></div>
-            <div class="stack-item">FastAPI <span class="stack-badge badge-core">Core</span></div>
-            <div class="stack-item">JavaScript / Node.js <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Pinecone / FAISS / Qdrant <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Data Visualisation <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">Looker Studio <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">SQL <span class="stack-badge badge-pro">Expert</span></div>
-            <div class="stack-item">REST APIs / Webhooks <span class="stack-badge badge-core">Core</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT / BOOKING -->
-  <section id="about-section">
-    <div class="about-wrap">
-      <div>
-        <div class="about-label rev">About</div>
-        <h2 class="about-h2 rev">Turyal Neeshat</h2>
-        <p class="about-body rev">I am an AI automation consultant and the CTO of HytgenX.ai. I work with businesses to identify where AI creates the most measurable leverage in their operations, design the right architecture, and build it — from first session to production deployment.</p>
-        <p class="about-body rev" style="margin-top:-16px">My background spans multi-agent systems, RevOps intelligence, voice AI, workflow automation, and LLM infrastructure. I have delivered over 50 production AI systems across marketing, real estate, healthcare, finance, education, and SaaS.</p>
-        <div class="about-links rev">
-          <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">LinkedIn</a>
-          <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">Upwork Profile</a>
-          <a href="https://hytgenx.ai" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">hytGenX.ai</a>
-        </div>
-        <div class="rev" style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:20px 24px">
-          <p style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">Send a message</p>
-          <div class="form-row-2">
-            <div><label class="form-label">Name</label><input class="form-input" id="fn" placeholder="Your name"></div>
-            <div><label class="form-label">Email</label><input class="form-input" id="fe" placeholder="your@email.com" type="email"></div>
-          </div>
-          <label class="form-label">Company</label>
-          <input class="form-input" id="fc" placeholder="Company (optional)">
-          <label class="form-label">Message</label>
-          <textarea class="form-input" id="fm" placeholder="Tell me what you are working on..." style="min-height:80px"></textarea>
-          <button class="btn-dark" onclick="sendMsg()" style="margin-top:12px;font-size:13px;padding:10px 20px;border:none;cursor:pointer;font-family:inherit">Send message</button>
-        </div>
-      </div>
-      <div class="about-right rev d2">
-        <div class="booking-head">
-          <h3>Book a session</h3>
-          <p>20-minute discovery. Pick a time that works.</p>
-        </div>
-<!-- Calendly inline widget begin -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" style="min-width:320px;height:700px;"></div>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Calendly inline widget end -->
-      </div>
-    </div>
-  </section>
-
-</div><!-- end home page -->
-
-<!-- ===================== CASE STUDY PAGE ===================== -->
-<div class="page" id="page-case">
-  <div id="case-content"></div>
-</div>
-
-<!-- ===================== INDUSTRIES PAGE ===================== -->
-<div class="page" id="page-industries">
-  <div class="ind-hero">
-    <button class="case-back" onclick="showPage('home')">← Back to home</button>
-    <div class="section-eyebrow">Industry expertise</div>
-    <h1 class="section-h2" style="max-width:640px">We have built in<br><em>your vertical.</em></h1>
-    <p class="section-sub" style="margin-bottom:0">Every industry has its own workflow patterns, compliance requirements, and failure modes. The use cases below reflect what we have actually shipped — not hypotheticals.</p>
-  </div>
-  <div class="ind-grid">
-    <div class="ind-card">
-      <div class="ind-icon">Real Estate</div>
-      <div class="ind-name">Real Estate & Brokerage</div>
-      <div class="ind-desc">High lead volume, time-sensitive follow-up, and complex client journeys make real estate one of the highest-ROI verticals for AI automation.</div>
-      <div class="ind-uses">
-        <div class="ind-use">Voice AI that calls inbound leads within 60 seconds and qualifies them before a human gets involved</div>
-        <div class="ind-use">Automated listing alerts and personalised nurture sequences based on buyer behaviour</div>
-        <div class="ind-use">CRM pipeline intelligence — no manual update required after every call or showing</div>
-        <div class="ind-use">Document processing for offer submissions, leases, and contract reviews</div>
-      </div>
-      <a href="javascript:void(0)" class="case-link" onclick="openCase('followup');return false;">See the follow-up case study</a>
-    </div>
-    <div class="ind-card">
-      <div class="ind-icon">Healthcare</div>
-      <div class="ind-name">Healthcare & Clinics</div>
-      <div class="ind-desc">Scheduling bottlenecks, intake inefficiency, and after-hours missed calls are addressable with AI without touching clinical workflows or compliance boundaries.</div>
-      <div class="ind-uses">
-        <div class="ind-use">24/7 voice AI for patient scheduling, rescheduling, and reminder calls</div>
-        <div class="ind-use">Automated intake form routing and structured data capture before the appointment</div>
-        <div class="ind-use">Insurance verification workflows triggered automatically on booking</div>
-        <div class="ind-use">Post-visit follow-up sequences and care gap alert pipelines</div>
-      </div>
-      <a href="javascript:void(0)" class="case-link" onclick="openCase('healthcare');return false;">See the scheduling case study</a>
-    </div>
-    <div class="ind-card">
-      <div class="ind-icon">Professional Services</div>
-      <div class="ind-name">Professional Services</div>
-      <div class="ind-desc">Consulting, legal, accounting, and agency businesses all share the same structural problem: senior time spent on production work that should be automated.</div>
-      <div class="ind-uses">
-        <div class="ind-use">Proposal generation pipelines that produce structured drafts from CRM data and past wins</div>
-        <div class="ind-use">Automated time tracking, billing calculations, and invoice dispatch</div>
-        <div class="ind-use">Client status report automation with AI-written commentary</div>
-        <div class="ind-use">Internal knowledge base — staff get source-cited answers from SOPs and past work</div>
-      </div>
-      <a href="javascript:void(0)" class="case-link" onclick="openCase('invoice');return false;">See the billing case study</a>
-    </div>
-    <div class="ind-card">
-      <div class="ind-icon">SaaS & Technology</div>
-      <div class="ind-name">SaaS & Technology</div>
-      <div class="ind-desc">Product-led growth companies have the data to detect expansion and churn signals early — but only if that data is connected to an intelligence layer that acts on it.</div>
-      <div class="ind-uses">
-        <div class="ind-use">Product usage signal monitoring with automated expansion and churn risk alerts</div>
-        <div class="ind-use">Onboarding sequence automation triggered by in-app behaviour milestones</div>
-        <div class="ind-use">Claude via MCP for revenue and pipeline queries in plain English — no SQL</div>
-        <div class="ind-use">Support ticket triage, auto-resolution for common issues, and escalation routing</div>
-      </div>
-      <a href="javascript:void(0)" class="case-link" onclick="openCase('revenue');return false;">See the RevOps case study</a>
-    </div>
-    <div class="ind-card">
-      <div class="ind-icon">Finance & Accounting</div>
-      <div class="ind-name">Finance & Accounting</div>
-      <div class="ind-desc">Finance teams spend a disproportionate amount of time on data aggregation and formatting. The analysis and judgment they were hired for ends up being a fraction of their day.</div>
-      <div class="ind-uses">
-        <div class="ind-use">End-to-end invoice automation from milestone to payment reconciliation</div>
-        <div class="ind-use">Commission calculation engines that update in real time as deals close</div>
-        <div class="ind-use">Automated board pack and executive summary generation on a fixed schedule</div>
-        <div class="ind-use">Spend categorisation, anomaly detection, and variance commentary</div>
-      </div>
-      <a href="javascript:void(0)" class="case-link" onclick="openCase('reporting');return false;">See the reporting case study</a>
-    </div>
-    <div class="ind-card">
-      <div class="ind-icon">E-Commerce & Retail</div>
-      <div class="ind-name">E-Commerce & Retail</div>
-      <div class="ind-desc">Acquisition is expensive. The margin is won or lost in the post-click experience — recovery, support, and retention — all of which are automatable at scale.</div>
-      <div class="ind-uses">
-        <div class="ind-use">Behaviour-triggered cart abandonment sequences personalised by product and purchase history</div>
-        <div class="ind-use">AI customer support agent handling enquiries, returns, and product questions autonomously</div>
-        <div class="ind-use">Inventory demand forecasting and automatic reorder point management</div>
-        <div class="ind-use">Post-purchase loyalty and upsell sequences based on order data</div>
-      </div>
-      <a href="javascript:void(0)" class="case-link" onclick="openCase('ecommerce');return false;">See the e-commerce case study</a>
+    <div class="hero-creds">
+      <div class="cred-item"><div class="cred-num">50+</div><div class="cred-lab">Solutions deployed</div></div>
+      <div class="cred-sep"></div>
+      <div class="cred-item"><div class="cred-num">Top 1%</div><div class="cred-lab">Upwork Expert Vetted</div></div>
+      <div class="cred-sep"></div>
+      <div class="cred-item"><div class="cred-num">200+</div><div class="cred-lab">Tasks automated daily</div></div>
+      <div class="cred-sep"></div>
+      <div class="cred-item"><div class="cred-num">CTO</div><div class="cred-lab">hytGenX.ai</div></div>
     </div>
   </div>
-  <div style="text-align:center;padding:0 48px 80px">
-    <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session for your industry</a>
+</section>
+
+<!-- AUTOMATION DEMO -->
+<section id="demo-section">
+  <div class="demo-wrap">
+    <div class="demo-header rev">
+      <div class="section-eyebrow">Live automation preview</div>
+      <h2 class="section-h2" style="margin-bottom:12px">See how your operations<br><em>transform.</em></h2>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8">Select an operation type below to see how AI automation replaces manual effort at each stage.</p>
+    </div>
+    <div class="demo-tabs rev d1">
+      <button class="demo-tab active" onclick="switchDemo('revops',event)">Revenue Ops</button>
+      <button class="demo-tab" onclick="switchDemo('invoice',event)">Invoicing</button>
+      <button class="demo-tab" onclick="switchDemo('inventory',event)">Inventory</button>
+      <button class="demo-tab" onclick="switchDemo('followup',event)">Follow-ups</button>
+    </div>
+    <div class="demo-canvas rev d2">
+      <div id="demo-display"></div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ===================== INSIGHTS PAGE ===================== -->
-<div class="page" id="page-insights">
-  <div class="insights-hero">
-    <button class="case-back" onclick="showPage('home')">← Back to home</button>
-    <div class="section-eyebrow">Insights</div>
-    <h1 class="section-h2" style="max-width:560px">Practical notes on<br><em>building with AI.</em></h1>
-    <p style="font-size:15px;color:var(--muted);line-height:1.8;max-width:500px">Lessons from 50+ production AI deployments — what works, what does not, and what to think about before you start.</p>
+<!-- CASE STUDIES -->
+<section id="problems-section">
+  <div class="problems-wrap">
+    <div class="rev">
+      <div class="section-eyebrow">Case studies</div>
+      <h2 class="section-h2">Are these the problems<br><em>slowing you down?</em></h2>
+      <p class="section-sub">Every business we work with starts with at least one of these. Click to see how we solved it.</p>
+    </div>
+    <div class="case-grid rev d1">
+      <a href="/case/revenue" class="case-card">
+        <span class="case-tag tag-revenue">Revenue Operations</span>
+        <div class="case-question">"Our revenue data lives in five different places and no one has the full picture."</div>
+        <div class="case-teaser">Disconnected CRMs, spreadsheets, and accounting tools meant leadership was always flying blind. We unified everything into a single intelligence layer.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">94%</div><div class="metric-lab">Reporting time saved</div></div>
+          <div><div class="metric-val">Real-time</div><div class="metric-lab">Revenue visibility</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/invoice" class="case-card">
+        <span class="case-tag tag-finance">Finance & Accounting</span>
+        <div class="case-question">"Invoice generation takes our team two full days every month."</div>
+        <div class="case-teaser">Manual invoice creation, chasing approvals, and reconciling payments was burning hours every billing cycle. We automated the entire pipeline end to end.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">2 days</div><div class="metric-lab">Saved per cycle</div></div>
+          <div><div class="metric-val">Zero</div><div class="metric-lab">Manual errors</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/commission" class="case-card">
+        <span class="case-tag tag-sales">Sales Commission</span>
+        <div class="case-question">"Calculating commissions every month is a spreadsheet nightmare. Sales reps don't trust the numbers."</div>
+        <div class="case-teaser">Tiered commission structures, split deals, and clawbacks were calculated manually. We built an automated engine that updates in real time.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">100%</div><div class="metric-lab">Accuracy rate</div></div>
+          <div><div class="metric-val">Live</div><div class="metric-lab">Commission tracking</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/inventory" class="case-card">
+        <span class="case-tag tag-inventory">Inventory</span>
+        <div class="case-question">"We keep running out of stock without warning — or sitting on inventory we don't need."</div>
+        <div class="case-teaser">No predictive visibility meant reactive purchasing decisions. We built an AI-driven inventory monitor with automatic reorder triggers and demand forecasting.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">68%</div><div class="metric-lab">Stockout reduction</div></div>
+          <div><div class="metric-val">Auto</div><div class="metric-lab">Reorder triggers</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/followup" class="case-card">
+        <span class="case-tag tag-sales">Sales Follow-ups</span>
+        <div class="case-question">"Leads go cold because no one followed up. Our response rate is embarrassing."</div>
+        <div class="case-teaser">Hot leads were slipping through the cracks because follow-ups depended on human memory. We deployed a voice AI agent that never misses a follow-up.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">3.4x</div><div class="metric-lab">Response rate lift</div></div>
+          <div><div class="metric-val">60s</div><div class="metric-lab">First contact time</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/reporting" class="case-card">
+        <span class="case-tag tag-ops">Executive Reporting</span>
+        <div class="case-question">"Our board packs take three days to prepare and are outdated by the time they're done."</div>
+        <div class="case-teaser">Manual data gathering, slide building, and narrative writing consumed the finance team every month. We automated the entire executive summary generation pipeline.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">3 days</div><div class="metric-lab">Saved per cycle</div></div>
+          <div><div class="metric-val">Always</div><div class="metric-lab">Current data</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/healthcare" class="case-card">
+        <span class="case-tag tag-ops">Healthcare</span>
+        <div class="case-question">"Our front desk spends four hours a day on scheduling calls and still misses 30% of them."</div>
+        <div class="case-teaser">A multi-specialty clinic was losing new patient bookings after hours. We deployed a voice AI scheduling agent that answers every call within two rings, around the clock.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">73%</div><div class="metric-lab">Call deflection</div></div>
+          <div><div class="metric-val">24/7</div><div class="metric-lab">Scheduling availability</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/ecommerce" class="case-card">
+        <span class="case-tag tag-inventory">E-Commerce</span>
+        <div class="case-question">"We are paying for great acquisition and then losing 78% of carts. Our support team is at breaking point."</div>
+        <div class="case-teaser">A DTC brand with a strong funnel had two critical leaks — abandoned carts and an 18-hour support response time. We automated both ends simultaneously.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">31%</div><div class="metric-lab">Cart recovery rate</div></div>
+          <div><div class="metric-val">6x</div><div class="metric-lab">Support capacity</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+      <a href="/case/recruiting" class="case-card">
+        <span class="case-tag tag-hr">Talent & Recruiting</span>
+        <div class="case-question">"By the time we call a qualified candidate, they have already accepted another offer."</div>
+        <div class="case-teaser">A specialist staffing agency was sitting on a 72-hour screening lag. We built an AI pipeline that scores, ranks, and initiates personalised outreach within 12 minutes of application.</div>
+        <div class="case-metrics">
+          <div><div class="metric-val">87%</div><div class="metric-lab">Screening time saved</div></div>
+          <div><div class="metric-val">12 min</div><div class="metric-lab">Application to contact</div></div>
+        </div>
+        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      </a>
+    </div>
   </div>
-  <div class="articles-list" id="articles-list-content"></div>
-</div>
+</section>
 
-<!-- ===================== ARTICLE PAGE ===================== -->
-<div class="page" id="page-article">
-  <div id="article-content"></div>
-</div>
-
-<!-- ===================== OFFER / WORK WITH ME PAGE ===================== -->
-<div class="page" id="page-offer">
-
-  <!-- HERO -->
-  <div class="offer-hero">
-    <div class="offer-hero-inner">
-      <button class="case-back" onclick="showPage('home')" style="margin-bottom:32px">← Back to home</button>
-      <div class="section-eyebrow">How we work</div>
-      <h1 class="offer-h1">Your first session is free.<br>So is walking away.</h1>
-      <p class="offer-sub">We map your operations, identify where AI creates measurable leverage, and build the case before anyone commits to building anything. Each stage stands on its own. Stop whenever it stops making sense.</p>
-      <div class="offer-hero-actions">
-        <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:13px 26px">Book the free 20-minute session</a>
-        <a href="javascript:void(0)" class="btn-ghost" style="font-size:14px;padding:13px 26px" onclick="document.getElementById('offer-stages').scrollIntoView({behavior:'smooth'});return false;">See how it works ↓</a>
+<!-- PROCESS -->
+<section id="process-section">
+  <div class="process-wrap">
+    <div class="rev">
+      <div class="section-eyebrow">The engagement model</div>
+      <h2 class="section-h2">From discovery to<br><em>deployed and running.</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="p-step rev d1">
+        <div class="p-num">01</div>
+        <div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">Discovery</div>
+        <div class="p-desc">A focused 60-minute session to map your current operations, identify bottlenecks, and find where AI creates the most leverage.</div>
+        <div class="p-items">
+          <div class="p-item">Workflow and stack audit</div>
+          <div class="p-item">Priority opportunity mapping</div>
+          <div class="p-item">ROI and effort estimation</div>
+        </div>
       </div>
-      <div class="offer-proof">
-        <div class="offer-proof-item"><div class="offer-proof-val">50+</div><div class="offer-proof-lab">Production systems built</div></div>
-        <div class="offer-proof-sep"></div>
-        <div class="offer-proof-item"><div class="offer-proof-val">Top 1%</div><div class="offer-proof-lab">Upwork Expert Vetted</div></div>
-        <div class="offer-proof-sep"></div>
-        <div class="offer-proof-item"><div class="offer-proof-val">Free</div><div class="offer-proof-lab">First session, every time</div></div>
-        <div class="offer-proof-sep"></div>
-        <div class="offer-proof-item"><div class="offer-proof-val">4 max</div><div class="offer-proof-lab">Active engagements at once</div></div>
+      <div class="p-step rev d2">
+        <div class="p-num">02</div>
+        <div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">Strategy Sessions</div>
+        <div class="p-desc">Two working sessions to design the architecture, validate the approach, and align on tooling before any build begins.</div>
+        <div class="p-items">
+          <div class="p-item">Architecture and tool selection</div>
+          <div class="p-item">Integration and data mapping</div>
+          <div class="p-item">Risk and dependency review</div>
+        </div>
+      </div>
+      <div class="p-step rev d3">
+        <div class="p-num">03</div>
+        <div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">The Plan</div>
+        <div class="p-desc">A clear, phased implementation roadmap — with timelines, milestones, and an executive summary ready for internal presentation.</div>
+        <div class="p-items">
+          <div class="p-item">Phased roadmap document</div>
+          <div class="p-item">Executive summary for leadership</div>
+          <div class="p-item">Cost and resource breakdown</div>
+        </div>
+      </div>
+      <div class="p-step rev d4">
+        <div class="p-num">04</div>
+        <div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">Implementation</div>
+        <div class="p-desc">We build, test, and deploy — whether that is a multi-agent system, a workflow pipeline, a dashboard, or an MCP integration for Claude.</div>
+        <div class="p-items">
+          <div class="p-item">Full build and deployment</div>
+          <div class="p-item">QA, testing and handover</div>
+          <div class="p-item">Ongoing support available</div>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- STAGES -->
-  <section class="offer-stages-section" id="offer-stages">
-    <div class="offer-stages-wrap">
-      <div class="offer-stages-header">
-        <div class="section-eyebrow">The four stages</div>
-        <h2 class="section-h2" style="margin-bottom:0">Talk. Write. Plan. <em>Build.</em></h2>
-        <p class="offer-stages-sub">Each stage delivers something you keep. You are never paying for a promise about what comes next.</p>
+<!-- SERVICES -->
+<section id="services-section">
+  <div class="services-wrap">
+    <div class="rev">
+      <div class="section-eyebrow">Services</div>
+      <h2 class="section-h2">What we build<br>for <em>clients.</em></h2>
+    </div>
+    <div class="services-list rev d1">
+      <div class="service-row">
+        <div class="srv-cat">Automation</div>
+        <div>
+          <div class="srv-name">Workflow & Process Automation</div>
+          <div class="srv-desc">End-to-end automation of repetitive business processes — CRM updates, reporting, notifications, approvals, and data syncing across your stack.</div>
+          <div class="srv-tools"><span class="srv-tool">n8n</span><span class="srv-tool">Zapier</span><span class="srv-tool">Make</span><span class="srv-tool">HubSpot</span><span class="srv-tool">GHL</span></div>
+        </div>
+        <div class="srv-arrow">›</div>
       </div>
-      <div class="stages-grid">
-
-        <div class="stage-card">
-          <div class="stage-top">
-            <span class="stage-badge free">Free</span>
-            <span class="stage-num">01</span>
-          </div>
-          <div class="stage-name">Talk</div>
-          <div class="stage-desc">A focused 20-minute conversation. We map your operations, find where the real constraint is, and give you an honest answer — whether AI automation makes sense for you right now, and where.</div>
-          <div class="stage-deliverable">
-            <div class="stage-del-label">You receive</div>
-            <div class="stage-del-body">A clear diagnosis: where your operations are losing the most time, whether automation is the right fix, and what we would prioritise first.</div>
-          </div>
-          <div class="stage-gate">If there is something worth building →</div>
+      <div class="service-row">
+        <div class="srv-cat">AI Agents</div>
+        <div>
+          <div class="srv-name">Multi-Agent Conversational Systems</div>
+          <div class="srv-desc">Orchestrated agent pipelines using LangGraph and Claude that research, validate, decide, and deliver — replacing manual analyst workflows in production environments.</div>
+          <div class="srv-tools"><span class="srv-tool">LangGraph</span><span class="srv-tool">LangChain</span><span class="srv-tool">Claude</span><span class="srv-tool">OpenAI</span><span class="srv-tool">FastAPI</span></div>
         </div>
-
-        <div class="stage-connector">›</div>
-
-        <div class="stage-card">
-          <div class="stage-top">
-            <span class="stage-badge paid">Paid</span>
-            <span class="stage-num">02</span>
-          </div>
-          <div class="stage-name">Write</div>
-          <div class="stage-desc">A deep-dive into your processes, data, and stack. We document exactly what we found, what we would build, and what the expected return looks like. You can take this document anywhere.</div>
-          <div class="stage-deliverable">
-            <div class="stage-del-label">You receive</div>
-            <div class="stage-del-body">A strategy document: process audit, recommended automation design, tool selection rationale, and a first-pass ROI model.</div>
-          </div>
-          <div class="stage-gate">If the strategy makes business sense →</div>
+        <div class="srv-arrow">›</div>
+      </div>
+      <div class="service-row">
+        <div class="srv-cat">RevOps</div>
+        <div>
+          <div class="srv-name">Claude via MCP — RevOps Monitoring</div>
+          <div class="srv-desc">Expose your existing stack to Claude using Model Context Protocol. Your team queries live revenue data, pipeline health, and operations in plain language — no SQL required.</div>
+          <div class="srv-tools"><span class="srv-tool">MCP</span><span class="srv-tool">Claude</span><span class="srv-tool">Python</span></div>
         </div>
-
-        <div class="stage-connector">›</div>
-
-        <div class="stage-card">
-          <div class="stage-top">
-            <span class="stage-badge paid">Paid</span>
-            <span class="stage-num">03</span>
-          </div>
-          <div class="stage-name">Plan</div>
-          <div class="stage-desc">We translate the strategy into a phased implementation roadmap — tools, timelines, milestones, and a cost breakdown your leadership team can review and approve.</div>
-          <div class="stage-deliverable">
-            <div class="stage-del-label">You receive</div>
-            <div class="stage-del-body">An executive-ready implementation plan: fully scoped, costed by phase, and ready to present internally or begin immediately.</div>
-          </div>
-          <div class="stage-gate">If the plan gets the green light →</div>
+        <div class="srv-arrow">›</div>
+      </div>
+      <div class="service-row">
+        <div class="srv-cat">Analytics</div>
+        <div>
+          <div class="srv-name">Visibility Dashboards & Executive Intelligence</div>
+          <div class="srv-desc">Custom dashboards that surface revenue operations, pipeline health, and team performance — with automated AI-generated executive summaries on your schedule.</div>
+          <div class="srv-tools"><span class="srv-tool">Python</span><span class="srv-tool">Looker</span><span class="srv-tool">G Suite</span><span class="srv-tool">Office 365</span></div>
         </div>
-
-        <div class="stage-connector">›</div>
-
-        <div class="stage-card stage-card-final">
-          <div class="stage-top">
-            <span class="stage-badge paid">Paid</span>
-            <span class="stage-num">04</span>
-          </div>
-          <div class="stage-name">Build</div>
-          <div class="stage-desc">We build exactly what the plan describes. No scope creep, no surprises. Delivered, integrated into your existing stack, tested, and handed over with documentation and a support window.</div>
-          <div class="stage-deliverable">
-            <div class="stage-del-label">You receive</div>
-            <div class="stage-del-body">A production-ready automation system, integrated with your stack. Documented. Tested. Running.</div>
-          </div>
+        <div class="srv-arrow">›</div>
+      </div>
+      <div class="service-row">
+        <div class="srv-cat">Voice AI</div>
+        <div>
+          <div class="srv-name">Voice AI Agents</div>
+          <div class="srv-desc">Inbound and outbound voice agents that qualify leads, handle support, and update CRMs in real time — operating around the clock without human intervention.</div>
+          <div class="srv-tools"><span class="srv-tool">Vapi</span><span class="srv-tool">Retell</span><span class="srv-tool">Twilio</span><span class="srv-tool">LangGraph</span></div>
         </div>
-
+        <div class="srv-arrow">›</div>
+      </div>
+      <div class="service-row">
+        <div class="srv-cat">Knowledge</div>
+        <div>
+          <div class="srv-name">RAG Knowledge Systems</div>
+          <div class="srv-desc">AI trained on your internal documentation, policies, and SOPs. Staff get source-cited answers in seconds. Works with G Suite, SharePoint, Notion, and custom document stores.</div>
+          <div class="srv-tools"><span class="srv-tool">LangChain</span><span class="srv-tool">Pinecone</span><span class="srv-tool">FAISS</span><span class="srv-tool">G Suite</span></div>
+        </div>
+        <div class="srv-arrow">›</div>
+      </div>
+      <div class="service-row">
+        <div class="srv-cat">Personal AI</div>
+        <div>
+          <div class="srv-name">Personal Agents & AI Memory Systems</div>
+          <div class="srv-desc">AI assistants with persistent memory that learn your context and preferences over time — integrated directly into your email, calendar, and productivity tools.</div>
+          <div class="srv-tools"><span class="srv-tool">Claude</span><span class="srv-tool">MCP</span><span class="srv-tool">G Suite</span><span class="srv-tool">Office 365</span></div>
+        </div>
+        <div class="srv-arrow">›</div>
+      </div>
+      <div class="service-row">
+        <div class="srv-cat">Strategy</div>
+        <div>
+          <div class="srv-name">AI Strategy & Implementation Roadmapping</div>
+          <div class="srv-desc">Not ready to build yet? We map your AI opportunity landscape, prioritise by business impact, and deliver a phased roadmap your leadership team can act on.</div>
+          <div class="srv-tools"><span class="srv-tool">Discovery</span><span class="srv-tool">Roadmap</span><span class="srv-tool">Executive Plan</span></div>
+        </div>
+        <div class="srv-arrow">›</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- THE PRINCIPLE -->
-  <section class="offer-guarantee-section">
-    <div class="offer-guarantee-wrap">
-      <div class="offer-guarantee-card">
-        <div class="og-eyebrow">Why it works this way</div>
-        <h3 class="og-h3">You are never paying for a promise about what comes next.</h3>
-        <p class="og-body">Every stage produces something you keep regardless of what follows. The strategy document is useful whether you build with us or not — you can take it to any consultant, build it internally, or use it to evaluate your options. The implementation plan is useful whether you start today or in six months.</p>
-        <p class="og-body">We designed it this way because we only want to work with clients who find genuine value at every step. Lock-in produces bad work. Each stage should earn the next one.</p>
-        <p class="og-body" style="margin-bottom:0;font-style:italic;color:var(--text2)">"If at any point you do not think the work is worth continuing, we stop. That is not a sales technique — it is how we ensure every engagement we take on is one we are proud to put our name on."</p>
-      </div>
+<!-- STACK -->
+<section id="stack-section">
+  <div class="stack-wrap">
+    <div class="rev">
+      <div class="section-eyebrow">Technical expertise</div>
+      <h2 class="section-h2">Tools used in<br><em>production.</em></h2>
     </div>
-  </section>
-
-  <!-- FIT -->
-  <section class="offer-fit-section">
-    <div class="offer-fit-wrap">
-      <div class="offer-fit-header">
-        <div class="section-eyebrow">Is this right for you?</div>
-        <h2 class="section-h2" style="margin-bottom:0">We work with a <em>specific kind</em> of client.</h2>
-      </div>
-      <div class="offer-fit-grid">
-        <div class="fit-col fit-yes">
-          <div class="fit-h3">This works well if</div>
-          <div class="fit-items">
-            <div class="fit-item">You spend more than eight hours a week on work that should already be automated — and you know it</div>
-            <div class="fit-item">You have tried a point solution (a Zapier flow, a tool subscription) and it either broke, did not scale, or did not go far enough</div>
-            <div class="fit-item">You have a clear bottleneck in your operations and no confident answer on what to do about it</div>
-            <div class="fit-item">You need to demonstrate a result — to a board, an investor, or yourself — within a defined timeframe</div>
-            <div class="fit-item">You want a system that runs in production, not a proof of concept that needs babysitting</div>
-          </div>
-        </div>
-        <div class="fit-col fit-no">
-          <div class="fit-h3">This is not the right fit if</div>
-          <div class="fit-items">
-            <div class="fit-item">You want someone to install a tool and hand it over — we build systems engineered around your specific operations</div>
-            <div class="fit-item">You need a generic AI chatbot or a pre-built workflow applied without customisation</div>
-            <div class="fit-item">You are not willing to invest two to three hours of your own time in the discovery and strategy phases</div>
-            <div class="fit-item">You are looking for the lowest-cost option — our work is priced against the value it creates, not against off-the-shelf rates</div>
-          </div>
+    <div class="stack-grid rev d1">
+      <div class="stack-col">
+        <div class="stack-col-title">AI & Agent Frameworks</div>
+        <div class="stack-items">
+          <div class="stack-item">Claude AI (Anthropic) <span class="stack-badge badge-core">Core</span></div>
+          <div class="stack-item">Model Context Protocol (MCP) <span class="stack-badge badge-core">Core</span></div>
+          <div class="stack-item">LangGraph <span class="stack-badge badge-core">Core</span></div>
+          <div class="stack-item">LangChain <span class="stack-badge badge-core">Core</span></div>
+          <div class="stack-item">OpenAI / GPT-4o <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">Vapi / Retell AI <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">RAG Pipelines <span class="stack-badge badge-core">Core</span></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="offer-faq-section">
-    <div class="offer-faq-wrap">
-      <div class="section-eyebrow">Common questions</div>
-      <h2 class="section-h2" style="margin-bottom:0">Before you <em>book.</em></h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-q">What actually happens in the free session?</div>
-          <div class="faq-a">A 20-minute video call. I ask you questions about your operations, your team, and where you feel the most friction. At the end, I tell you honestly whether AI automation is the right investment for you right now, and where I would start if it is. There is no pitch at the end of the call.</div>
+      <div class="stack-col">
+        <div class="stack-col-title">Automation & CRM</div>
+        <div class="stack-items">
+          <div class="stack-item">n8n <span class="stack-badge badge-core">Core</span></div>
+          <div class="stack-item">Zapier <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">Make (Integromat) <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">HubSpot <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">GoHighLevel (GHL) <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">Google Workspace <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">Microsoft 365 <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">Twilio <span class="stack-badge badge-pro">Expert</span></div>
         </div>
-        <div class="faq-item">
-          <div class="faq-q">What if I do the strategy engagement and decide not to proceed?</div>
-          <div class="faq-a">You keep the strategy document. It describes exactly what we found and what we would build. You can use it to brief another consultant, build it internally, or revisit it when the timing is right. We do not put restrictions on it.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How long does a full engagement take?</div>
-          <div class="faq-a">Discovery is 20 minutes. The strategy document takes one to two weeks depending on process complexity. Implementation timelines vary by scope — most projects run between four and twelve weeks from kickoff to handover.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Do I need a technical team on my side?</div>
-          <div class="faq-a">No. We handle the full build, integration, and handover. Your involvement is to describe how your operations work and to confirm that what we deliver fits your workflow. Technical knowledge is not required.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">What does it cost?</div>
-          <div class="faq-a">The discovery session is free. Strategy and planning are fixed-fee engagements — you receive a clear number before each stage begins. Build work is scoped and quoted per project. You will always know the cost before any work starts.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Why only four active engagements at once?</div>
-          <div class="faq-a">Because every engagement gets my direct attention, not a team of contractors. The cap exists to protect the quality of the work. If spots are full, you can join the waitlist and I will reach out when there is availability.</div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-col-title">Engineering & Data</div>
+        <div class="stack-items">
+          <div class="stack-item">Python <span class="stack-badge badge-core">Core</span></div>
+          <div class="stack-item">FastAPI <span class="stack-badge badge-core">Core</span></div>
+          <div class="stack-item">JavaScript / Node.js <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">Pinecone / FAISS / Qdrant <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">Looker Studio <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">SQL <span class="stack-badge badge-pro">Expert</span></div>
+          <div class="stack-item">REST APIs / Webhooks <span class="stack-badge badge-core">Core</span></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CLOSE -->
-  <section class="offer-close-section">
-    <div class="offer-close-inner">
-      <div class="section-eyebrow">Start here</div>
-      <h2 class="offer-close-h2">The session costs nothing. The question is whether your operations can afford another six months without this.</h2>
-      <div class="offer-close-actions">
-        <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:14px 28px">Book the free 20-minute session</a>
-        <a href="mailto:turyal@hytgenx.ai" class="btn-ghost" style="font-size:14px;padding:14px 28px">Send a message instead</a>
+<!-- ABOUT / BOOKING -->
+<section id="about-section">
+  <div class="about-wrap">
+    <div>
+      <div class="about-label rev">About</div>
+      <h2 class="about-h2 rev">Turyal Neeshat</h2>
+      <p class="about-body rev">I am an AI automation consultant and the CTO of HytgenX.ai. I work with businesses to identify where AI creates the most measurable leverage in their operations, design the right architecture, and build it — from first session to production deployment.</p>
+      <p class="about-body rev" style="margin-top:-16px">My background spans multi-agent systems, RevOps intelligence, voice AI, workflow automation, and LLM infrastructure. I have delivered over 50 production AI systems across marketing, real estate, healthcare, finance, education, and SaaS.</p>
+      <div class="about-links rev">
+        <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">LinkedIn</a>
+        <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">Upwork Profile</a>
+        <a href="https://hytgenx.ai" target="_blank" class="btn-ghost" style="font-size:13px;padding:9px 18px">hytGenX.ai</a>
       </div>
-      <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:24px">No commitment. No proposal. Just a conversation.</p>
+      <div class="rev" style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:20px 24px">
+        <p style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">Send a message</p>
+        <div class="form-row-2">
+          <div><label class="form-label">Name</label><input class="form-input" id="fn" placeholder="Your name"></div>
+          <div><label class="form-label">Email</label><input class="form-input" id="fe" placeholder="your@email.com" type="email"></div>
+        </div>
+        <label class="form-label">Company</label>
+        <input class="form-input" id="fc" placeholder="Company (optional)">
+        <label class="form-label">Message</label>
+        <textarea class="form-input" id="fm" placeholder="Tell me what you are working on..." style="min-height:80px"></textarea>
+        <button class="btn-dark" onclick="sendMsg()" style="margin-top:12px;font-size:13px;padding:10px 20px;border:none;cursor:pointer;font-family:inherit">Send message</button>
+      </div>
     </div>
-  </section>
+    <div class="about-right rev d2">
+      <div class="booking-head">
+        <h3>Book a session</h3>
+        <p>20-minute discovery. Pick a time that works.</p>
+      </div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </div>
+  </div>
+</section>
 
-</div><!-- end offer page -->
-
-<!-- FOOTER (shared) -->
 <footer id="main-footer">
   <div class="footer-top">
     <div>
@@ -1128,27 +409,26 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
     <div class="footer-cols">
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="javascript:void(0)">Workflow Automation</a>
-        <a href="javascript:void(0)">Multi-Agent Systems</a>
-        <a href="javascript:void(0)">Voice AI Agents</a>
-        <a href="javascript:void(0)">RevOps via MCP</a>
-        <a href="javascript:void(0)">RAG Knowledge Systems</a>
-        <a href="javascript:void(0)">Executive Intelligence</a>
+        <a href="#services-section">Workflow Automation</a>
+        <a href="#services-section">Multi-Agent Systems</a>
+        <a href="#services-section">Voice AI Agents</a>
+        <a href="#services-section">RevOps via MCP</a>
+        <a href="#services-section">RAG Knowledge Systems</a>
+        <a href="#services-section">Executive Intelligence</a>
+      </div>
+      <div class="footer-col">
+        <h4>Work</h4>
+        <a href="#problems-section">Case Studies</a>
+        <a href="/industries">Industries</a>
+        <a href="/insights">Insights</a>
+        <a href="/offer">Work with me</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="javascript:void(0)" onclick="scrollTo('about-section')">About</a>
-        <a href="javascript:void(0)" onclick="showPage('industries')">Industries</a>
-        <a href="javascript:void(0)" onclick="showPage('insights')">Insights</a>
+        <a href="#about-section">About</a>
         <a href="https://hytgenx.ai" target="_blank">hytGenX.ai</a>
         <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
         <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a>
-      </div>
-      <div class="footer-col">
-        <h4>Get started</h4>
-        <a href="https://calendly.com/turyal" target="_blank">Book a session</a>
-        <a href="javascript:void(0)" onclick="scrollTo('about-section')">Send a message</a>
-        <a href="javascript:void(0)" onclick="scrollTo('problems-section')">Case studies</a>
       </div>
     </div>
   </div>
@@ -1158,209 +438,8 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
   </div>
 </footer>
 
-<!-- Calendly -->
+<script src="/shared.js"></script>
 <script>
-
-// ── CASE STUDY DATA ──
-const cases = {
-  revenue: {
-    tag: 'Revenue Operations', tagClass: 'tag-revenue',
-    question: 'Are you flying blind on revenue?',
-    h1: 'Unified RevOps Intelligence for a B2B SaaS Company',
-    sub: 'Revenue data scattered across HubSpot, QuickBooks, and five spreadsheets meant leadership had no real-time view of business health. We built a unified intelligence layer that ended the guesswork.',
-    stats: [{val:'94%',lab:'Reporting time saved'},{val:'Real-time',lab:'Revenue visibility'},{val:'1 source',lab:'Of truth for all data'},{val:'8 hrs/wk',lab:'Given back to finance'}],
-    sections: [
-      { h: 'The problem', body: 'The finance and operations team at a 40-person B2B SaaS company spent eight hours every week pulling data from HubSpot, QuickBooks, a Google Sheet shared across three teams, and two other internal tools. By the time the weekly revenue report was ready, the numbers were already 48 hours old. Leadership was making decisions on stale data.', problem: 'Every Monday, the ops lead would spend three to four hours just aggregating numbers. We would have a meeting at 2pm, and the data in the deck was from Friday. Deals had closed since then. Refunds had been processed. The picture was always incomplete.' },
-      { h: 'What we built', solution: 'We connected all five data sources into a unified pipeline using n8n and Python, with Claude via MCP sitting on top as a natural language interface. Leadership can now ask questions like "what is our net new ARR this week" or "show me churn by segment for Q2" and receive accurate, real-time answers without touching a spreadsheet.', body: 'The dashboard is updated continuously throughout the day. An automated executive summary is generated every Monday morning before 8am, pulling from live data, flagging anomalies, and surfacing the three most important trends — ready in the inbox before anyone sits down.' },
-      { h: 'The automation timeline', timeline: 'revenue' },
-      { h: 'Results', body: 'The finance team reclaimed eight hours per week. Leadership now has a single URL they open on Monday morning. The company moved from weekly manual reporting to continuous operational awareness.' }
-    ]
-  },
-  invoice: {
-    tag: 'Finance & Accounting', tagClass: 'tag-finance',
-    question: 'Is invoicing eating your team alive?',
-    h1: 'End-to-End Invoice Automation for a Professional Services Firm',
-    sub: 'Generating, approving, sending, and reconciling invoices was a two-day manual process every billing cycle. We reduced it to a background task that runs itself.',
-    stats: [{val:'2 days',lab:'Saved per billing cycle'},{val:'Zero',lab:'Manual errors post-launch'},{val:'4 hrs',lab:'Finance team freed weekly'},{val:'Automatic',lab:'Payment reconciliation'}],
-    sections: [
-      { h: 'The problem', body: 'A professional services firm billing 60 to 80 clients monthly was running their entire invoicing operation through a combination of QuickBooks, a shared Google Sheet, and manual email drafts. Each billing cycle required two days of concentrated effort from their finance associate — pulling project data, calculating billable hours, generating PDFs, chasing approvals, sending emails, and manually reconciling payments as they arrived.', problem: 'The worst part was chasing approvals internally. A partner would be in client meetings for three days, and invoices would just sit there. Then we would send late, and then clients would pay late. The whole cycle was broken.' },
-      { h: 'What we built', solution: 'We built a fully automated invoicing pipeline using n8n, integrated with their project management tool, QuickBooks, and their email system. When a project milestone is marked complete, the workflow automatically calculates billable amounts, generates a formatted invoice, routes it for approval via Slack, and sends it to the client on approval — all without human input.', body: 'Payment reconciliation is handled automatically when payments are received, with exceptions flagged and escalated. Monthly revenue summaries are generated and sent to leadership with no manual preparation required.' },
-      { h: 'The automation timeline', timeline: 'invoice' },
-      { h: 'Results', body: 'The billing cycle went from two days to approximately 20 minutes of exception handling. The finance team now focuses on analysis rather than administration, and on-time invoice dispatch improved from 71% to 99%.' }
-    ]
-  },
-  commission: {
-    tag: 'Sales Commission', tagClass: 'tag-sales',
-    question: 'Do your sales reps argue about their commission numbers?',
-    h1: 'Automated Commission Engine for a 25-Person Sales Team',
-    sub: 'Tiered structures, split deals, clawbacks, and accelerators were all calculated manually in Excel. Reps did not trust the numbers. We rebuilt it as a real-time automated system.',
-    stats: [{val:'100%',lab:'Calculation accuracy'},{val:'Real-time',lab:'Commission visibility'},{val:'40 hrs',lab:'Saved per quarter'},{val:'Zero',lab:'Commission disputes post-launch'}],
-    sections: [
-      { h: 'The problem', body: 'With 25 sales reps across three tiers, multiple product lines, split deal rules, and quarterly accelerators, commission calculation had become a quarterly nightmare. The operations manager spent two full days each quarter running Excel macros, and reps routinely challenged the numbers — sometimes correctly.', problem: 'We had three commission disputes in one quarter. One was a real error. The others were just reps not trusting a spreadsheet they could not see into. It was creating tension with the sales team at exactly the wrong time.' },
-      { h: 'What we built', solution: 'We built a commission calculation engine in Python integrated with HubSpot, which reads deal data in real time. Reps have a personal dashboard showing their current commission, projected payout, and the underlying deal breakdown — fully transparent and updated live as deals close.', body: 'Clawback tracking, split deal attribution, and accelerator thresholds are all handled automatically. Quarter-end payroll exports are generated in the format the payroll provider requires, eliminating manual transfer.' },
-      { h: 'The automation timeline', timeline: 'followup' },
-      { h: 'Results', body: 'Commission disputes dropped to zero. The ops manager recovered two full days per quarter. Sales reps report higher trust in the numbers and spend less time questioning their payouts.' }
-    ]
-  },
-  inventory: {
-    tag: 'Inventory', tagClass: 'tag-inventory',
-    question: 'Are stockouts costing you customers?',
-    h1: 'AI-Driven Inventory Monitoring and Reorder Automation',
-    sub: 'Reactive inventory purchasing meant frequent stockouts and overordering. We built predictive monitoring with automatic reorder triggers that eliminated both problems.',
-    stats: [{val:'68%',lab:'Stockout reduction'},{val:'Auto',lab:'Reorder triggers'},{val:'22%',lab:'Carrying cost reduction'},{val:'Real-time',lab:'Stock visibility'}],
-    sections: [
-      { h: 'The problem', body: 'A product company with 200 SKUs was managing inventory using a combination of gut instinct and weekly manual counts. Stockouts of popular items were common. At the same time, slow-moving inventory was tying up working capital. There was no system connecting sales velocity data to purchasing decisions.', problem: 'We would run out of our best-selling product on a Tuesday and not realise until Thursday when a customer complained. Then we would overorder to compensate and sit on stock for months. It was expensive in both directions.' },
-      { h: 'What we built', solution: 'We built an inventory intelligence layer connected to their point-of-sale system, supplier portal, and accounting platform. An AI model monitors sales velocity for each SKU, calculates dynamic reorder points based on lead times and demand patterns, and automatically triggers purchase orders when thresholds are crossed.', body: 'Weekly inventory health reports are generated automatically, flagging slow-moving stock, identifying seasonal demand patterns, and surfacing reorder recommendations for review.' },
-      { h: 'The automation timeline', timeline: 'inventory' },
-      { h: 'Results', body: 'Stockouts on key SKUs dropped by 68% in the first quarter. Carrying costs reduced by 22% as overordering was eliminated. The operations team now spends time on supplier relationships rather than stock counting.' }
-    ]
-  },
-  followup: {
-    tag: 'Sales Follow-ups', tagClass: 'tag-sales',
-    question: 'How many leads went cold this week because no one followed up?',
-    h1: 'Voice AI Follow-up Agent for a Real Estate Brokerage',
-    sub: 'Inbound leads were going cold because human capacity could not keep up. We deployed a voice AI agent that responds within 60 seconds, qualifies leads, and updates the CRM automatically.',
-    stats: [{val:'3.4x',lab:'Response rate lift'},{val:'60s',lab:'First contact time'},{val:'200+',lab:'Leads handled daily'},{val:'Zero',lab:'Manual CRM updates'}],
-    sections: [
-      { h: 'The problem', body: 'A real estate brokerage generating 60 to 80 inbound leads per day could not respond fast enough. Research consistently shows that response speed within the first five minutes is a primary driver of conversion in real estate. Their average response time was four hours. Agents were overwhelmed, and leads were going cold before anyone called.', problem: 'We were spending money on lead generation and then letting those leads sit. By the time an agent called, the person had already spoken to two competitors. The leads were not bad. Our process was.' },
-      { h: 'What we built', solution: 'We deployed a Vapi voice AI agent integrated with their CRM. When a lead submits an enquiry, the agent calls them within 60 seconds, introduces itself naturally, asks qualifying questions, captures the key information, and creates or updates the CRM record automatically. Qualified leads are flagged and a notification is sent to the next available agent.', body: 'The agent handles objections, schedules call-backs for agents, and manages follow-up sequences for leads that do not answer — all without human intervention. Agents now only pick up warm, qualified conversations.' },
-      { h: 'The automation timeline', timeline: 'followup' },
-      { h: 'Results', body: 'Response rate lifted 3.4x in the first month. The team now handles over 200 leads per day with zero manual CRM input. Agent time shifted from data entry and cold calling to high-value conversations.' }
-    ]
-  },
-  reporting: {
-    tag: 'Executive Reporting', tagClass: 'tag-ops',
-    question: 'Is your board pack three days late and already outdated?',
-    h1: 'Automated Executive Summary Pipeline for a Private Equity-Backed Company',
-    sub: 'Monthly board packs were consuming three days of finance team effort. By the time they were ready, the data was stale. We automated the entire pipeline — from data ingestion to narrative generation.',
-    stats: [{val:'3 days',lab:'Saved per cycle'},{val:'Always current',lab:'Data as of generation time'},{val:'Automated',lab:'Narrative generation'},{val:'6 hrs',lab:'Finance team freed monthly'}],
-    sections: [
-      { h: 'The problem', body: 'A PE-backed portfolio company was producing monthly board packs manually — pulling financials from accounting software, sales data from HubSpot, operational KPIs from various internal tools, and then writing narrative commentary in Google Slides. The process took three days, involved four people, and the finished pack reflected data that was 48 to 72 hours old by the time it reached the board.', problem: 'The CFO was spending a day and a half on the board pack every month. That is time she should have been spending on analysis and decisions, not on moving numbers from one system to another and writing sentences about them.' },
-      { h: 'What we built', solution: 'We built an automated executive summary pipeline using Claude and Python. On the first of each month, the system automatically pulls data from all connected sources, calculates period-over-period variances, identifies the top three operational risks and highlights based on threshold rules, and generates a structured narrative in the company tone and format.', body: 'The output is a fully formatted Google Slides board pack, ready in the CFO inbox before 7am on the first of every month. The finance team reviews for context and edge cases — a 30-minute task rather than a three-day project.' },
-      { h: 'The automation timeline', timeline: 'revenue' },
-      { h: 'Results', body: 'The board pack is now ready on time, every time, with same-day data. The CFO reclaimed six hours per month. The board has noted the improvement in data currency and consistency of presentation.' }
-    ]
-  },
-  healthcare: {
-    tag: 'Healthcare', tagClass: 'tag-ops',
-    question: 'Is your front desk turning away patients after hours?',
-    h1: 'Voice AI Patient Scheduling for a Multi-Specialty Clinic',
-    sub: 'Inbound scheduling calls were overwhelming front desk staff and going unanswered after hours. We deployed a voice AI agent that handles booking, rescheduling, and reminders around the clock — without touching clinical systems.',
-    stats: [{val:'73%',lab:'Call deflection'},{val:'24/7',lab:'Scheduling availability'},{val:'4.5 hrs',lab:'Front desk saved daily'},{val:'18%',lab:'Bookings now after-hours'}],
-    sections: [
-      { h: 'The problem', body: 'A multi-specialty clinic with eight practitioners was receiving 80 to 120 scheduling calls per day. Front desk staff spent four to five hours on scheduling calls alone, with a meaningful share going to voicemail after 5pm and never being returned. New patient acquisition was suffering — prospective patients who could not get through often booked with a competitor the same day.', problem: 'We calculated we were missing roughly 25 to 30 calls every day because they came in after hours or while the phones were busy. These were not cold leads — these were people actively trying to book. We were turning away revenue without realising it.' },
-      { h: 'What we built', solution: 'We deployed a Vapi voice AI agent integrated with the clinic\'s scheduling platform (Jane App). The agent answers every call within two rings, confirms real-time availability, books appointments, handles rescheduling requests, and sends automated confirmation and reminder messages — including after hours, on weekends, and on holidays.', body: 'The system handles insurance verification questions, provider-specific scheduling rules, and appointment type routing without human involvement. A daily digest is sent to the clinic manager showing call volumes, booking outcomes, and any escalations that required staff intervention. Edge cases — complex clinical questions, billing disputes, and distressed callers — are flagged and transferred to staff with a full call transcript.' },
-      { h: 'The automation timeline', timeline: 'healthcare' },
-      { h: 'Results', body: 'Front desk call volume dropped by 73%. Staff redirected their time to in-clinic patient experience rather than phone administration. After-hours bookings now account for 18% of total appointment volume — revenue that was previously lost entirely. Patient satisfaction scores improved due to faster response times and consistent communication at every hour of the day.' }
-    ]
-  },
-  ecommerce: {
-    tag: 'E-Commerce', tagClass: 'tag-inventory',
-    question: 'Are you paying for acquisition and then losing customers at checkout and support?',
-    h1: 'AI-Powered Cart Recovery and Customer Support Automation for a DTC Brand',
-    sub: 'A direct-to-consumer brand with strong acquisition was recovering under 5% of abandoned carts and running an 18-hour support response time. We automated both ends of the leakage problem simultaneously.',
-    stats: [{val:'31%',lab:'Cart recovery rate'},{val:'6x',lab:'Support capacity'},{val:'2.4x',lab:'Avg order value lift'},{val:'Under 90s',lab:'First support response'}],
-    sections: [
-      { h: 'The problem', body: 'A DTC health and wellness brand was generating strong top-of-funnel traffic through paid social. Their acquisition metrics looked good. But cart abandonment was sitting above 78%, their automated recovery emails were generic and untimed, and a two-person support team was responding to enquiries with an average turnaround of 18 hours. The Trustpilot score was slipping. The problem was not the product — it was what happened after the click.', problem: 'We were spending heavily on paid acquisition, running great campaigns, and then losing people at checkout. And when customers had questions, we were too slow to convert them. The funnel had holes at both ends and we did not have the headcount to plug them.' },
-      { h: 'What we built', solution: 'We built a multi-layered recovery and support system. For cart abandonment, we implemented behaviour-triggered email and SMS sequences personalised by product category, abandonment timing, and purchase history — with message copy generated dynamically by Claude for each segment. Sequences adapt based on whether the customer opens, clicks, or ignores each message.', body: 'For customer support, we deployed an AI agent trained on product documentation, FAQ history, and 18 months of past support tickets. The agent resolves 68% of enquiries autonomously — including order status, returns, sizing, and ingredient questions. It hands off to the human team only when it detects payment disputes, medical questions, or negative emotional signals, with full conversation context so customers never need to repeat themselves.' },
-      { h: 'The automation timeline', timeline: 'ecommerce' },
-      { h: 'Results', body: 'Cart recovery climbed from 4.8% to 31.2% within six weeks of deployment. Average order value increased 2.4x because personalised sequences effectively surfaced complementary products at the right moment. The support team now handles 32% of their previous ticket volume — the remainder is resolved autonomously. First response time dropped from 18 hours to under 90 seconds.' }
-    ]
-  },
-  recruiting: {
-    tag: 'Talent & Recruiting', tagClass: 'tag-hr',
-    question: 'Are your best candidates accepting offers while sitting in your unread pile?',
-    h1: 'AI Candidate Screening and Outreach Pipeline for a Specialist Staffing Agency',
-    sub: 'Manual CV screening was creating a 48-to-72-hour lag between application and first contact. In a competitive talent market, that lag was costing placements. We built an automated pipeline that scores, ranks, and initiates outreach within 12 minutes of application.',
-    stats: [{val:'87%',lab:'Screening time saved'},{val:'12 min',lab:'Application to contact'},{val:'3.2x',lab:'Qualified pipeline growth'},{val:'Zero',lab:'Qualified CVs missed'}],
-    sections: [
-      { h: 'The problem', body: 'A specialist technology staffing agency processing 150 to 200 applications per week was operating on a 48 to 72-hour initial screening cycle. Three recruiters were spending half their working day on CV review — a task that required genuine expertise to do well, but that was consuming time that should have been spent on client relationships and closing. In a market where top candidates are off the board in days, the lag was directly costing placements.', problem: 'We lost three strong placements in one quarter because we were too slow to call. These were people who applied to us first. We just did not move fast enough. In this market, 48 hours is an eternity — and the candidates knew they had options.' },
-      { h: 'What we built', solution: 'We built a multi-agent screening pipeline using LangGraph and Claude. Applications are ingested automatically from all channels — job boards, email, referrals — normalised into a structured format, and evaluated against configurable role-specific criteria. Each candidate receives a score, a plain-language reasoning summary, and a tier classification. Top-tier candidates receive a personalised outreach message within 12 minutes of application.', body: 'Recruiters start each morning with a ranked shortlist, a brief on each candidate including conversation starters drawn from their CV, and a log of which outreach messages have been sent and opened. The pipeline learns from recruiter feedback — when a recruiter overrides a tier decision, the reasoning is captured and fed back into future scoring logic for that role type.' },
-      { h: 'The automation timeline', timeline: 'recruiting' },
-      { h: 'Results', body: 'Recruiter screening time dropped 87%. The qualified pipeline tripled because the agency could now process volume they previously could not staff for. Time to first contact fell from 48 to 72 hours to 12 minutes on average. The agency reports that client satisfaction scores improved due to faster candidate presentation, and that recruiter morale improved because senior time shifted from administration to relationship work.' }
-    ]
-  }
-};
-
-const timelines = {
-  revenue: ['Data Sources Connect','Normalisation Layer','KPI Calculation','Anomaly Detection','Dashboard Refresh','Executive Summary'],
-  invoice: ['Project Milestone Hit','Hours Calculated','Invoice Generated','Approval Routed','Client Email Sent','Payment Reconciled'],
-  inventory: ['Sales Velocity Tracked','Reorder Point Calculated','Stock Alert Triggered','PO Auto-generated','Supplier Notified','Inventory Updated'],
-  followup: ['Lead Form Submitted','CRM Record Created','Voice Agent Calls','Lead Qualified','Agent Notified','Follow-up Scheduled'],
-  healthcare: ['Call Received','Availability Checked','Appointment Booked','Confirmation Sent','Reminder Scheduled','Staff Digest Sent'],
-  ecommerce: ['Cart Abandoned','Behaviour Scored','Sequence Triggered','Personalised Message Sent','Recovery Detected','Order Confirmed'],
-  recruiting: ['CV Received','Skills Extracted','Role Matching','Candidate Scored','Outreach Sent','Recruiter Briefed']
-};
-
-function openCase(key) {
-  const c = cases[key];
-  const tl = timelines[c.sections.find(s=>s.timeline)?.timeline || 'revenue'];
-  let html = `
-    <div class="case-hero">
-      <button class="case-back" onclick="showPage('home')">← Back to all case studies</button>
-      <span class="case-tag ${c.tagClass} case-page-tag">${c.tag}</span>
-      <div class="case-page-h1">${c.h1}</div>
-      <p class="case-page-sub">${c.sub}</p>
-      <div class="case-stats-row">
-        ${c.stats.map(s=>`<div class="case-stat"><div class="case-stat-val">${s.val}</div><div class="case-stat-lab">${s.lab}</div></div>`).join('')}
-      </div>
-    </div>
-    <div class="case-body">`;
-  c.sections.forEach(sec => {
-    html += `<h3>${sec.h}</h3>`;
-    if(sec.body) html += `<p>${sec.body}</p>`;
-    if(sec.problem) html += `<div class="problem-box"><p>"${sec.problem}"</p></div>`;
-    if(sec.solution) html += `<div class="solution-box"><p>${sec.solution}</p></div>`;
-    if(sec.timeline) {
-      const steps = timelines[sec.timeline];
-      html += `<div class="auto-timeline">
-        <div class="auto-timeline-title">Automation flow — how it runs</div>
-        <div class="auto-flow">
-          ${steps.map((s,i)=>`
-          <div class="auto-node">
-            <div class="auto-node-dot ${i===0?'lit':i===steps.length-1?'lit-green':''}">
-              <span class="auto-node-icon">${i+1}</span>
-            </div>
-            <div class="auto-node-label">${s}</div>
-            <div class="auto-node-sub">${i===0?'Trigger':'Auto'}</div>
-          </div>`).join('')}
-        </div>
-      </div>`;
-    }
-  });
-  html += `<div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
-    <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
-    <button onclick="showPage('home');setTimeout(()=>scrollTo('problems-section'),300)" class="btn-ghost" style="font-size:14px;padding:12px 24px;cursor:pointer;font-family:inherit">See more case studies</button>
-  </div></div>`;
-  document.getElementById('case-content').innerHTML = html;
-  showPage('case');
-  window.scrollTo(0,0);
-  // Animate nodes
-  setTimeout(()=>{
-    const nodes = document.querySelectorAll('.auto-node-dot:not(.lit):not(.lit-green)');
-    nodes.forEach((n,i)=>setTimeout(()=>n.classList.add('lit'),i*400+300));
-  },400);
-}
-
-// ── PAGE ROUTING ──
-function showPage(id) {
-  const target = document.getElementById('page-'+id);
-  if (!target) return;
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  target.classList.add('active');
-  window.scrollTo(0,0);
-  if(id==='home') setTimeout(initReveal,100);
-  if(id==='insights') renderArticlesList();
-}
-
-function scrollTo(id) {
-  showPage('home');
-  setTimeout(()=>{
-    const el = document.getElementById(id);
-    if(el) el.scrollIntoView({behavior:'smooth'});
-  },100);
-}
-
 // ── DEMO ANIMATIONS ──
 const demos = {
   revops: {
@@ -1417,16 +496,15 @@ const demos = {
 let currentDemo = 'revops';
 let demoAnim = null;
 
-function switchDemo(key) {
+function switchDemo(key, e) {
   currentDemo = key;
   document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));
-  event.target.classList.add('active');
+  e.target.classList.add('active');
   renderDemo(key);
 }
 
 function renderDemo(key) {
   const d = demos[key];
-  const W=100, H=100;
   let html = `<div style="position:relative;height:250px;margin-bottom:24px">
   <svg style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible" viewBox="0 0 100 100" preserveAspectRatio="none">`;
   d.edges.forEach(([a,b])=>{
@@ -1438,7 +516,6 @@ function renderDemo(key) {
     html+=`<div class="flow-node ${n.cls}" id="dn${i}" style="left:${n.x}%;top:${n.y}%;transform:translateY(-50%)">${n.label}<div class="flow-label">${n.sub}</div></div>`;
   });
   html+=`</div>`;
-  // timeline strip
   html+=`<div style="margin-top:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Automation sequence</div><div class="timeline-strip">`;
   d.steps.forEach((s,i)=>{
     html+=`<div class="tl-step"><div class="tl-dot" id="td${i}"></div><div class="tl-label">${s}</div></div>`;
@@ -1468,11 +545,10 @@ function animateDemo(d) {
   demoAnim = setInterval(tick, 1400);
 }
 
-// init
 renderDemo('revops');
 
 // ── SCROLL REVEAL ──
-function initReveal(){
+function initReveal() {
   const els = document.querySelectorAll('.rev');
   const io = new IntersectionObserver(e=>{
     e.forEach(el=>{ if(el.isIntersecting) el.target.classList.add('vis'); });
@@ -1480,168 +556,6 @@ function initReveal(){
   els.forEach(el=>{ el.classList.remove('vis'); io.observe(el); });
 }
 initReveal();
-
-// ── MOBILE MENU ──
-function toggleMenu(){
-  const c = document.querySelector('.nav-center');
-  const open = c.style.display==='flex';
-  c.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--white);padding:20px;gap:20px;border-bottom:1px solid var(--border);z-index:199;box-shadow:0 8px 24px rgba(0,0,0,.08)';
-}
-
-// ── ARTICLES DATA ──
-const articles = [
-  {
-    key: 'fail',
-    tag: 'Strategy',
-    read: '5 min read',
-    date: 'May 2025',
-    h1: 'Why Most AI Automation Projects Fail Before They Start',
-    excerpt: 'After 50+ production deployments, the failure pattern is consistent — and it almost never has anything to do with the technology.',
-    sections: [
-      { h: 'The pattern', paras: [
-        'In almost every engagement I take on, the client arrives with the same framing: "We want to automate X." They have identified a tool. Sometimes they have already paid for a subscription. What they have not done is map the process they are trying to automate.',
-        'This is where most AI projects fail. Not during implementation, and not because the technology is limited. They fail in the first conversation — when everyone nods along to a tool name without asking the prior question: what does this process actually look like today, step by step, exception by exception?'
-      ]},
-      { h: 'Process mapping is not a preamble. It is the work.', paras: [
-        'When I sit down with a client for a discovery session, I spend the first 40 minutes asking one question in many forms: "What actually happens?" Not what should happen. Not what the SOP says. What actually happens — including the exceptions, the workarounds, the steps only one person knows how to do.',
-        'This is where you find the real complexity. A straightforward invoicing automation project reveals that 20% of invoices require a manual override because one client negotiated a custom billing structure four years ago. An inventory reorder project reveals that one supplier has a 10-week lead time and must be treated differently from all others. A CRM automation project reveals that two team members have been entering data inconsistently for years.',
-        'None of this is in the SOP. All of it will break your automation if you do not account for it.'
-      ]},
-      { callout: 'Rule of thumb: if you cannot draw the current process on a whiteboard with the person who does it every day, including every exception they can name, you are not ready to automate it.' },
-      { h: 'The data readiness problem', paras: [
-        'The second place projects stall is data quality. You cannot automate a process that relies on data that does not exist in structured form, or that exists in three different places with three different formats.',
-        'Data readiness is a prerequisite for automation, not a detail to sort out later. When we take on an engagement, we assess data quality in week one. If the data is not ready, the first deliverable is a data normalisation plan — not automation code.'
-      ]},
-      { h: 'The constraint-first principle', paras: [
-        'The third failure mode is automating the wrong thing first. Teams typically automate the most visible pain point, or the thing that is easiest to automate, rather than the highest-value constraint.',
-        'I use a simple filter: identify the constraint in the workflow — the step that limits the throughput of everything downstream. Automate at the constraint first. Automating anywhere else is optimisation. Automating the constraint is transformation.',
-        'An invoicing automation that saves four hours per cycle is meaningful. But if the process it feeds — cash collection — is still manual, the compounding benefit is limited. Fix the constraint, not the symptom.'
-      ]},
-      { h: 'The question worth asking before you start', paras: [
-        'Before engaging any consultant, vendor, or tool, sit down with the people who actually do the work and ask: "If we could not change this process for the next six months, what would break first?" The answer is almost always the highest-priority automation candidate — and almost always the last place anyone was looking.'
-      ]}
-    ]
-  },
-  {
-    key: 'mcp',
-    tag: 'Technical',
-    read: '6 min read',
-    date: 'April 2025',
-    h1: 'MCP in Production: Giving Your Team a Natural Language Interface to Their Own Business',
-    excerpt: 'Most dashboards answer the questions you thought to ask when you built them. MCP changes that — your data becomes something you can have a conversation with.',
-    sections: [
-      { h: 'What MCP actually is', paras: [
-        'Model Context Protocol (MCP) is a standard that lets AI models like Claude connect directly to external tools and data sources — databases, CRMs, APIs, file systems — in a structured, repeatable way. Instead of copying data into a chat window or waiting for a report, a user can ask a question and the model fetches live data to answer it.',
-        'In practical terms: a finance lead opens Claude, asks "what is our net new ARR this week compared to last week, broken down by segment," and gets a real answer drawn from live HubSpot and accounting data — not an export from three days ago.'
-      ]},
-      { h: 'Why dashboards are not enough', paras: [
-        'Dashboards are good at answering the questions you thought to ask when you built them. They are static by design. The moment a stakeholder asks a question that was not anticipated in the original build — and they always do — someone needs to write a query, export the data, or ask an analyst.',
-        'This creates a dependency bottleneck. The people who need information most are often the least technical, and the people who can retrieve it are always busy. The lag between question and answer is where decisions get made on old data or on instinct.'
-      ]},
-      { callout: 'What MCP enables is not just faster data retrieval. It is a shift from "I need to ask someone to pull this for me" to "I can just ask."' },
-      { h: 'What a RevOps MCP implementation looks like', paras: [
-        'In one recent engagement, we connected Claude to a client\'s HubSpot instance, their accounting platform, and a Google Sheet they used for headcount planning. We built MCP server endpoints for each, exposed them to Claude, and gave the operations and finance team access.',
-        'Within a week, the questions they were asking had changed. Instead of monthly pipeline reviews, they were doing ad-hoc checks throughout the week. Instead of waiting for the weekly revenue report, the CFO was pulling deal velocity data before board calls. The behaviour shift was immediate and visible.'
-      ]},
-      { h: 'What it takes to build it', paras: [
-        'An MCP implementation requires three things: a clear map of which data sources will be connected and what queries they need to support, a set of well-designed server endpoints that handle authentication and data normalisation, and a testing process that validates the model\'s responses against known-correct data.',
-        'The last point is the most important. The model is only as reliable as the data it is reading and the instructions it is given about how to interpret it. We spend significant time on prompt design and response validation before handing over access to a finance team.'
-      ]},
-      { h: 'Who this is for', paras: [
-        'MCP is highest value for teams that have good data but poor access to it — where the information exists but retrieving it requires a technical intermediary. Finance teams, operations leads, and founders who want operational awareness without building a dedicated analytics function are the primary beneficiaries.',
-        'It is not a replacement for structured reporting or for teams that need auditable, timestamped data exports. It is a complement — a way to make the data you already have accessible to the people who need it most, on demand, in plain language.'
-      ]}
-    ]
-  },
-  {
-    key: 'voice',
-    tag: 'Voice AI',
-    read: '7 min read',
-    date: 'March 2025',
-    h1: 'Voice AI in 2025: Lessons from Live Deployments',
-    excerpt: 'Voice AI has moved from demo to production. These are the lessons that do not show up in the product demos — latency, fallback design, CRM integration, and when not to deploy it.',
-    sections: [
-      { h: 'Where voice AI actually works in 2025', paras: [
-        'Voice AI is genuinely production-ready for a specific category of use case: high-volume, time-sensitive outbound or inbound calls where the conversation is bounded and the outcome is structured. Lead qualification, appointment scheduling, follow-up sequences, and inbound FAQ handling are all solid deployments I have seen work well in production.',
-        'Where it struggles: open-ended discovery conversations, emotionally charged support interactions, and any call where the required information is not consistently available to the agent in real time. The model can handle nuance — but it cannot handle data it does not have access to.'
-      ]},
-      { h: 'The latency problem and how to handle it', paras: [
-        'The most common complaint from early voice AI deployments is latency — the pause between the user finishing a sentence and the agent responding. This is improving rapidly with newer models, but it is still a design consideration.',
-        'The practical fix is in prompt engineering and conversation architecture. Agents should be designed to respond with a brief acknowledgement before computing a longer response. Filler phrases like "let me check that for you" buy 800 to 1200 milliseconds without creating an uncomfortable silence. More importantly, the agent should be designed to minimise the number of real-time lookups required in the critical path of a conversation.'
-      ]},
-      { callout: 'The biggest voice AI mistakes I see: overloading the agent with too many tasks, not designing for the fallback case, and treating it as a drop-in replacement for a human rather than a different kind of interaction.' },
-      { h: 'CRM integration is non-negotiable', paras: [
-        'A voice AI agent that does not write back to the CRM is a partial solution. The value of a voice follow-up agent is not just the conversation — it is that the outcome of every conversation is captured, structured, and actionable without human transcription.',
-        'In every deployment we run, CRM write-back is built into the success criteria from day one. The agent captures qualification status, key responses, objections raised, and next steps — and creates or updates the CRM record in real time. The human team picks up from a warm, documented context rather than a cold call.'
-      ]},
-      { h: 'Designing the fallback correctly', paras: [
-        'Every voice AI deployment needs a clearly designed fallback path — not as an afterthought, but as a core part of the architecture. The agent will encounter calls it cannot handle: technical failures, caller distress, legal questions, or simply a caller who wants a human.',
-        'A bad fallback is silence, a generic error message, or a long hold. A good fallback is a smooth, natural transfer to a human with a real-time summary of what has been discussed, and a follow-up task created so nothing falls through the cracks.',
-        'We test fallback paths explicitly before any deployment goes live. They are the highest-risk moments in the experience and the ones most likely to damage trust with the caller.'
-      ]},
-      { h: 'When not to deploy voice AI', paras: [
-        'Voice AI is not always the right answer. If call volume is low, the ROI is limited. If the conversation genuinely requires human judgment and empathy — a complaint, a complex service issue, a high-value relationship — voice AI in those moments can actively damage the customer relationship.',
-        'The deployments that work best are the ones where the use case is genuinely bounded, the caller expectation is set correctly, and the human team is freed up to focus on the conversations that actually require them. Voice AI is a leverage tool, not a replacement strategy.'
-      ]}
-    ]
-  }
-];
-
-function renderArticlesList() {
-  const el = document.getElementById('articles-list-content');
-  if (!el) return;
-  el.innerHTML = articles.map(a => `
-    <div class="article-card" onclick="openArticle('${a.key}')">
-      <div class="article-meta">
-        <span class="article-tag">${a.tag}</span>
-        <span class="article-read">${a.read}</span>
-        <span class="article-date">${a.date}</span>
-      </div>
-      <div class="article-h2">${a.h1}</div>
-      <div class="article-excerpt">${a.excerpt}</div>
-      <span class="article-cta">Read article</span>
-    </div>`).join('');
-}
-
-function openArticle(key) {
-  const a = articles.find(x => x.key === key);
-  if (!a) return;
-  let html = `<div class="article-hero">
-    <button class="case-back" onclick="showPage('insights')">← Back to insights</button>
-    <div class="article-meta" style="margin-bottom:20px">
-      <span class="article-tag">${a.tag}</span>
-      <span class="article-read">${a.read}</span>
-      <span class="article-date">${a.date}</span>
-    </div>
-    <h1 class="case-page-h1" style="font-size:clamp(24px,3.5vw,40px)">${a.h1}</h1>
-    <p class="case-page-sub">${a.excerpt}</p>
-  </div>
-  <div class="article-body-wrap">`;
-  a.sections.forEach(sec => {
-    if (sec.h) html += `<h3>${sec.h}</h3>`;
-    if (sec.paras) sec.paras.forEach(p => { html += `<p>${p}</p>`; });
-    if (sec.callout) html += `<div class="article-callout"><p>${sec.callout}</p></div>`;
-  });
-  html += `<div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
-    <a href="https://calendly.com/turyal" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
-    <button onclick="showPage('insights')" class="btn-ghost" style="font-size:14px;padding:12px 24px;cursor:pointer;font-family:inherit">More insights</button>
-  </div></div>`;
-  document.getElementById('article-content').innerHTML = html;
-  showPage('article');
-  window.scrollTo(0,0);
-}
-
-// ── SEND MESSAGE ──
-function sendMsg(){
-  const n=document.getElementById('fn').value;
-  const e=document.getElementById('fe').value;
-  const c=document.getElementById('fc').value;
-  const m=document.getElementById('fm').value;
-  if(!n||!e||!m){alert('Please fill in your name, email, and message.');return;}
-  const s=encodeURIComponent('Enquiry from altyur.cloud'+(c?' — '+c:''));
-  const b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nCompany: '+(c||'—')+'\n\n'+m);
-  window.location.href=`mailto:turyal@hytgenx.ai?subject=${s}&body=${b}`;
-}
 </script>
 </body>
 </html>
