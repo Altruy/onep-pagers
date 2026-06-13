@@ -45,20 +45,35 @@
     <a href="/" class="case-back">← Back to home</a>
     <div class="section-eyebrow">How it works</div>
     <h1 class="section-h2" style="max-width:640px">From the first conversation<br>to <em>deployed and running.</em></h1>
-    <p class="section-sub" style="margin-bottom:0">Select an operation type below to see what AI automation looks like in practice. Then see the four-stage engagement model that takes you from discovery to a production system.</p>
+    <p class="section-sub" style="margin-bottom:0">Every engagement follows the same four stages. Each one produces something tangible. Here is exactly what happens — and what changes — at every step.</p>
   </div>
 
-  <!-- DEMO -->
-  <section id="demo-section" style="margin-top:0">
-    <div class="demo-wrap" style="max-width:1100px;margin:0 auto;padding:60px 48px">
-      <div class="demo-tabs" style="margin-bottom:40px">
-        <button class="demo-tab active" onclick="switchDemo('revops',event)">Revenue Ops</button>
-        <button class="demo-tab" onclick="switchDemo('invoice',event)">Invoicing</button>
-        <button class="demo-tab" onclick="switchDemo('inventory',event)">Inventory</button>
-        <button class="demo-tab" onclick="switchDemo('followup',event)">Follow-ups</button>
-      </div>
-      <div class="demo-canvas">
-        <div id="demo-display"></div>
+  <!-- BEFORE / AFTER -->
+  <section style="padding:80px 48px;background:var(--bg)">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="section-eyebrow">The transformation</div>
+      <h2 class="section-h2" style="margin-bottom:48px">Before we work together.<br><em>After we work together.</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+        <!-- BEFORE -->
+        <div style="background:var(--white);padding:36px 32px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#92400e;margin-bottom:24px;display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block"></span>Before</div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="padding:14px 16px;background:#fffbeb;border:1px solid #fde68a;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#92400e;margin-bottom:4px">Revenue reporting</div><div style="font-size:12px;color:#a16207;line-height:1.6">8 hours every Monday pulling data from HubSpot, QuickBooks, and spreadsheets. Report is 48 hours old by the time it is ready.</div></div>
+            <div style="padding:14px 16px;background:#fffbeb;border:1px solid #fde68a;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#92400e;margin-bottom:4px">Lead follow-up</div><div style="font-size:12px;color:#a16207;line-height:1.6">Average 4-hour response time. Leads go cold. By the time an agent calls, the prospect has spoken to two competitors.</div></div>
+            <div style="padding:14px 16px;background:#fffbeb;border:1px solid #fde68a;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#92400e;margin-bottom:4px">Invoice cycle</div><div style="font-size:12px;color:#a16207;line-height:1.6">Two full days of the finance team every billing cycle. Chasing approvals internally. Late dispatch. Late payments.</div></div>
+            <div style="padding:14px 16px;background:#fffbeb;border:1px solid #fde68a;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#92400e;margin-bottom:4px">Candidate screening</div><div style="font-size:12px;color:#a16207;line-height:1.6">Half a recruiter's week on CV review. 48–72 hour lag before qualified candidates hear back. Top talent gone.</div></div>
+          </div>
+        </div>
+        <!-- AFTER -->
+        <div style="background:var(--white);padding:36px 32px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#166534;margin-bottom:24px;display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block"></span>After</div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="padding:14px 16px;background:#f0fdf4;border:1px solid #86efac;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#166534;margin-bottom:4px">Revenue reporting</div><div style="font-size:12px;color:#15803d;line-height:1.6">Executive summary generated automatically before 8am Monday. Always current. Finance team focused on analysis, not aggregation.</div></div>
+            <div style="padding:14px 16px;background:#f0fdf4;border:1px solid #86efac;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#166534;margin-bottom:4px">Lead follow-up</div><div style="font-size:12px;color:#15803d;line-height:1.6">Voice AI calls within 60 seconds. Qualifies, logs, and routes. 200+ leads handled daily. Agents pick up warm, documented conversations.</div></div>
+            <div style="padding:14px 16px;background:#f0fdf4;border:1px solid #86efac;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#166534;margin-bottom:4px">Invoice cycle</div><div style="font-size:12px;color:#15803d;line-height:1.6">Milestone triggers draft, approval routes via Slack, client receives invoice. 20 minutes of exception handling per cycle. On-time 99%.</div></div>
+            <div style="padding:14px 16px;background:#f0fdf4;border:1px solid #86efac;border-radius:4px"><div style="font-size:13px;font-weight:600;color:#166534;margin-bottom:4px">Candidate screening</div><div style="font-size:12px;color:#15803d;line-height:1.6">CV in → scored and ranked in minutes → personalised outreach sent in 12 minutes. Recruiter starts the day with a shortlist, not a pile.</div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -140,10 +155,10 @@
     <div class="footer-cols">
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="/#services-section">Workflow Automation</a>
-        <a href="/#services-section">Multi-Agent Systems</a>
-        <a href="/#services-section">Voice AI Agents</a>
-        <a href="/#services-section">RevOps via MCP</a>
+        <a href="/services/workflow-automation">Workflow Automation</a>
+        <a href="/services/ai-agents">Multi-Agent Systems</a>
+        <a href="/services/voice-ai">Voice AI Agents</a>
+        <a href="/services/revops-mcp">RevOps via MCP</a>
       </div>
       <div class="footer-col">
         <h4>Work</h4>
@@ -167,31 +182,5 @@
   </div>
 </footer>
 <script src="/shared.js"></script>
-<script>
-const demos = {
-  revops:{nodes:[{label:'HubSpot CRM',sub:'Deal data',cls:'trigger',x:3,y:35},{label:'QuickBooks',sub:'Financials',cls:'process',x:3,y:65},{label:'Normalisation',sub:'n8n pipeline',cls:'process',x:23,y:50},{label:'KPI Engine',sub:'Python',cls:'process',x:43,y:50},{label:'Claude MCP',sub:'Intelligence layer',cls:'process',x:63,y:50},{label:'Live Dashboard',sub:'Always current',cls:'output',x:83,y:35},{label:'Executive Summary',sub:'Auto-generated',cls:'output',x:83,y:65}],edges:[[0,2],[1,2],[2,3],[3,4],[4,5],[4,6]],steps:['HubSpot','QuickBooks','Normalise','KPIs','AI Layer','Output']},
-  invoice:{nodes:[{label:'Milestone Complete',sub:'Trigger',cls:'trigger',x:5,y:50},{label:'Calculate Hours',sub:'Project tool',cls:'process',x:23,y:50},{label:'Generate Invoice',sub:'Auto PDF',cls:'process',x:41,y:50},{label:'Route Approval',sub:'Slack',cls:'process',x:59,y:50},{label:'Send to Client',sub:'Email',cls:'process',x:77,y:35},{label:'Reconcile Payment',sub:'QuickBooks',cls:'output',x:77,y:65}],edges:[[0,1],[1,2],[2,3],[3,4],[3,5]],steps:['Milestone','Hours','Invoice','Approval','Send']},
-  inventory:{nodes:[{label:'Sales Data',sub:'POS feed',cls:'trigger',x:5,y:50},{label:'Velocity Model',sub:'AI prediction',cls:'process',x:25,y:50},{label:'Threshold Check',sub:'Dynamic rules',cls:'process',x:45,y:35},{label:'Overstock Alert',sub:'Flag & report',cls:'process',x:45,y:65},{label:'Auto PO',sub:'Supplier API',cls:'process',x:65,y:35},{label:'Inventory Updated',sub:'Real-time',cls:'output',x:83,y:50}],edges:[[0,1],[1,2],[1,3],[2,4],[4,5],[3,5]],steps:['Feed','Model','Check','PO','Updated']},
-  followup:{nodes:[{label:'Lead Submitted',sub:'Form trigger',cls:'trigger',x:5,y:50},{label:'CRM Record',sub:'Auto-created',cls:'process',x:23,y:50},{label:'Voice Agent Calls',sub:'Within 60s',cls:'process',x:41,y:50},{label:'Lead Qualified',sub:'AI conversation',cls:'process',x:59,y:35},{label:'Unqualified',sub:'Nurture sequence',cls:'process',x:59,y:65},{label:'Agent Notified',sub:'Hot lead ready',cls:'output',x:80,y:50}],edges:[[0,1],[1,2],[2,3],[2,4],[3,5],[4,5]],steps:['Submit','CRM','Call','Qualify','Notify']}
-};
-let demoAnim=null;
-function switchDemo(key,e){document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));e.target.classList.add('active');renderDemo(key);}
-function renderDemo(key){
-  const d=demos[key];
-  let html=`<div style="position:relative;height:250px;margin-bottom:24px"><svg style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible" viewBox="0 0 100 100" preserveAspectRatio="none">`;
-  d.edges.forEach(([a,b])=>{const na=d.nodes[a],nb=d.nodes[b];html+=`<line class="flow-path" x1="${na.x+8}%" y1="${na.y}%" x2="${nb.x}%" y2="${nb.y}%" vector-effect="non-scaling-stroke"/>`;});
-  html+=`</svg>`;
-  d.nodes.forEach((n,i)=>{html+=`<div class="flow-node ${n.cls}" id="dn${i}" style="left:${n.x}%;top:${n.y}%;transform:translateY(-50%)">${n.label}<div class="flow-label">${n.sub}</div></div>`;});
-  html+=`</div><div style="margin-top:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Automation sequence</div><div class="timeline-strip">`;
-  d.steps.forEach((s,i)=>{html+=`<div class="tl-step"><div class="tl-dot" id="td${i}"></div><div class="tl-label">${s}</div></div>`;});
-  html+=`</div></div>`;
-  document.getElementById('demo-display').innerHTML=html;
-  if(demoAnim)clearInterval(demoAnim);
-  let step=0;
-  function tick(){d.nodes.forEach((_,i)=>{const el=document.getElementById('dn'+i);if(el)el.classList.toggle('highlight',i===step);});d.steps.forEach((_,i)=>{const dot=document.getElementById('td'+i);if(!dot)return;dot.className='tl-dot'+(i<step?' done':i===step?' active':'');});step=(step+1)%d.nodes.length;}
-  tick();demoAnim=setInterval(tick,1400);
-}
-renderDemo('revops');
-</script>
 </body>
 </html>
