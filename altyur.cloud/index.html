@@ -262,7 +262,10 @@
           <span class="roi-metric-label">5-year net return</span>
           <span class="roi-metric-value" id="roi-v-5yr">$118,500</span>
         </div>
-        <a href="/offer#audit" style="display:block;text-align:center;margin-top:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;letter-spacing:.04em;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Get an accurate number for your business →</a>
+        <div class="roi-cta-bar" id="roi-cta-bar">
+          <span class="roi-cta-text" id="roi-cta-msg"><strong>Strong ROI case.</strong> Book a session to confirm the numbers.</span>
+          <button id="roi-cta-btn" onclick="openBooking()" class="btn-dark" style="font-size:13px;padding:10px 20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0">Book the free session →</button>
+        </div>
       </div>
     </div>
   </div>
@@ -418,7 +421,7 @@
       <p class="flagship-sub">Not a vague discovery call. A structured 5-day deep-dive into your operations that produces a prioritised automation roadmap — with ROI models, tool recommendations, and a phased implementation plan your team can act on immediately.</p>
       <div class="flagship-actions">
         <a href="/offer#audit" class="btn-dark" style="font-size:14px;padding:13px 26px;background:#fff;color:var(--text);border-color:#fff">See the full offer →</a>
-        <a href="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" target="_blank" class="btn-ghost" style="font-size:14px;padding:13px 26px;border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)">Book a free intro call</a>
+        <button onclick="openBooking()" class="btn-ghost" style="font-size:14px;padding:13px 26px;border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);background:transparent;cursor:pointer;font-family:'Inter',sans-serif">Book a free intro call</button>
       </div>
     </div>
     <div class="flagship-card">
@@ -477,19 +480,63 @@
   </div>
 </section>
 
-<!-- ABOUT CTA STRIP -->
-<div class="about-cta-strip">
-  <div class="about-cta-inner rev">
-    <div class="about-cta-text">
-      <h2>The first session costs nothing.<br>The question is what the next six months cost without this.</h2>
-      <p style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.8">We work with a small number of clients at a time. Every engagement is led by our CTO from first session through to production — not handed off to a delivery team.</p>
+<!-- THREE WAYS TO START -->
+<section class="start-section" id="book">
+  <div class="start-wrap">
+    <div class="start-header rev">
+      <div class="section-eyebrow">Get started</div>
+      <h2 class="section-h2">Choose your<br><em>entry point.</em></h2>
+      <p>Every engagement starts with a conversation. Pick the format that works for you — no commitment required at any stage.</p>
     </div>
-    <div class="about-cta-actions">
-      <a href="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" target="_blank" class="btn-dark" style="font-size:14px;padding:13px 26px;white-space:nowrap">Book the free session</a>
-      <a href="/about" class="btn-ghost" style="font-size:13px;padding:10px 20px;white-space:nowrap">About Turyal →</a>
+    <div class="start-grid rev d1">
+
+      <div class="start-card">
+        <span class="start-card-badge badge-low">Lowest friction</span>
+        <div class="start-card-num">✉</div>
+        <h3 class="start-card-title">Send a message</h3>
+        <p class="start-card-desc">Tell us what you're working on. We respond within one business day. No pitch, no follow-up sequence — just a direct reply from our CTO.</p>
+        <a href="mailto:turyal.neeshat@hytgenx.ai" class="btn-ghost" style="font-size:13px;padding:10px 18px;text-align:center">turyal.neeshat@hytgenx.ai</a>
+        <div class="start-card-note">Response within 1 business day · No forms</div>
+      </div>
+
+      <div class="start-card start-card-primary">
+        <span class="start-card-badge badge-recommended">Recommended</span>
+        <div class="start-card-num">📞</div>
+        <h3 class="start-card-title">Book the free session</h3>
+        <p class="start-card-desc">20 minutes. We map your operations, identify where AI gives you the most leverage, and give you an honest answer on whether it makes sense to build anything at all. No pitch at the end.</p>
+        <button onclick="openBooking()" class="btn-dark" style="font-size:14px;padding:12px 20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;width:100%">Book now — it's free</button>
+        <div class="start-card-proof">No commitment. No proposal. <strong>Just a conversation.</strong></div>
+      </div>
+
+      <div class="start-card">
+        <span class="start-card-badge badge-value">Highest value</span>
+        <div class="start-card-num">📋</div>
+        <h3 class="start-card-title">Request the Audit</h3>
+        <p class="start-card-desc">5 working days. We document your operations, rank your automation opportunities by ROI, and deliver a roadmap your leadership team can act on — whether you build with us or not.</p>
+        <a href="/offer#audit" class="btn-ghost" style="font-size:13px;padding:10px 18px;text-align:center">See what's included →</a>
+        <div class="start-card-note">Fixed scope · Fixed deliverable · You keep it</div>
+      </div>
+
     </div>
+
+    <!-- AVAILABILITY SIGNAL -->
+    <div class="rev" style="margin-top:40px;padding:20px 28px;background:var(--white);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,.15)"></div>
+        <span style="font-size:13px;font-weight:600;color:var(--text)">Currently taking new engagements</span>
+        <span style="font-size:13px;color:var(--muted)">— We keep a small client list. If timing is right, let's talk.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:11px;color:var(--muted)">Top 1% Upwork</span>
+        <span style="color:var(--border2)">·</span>
+        <span style="font-size:11px;color:var(--muted)">50+ systems shipped</span>
+        <span style="color:var(--border2)">·</span>
+        <span style="font-size:11px;color:var(--muted)">CTO-led every engagement</span>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer id="main-footer">
@@ -512,12 +559,51 @@
   </div>
 </footer>
 
-<!-- FLOATING CTA -->
+<!-- FLOATING CTA (desktop) -->
 <div class="float-cta" id="float-cta">
-  <a href="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" target="_blank" class="float-cta-btn">
+  <button onclick="openBooking()" class="float-cta-btn" style="border:none;cursor:pointer;font-family:'Inter',sans-serif">
     Book a free session
     <span class="float-cta-arrow">→</span>
-  </a>
+  </button>
+</div>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-sticky" id="mobile-sticky">
+  <button onclick="openBooking()" class="mobile-sticky-cta">Book a free session</button>
+  <a href="mailto:turyal.neeshat@hytgenx.ai" class="mobile-sticky-email">or email us</a>
+</div>
+
+<!-- BOOKING PANEL -->
+<div class="booking-panel-overlay" id="booking-overlay" onclick="closeBooking()"></div>
+<div class="booking-panel" id="booking-panel">
+  <div class="booking-panel-head">
+    <span class="booking-panel-title">Book your free 20-minute session</span>
+    <button class="booking-panel-close" onclick="closeBooking()">✕</button>
+  </div>
+  <div class="booking-panel-trust">
+    <span class="bpt">✓ <strong>Free</strong> — no credit card</span>
+    <span class="bpt">✓ <strong>No pitch</strong> at the end</span>
+    <span class="bpt">✓ <strong>Top 1%</strong> Upwork verified</span>
+  </div>
+  <div class="calendly-inline-widget" data-url="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</div>
+
+<!-- EXIT INTENT POPUP -->
+<div class="exit-popup-overlay" id="exit-overlay">
+  <div class="exit-popup">
+    <button class="exit-popup-close" onclick="closeExit()">✕</button>
+    <div class="exit-popup-eyebrow">Before you go</div>
+    <h3>Take your ROI estimate with you.</h3>
+    <p>Send yourself the numbers you just calculated — plus our benchmark data from 50+ production AI deployments.</p>
+    <form class="exit-popup-form" onsubmit="submitExit(event)">
+      <input type="email" id="exit-email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-dark" style="font-size:13px;padding:11px 20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap">Send the report</button>
+    </form>
+    <div class="exit-popup-divider"><span>or</span></div>
+    <button onclick="openBookingFromExit()" class="btn-dark" style="width:100%;font-size:14px;padding:13px;border:none;cursor:pointer;font-family:'Inter',sans-serif">Book the free 20-minute session instead</button>
+    <p class="exit-popup-skip" onclick="closeExit()" style="margin-top:16px">No thanks, I'll come back later</p>
+  </div>
 </div>
 
 <script src="/shared.js"></script>
@@ -565,11 +651,12 @@ const counterIO = new IntersectionObserver(entries => {
 },{threshold:0.6});
 document.querySelectorAll('.counter').forEach(el => counterIO.observe(el));
 
-// ── FLOATING CTA ──
+// ── FLOATING CTA (desktop only) ──
 const floatEl = document.getElementById('float-cta');
 window.addEventListener('scroll', () => {
   const hero = document.getElementById('hero-wrap');
-  if (floatEl && hero) floatEl.classList.toggle('visible', hero.getBoundingClientRect().bottom < 0);
+  if (floatEl && hero && window.innerWidth > 960)
+    floatEl.classList.toggle('visible', hero.getBoundingClientRect().bottom < 0);
 },{passive:true});
 
 // ── DEMO ──
@@ -602,6 +689,46 @@ function renderDemo(key){
 }
 renderDemo('revops');
 
+// ── BOOKING PANEL ──
+function openBooking() {
+  document.getElementById('booking-overlay').classList.add('open');
+  document.getElementById('booking-panel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBooking() {
+  document.getElementById('booking-overlay').classList.remove('open');
+  document.getElementById('booking-panel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeBooking(); closeExit(); } });
+
+// ── EXIT INTENT ──
+let exitShown = false;
+document.addEventListener('mouseleave', e => {
+  if (e.clientY < 10 && !exitShown && !sessionStorage.getItem('exitSeen')) {
+    exitShown = true;
+    sessionStorage.setItem('exitSeen', '1');
+    setTimeout(() => document.getElementById('exit-overlay').classList.add('open'), 300);
+  }
+});
+function closeExit() { document.getElementById('exit-overlay').classList.remove('open'); }
+function openBookingFromExit() { closeExit(); setTimeout(openBooking, 300); }
+function submitExit(e) {
+  e.preventDefault();
+  const email = document.getElementById('exit-email').value;
+  window.location.href = `mailto:turyal.neeshat@hytgenx.ai?subject=ROI Report Request&body=Please send me the AI automation ROI report and benchmarks.%0A%0AMy email: ${email}`;
+  closeExit();
+}
+
+// ── MOBILE STICKY ──
+const mobileSticky = document.getElementById('mobile-sticky');
+window.addEventListener('scroll', () => {
+  const hero = document.getElementById('hero-wrap');
+  if (mobileSticky && hero && window.innerWidth <= 960) {
+    mobileSticky.classList.toggle('visible', hero.getBoundingClientRect().bottom < 0);
+  }
+}, {passive: true});
+
 // ── ROI CALCULATOR ──
 function calcROI() {
   const rate   = +document.getElementById('roi-rate').value;
@@ -621,6 +748,28 @@ function calcROI() {
   document.getElementById('roi-v-savings').textContent = fmt(savings);
   document.getElementById('roi-v-payback').textContent = payback > 0 ? payback.toFixed(1) + ' mo' : '—';
   document.getElementById('roi-v-5yr').textContent     = fmt(fiveYear);
+  // Contextual CTA
+  const bar = document.getElementById('roi-cta-bar');
+  const msg = document.getElementById('roi-cta-msg');
+  const btn = document.getElementById('roi-cta-btn');
+  if (bar && msg && btn) {
+    if (savings > 50000) {
+      bar.className = 'roi-cta-bar high-value';
+      msg.innerHTML = '<strong>High-impact opportunity identified.</strong> At these numbers, the Audit pays for itself in weeks. Let\'s build the case.';
+      btn.textContent = 'Request the AI Operations Audit →';
+      btn.onclick = () => { window.location.href = '/offer#audit'; };
+    } else if (savings > 15000) {
+      bar.className = 'roi-cta-bar high-value';
+      msg.innerHTML = '<strong>Strong ROI case.</strong> This is exactly the range where our clients see the fastest payback. Book a session to confirm the numbers.';
+      btn.textContent = 'Book the free session →';
+      btn.onclick = openBooking;
+    } else {
+      bar.className = 'roi-cta-bar';
+      msg.innerHTML = '<strong>Smaller operation — still worth examining.</strong> Email us your situation and we\'ll tell you honestly if automation makes sense.';
+      btn.textContent = 'Send us a message →';
+      btn.onclick = () => { window.location.href = 'mailto:turyal.neeshat@hytgenx.ai'; };
+    }
+  }
 }
 calcROI();
 
