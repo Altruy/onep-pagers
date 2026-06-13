@@ -137,6 +137,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;ali
 .float-cta-arrow{transition:transform .2s}
 .float-cta-btn:hover .float-cta-arrow{transform:translateX(3px)}
 
+/* ── TESTIMONIALS ── */
+.testimonials-section{padding:100px 48px;background:var(--bg)}
+.testimonials-wrap{max-width:1100px;margin:0 auto}
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
+.testimonial-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px 28px;position:relative}
+.testimonial-card::before{content:'\201C';position:absolute;top:16px;right:24px;font-family:'Playfair Display',serif;font-size:64px;color:var(--border2);line-height:1}
+.testimonial-quote{font-size:14px;color:var(--text2);line-height:1.9;margin-bottom:20px;font-style:italic}
+.testimonial-meta{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border)}
+.testimonial-role{font-size:12px;color:var(--muted);font-weight:500}
+.testimonial-verified{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:4px}
+.testimonial-verified::before{content:'✓';font-size:11px}
+
+/* ── FLAGSHIP OFFER ── */
+.flagship-section{background:var(--text);padding:80px 48px}
+.flagship-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.flagship-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px}
+.flagship-h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,42px);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.025em;margin-bottom:16px}
+.flagship-h2 em{font-style:italic;color:#93c5fd}
+.flagship-sub{font-size:15px;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:32px}
+.flagship-actions{display:flex;gap:12px;flex-wrap:wrap}
+.flagship-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:36px 32px}
+.flagship-card-title{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:24px}
+.flagship-deliverables{display:flex;flex-direction:column;gap:14px}
+.flagship-item{display:flex;align-items:flex-start;gap:12px}
+.flagship-item-dot{width:18px;height:18px;border-radius:50%;background:rgba(29,78,216,.4);border:1px solid rgba(96,165,250,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flagship-item-dot span{width:6px;height:6px;border-radius:50%;background:#93c5fd}
+.flagship-item-text{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6}
+.flagship-item-text strong{color:#fff;display:block;font-weight:600;margin-bottom:2px}
+
 /* ── ABOUT CTA STRIP ── */
 .about-cta-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 48px}
 .about-cta-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
@@ -431,6 +460,9 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   .hero-split{grid-template-columns:1fr;gap:40px;padding:100px 20px 60px}
+  .testimonials-grid{grid-template-columns:1fr}
+  .flagship-wrap{grid-template-columns:1fr;gap:40px}
+  .testimonials-section,.flagship-section{padding-left:20px;padding-right:20px}
   .cost-cards{grid-template-columns:1fr}
   .about-cta-inner{grid-template-columns:1fr;gap:28px}
   .about-cta-actions{align-items:flex-start}
