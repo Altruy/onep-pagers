@@ -80,6 +80,16 @@
     <p>A professional services firm billing 60–80 clients monthly was running their entire invoicing operation through QuickBooks, a shared Google Sheet, and manual email drafts. Each billing cycle required two days of concentrated effort — pulling project data, calculating billable hours, generating PDFs, chasing approvals, sending emails, and reconciling payments manually.</p>
     <div class="problem-box"><p>"The worst part was chasing approvals internally. A partner would be in client meetings for three days, and invoices would just sit there. Then we would send late, and then clients would pay late. The whole cycle was broken."</p></div>
     <h3>What we built</h3>
+<div class="case-screenshots-pair">
+  <figure class="case-screenshot">
+    <img src="/img/screenshots/sales-invoice-portal.jpg" alt="Automated invoice runs portal showing completed, running, and flagged invoices with supplier data and timestamps" loading="lazy">
+    <figcaption>The invoice automation portal — every run tracked automatically with status, supplier, and processing timestamps.</figcaption>
+  </figure>
+  <figure class="case-screenshot">
+    <img src="/img/screenshots/sales-invoice-portal2.jpg" alt="Invoice run detail panel showing period, status, document links and commission report outputs" loading="lazy">
+    <figcaption>Run detail view — documents generated, reports attached, and status updated without manual input.</figcaption>
+  </figure>
+</div>
     <div class="solution-box"><p>We built a fully automated invoicing pipeline using n8n, integrated with their project management tool, QuickBooks, and email. When a project milestone is marked complete, the workflow automatically calculates billable amounts, generates a formatted invoice, routes it for Slack approval, and sends it on approval — all without human input.</p></div>
     <h3>The automation timeline</h3>
     <div class="auto-timeline">

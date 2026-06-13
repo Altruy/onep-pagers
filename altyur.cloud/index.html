@@ -208,6 +208,66 @@
   </div>
 </section>
 
+<!-- ROI CALCULATOR -->
+<section class="roi-section" id="roi-calculator">
+  <div class="roi-wrap">
+    <div class="roi-header rev">
+      <div class="section-eyebrow">ROI Calculator</div>
+      <h2 class="section-h2">What is it costing<br><em style="color:#93c5fd">your business?</em></h2>
+      <p>Adjust the sliders to model your specific situation. Most businesses are surprised how fast automation pays for itself.</p>
+    </div>
+    <div class="roi-layout">
+      <div class="roi-sliders">
+        <div class="roi-slider-group">
+          <div class="roi-slider-top">
+            <span class="roi-slider-label">Team hourly rate</span>
+            <span class="roi-slider-number" id="roi-rate-disp">$50 / hr</span>
+          </div>
+          <input type="range" class="roi-slider" id="roi-rate" min="15" max="200" value="50" oninput="calcROI()">
+        </div>
+        <div class="roi-slider-group">
+          <div class="roi-slider-top">
+            <span class="roi-slider-label">Manual hours per week</span>
+            <span class="roi-slider-number" id="roi-hours-disp">10 hrs / wk</span>
+          </div>
+          <input type="range" class="roi-slider" id="roi-hours" min="1" max="80" value="10" oninput="calcROI()">
+        </div>
+        <div class="roi-slider-group">
+          <div class="roi-slider-top">
+            <span class="roi-slider-label">Automation deployment cost</span>
+            <span class="roi-slider-number" id="roi-deploy-disp">$5,000</span>
+          </div>
+          <input type="range" class="roi-slider" id="roi-deploy" min="500" max="50000" step="500" value="5000" oninput="calcROI()">
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,.25);line-height:1.7;margin-top:8px">Based on a 95% reduction in manual time — consistent with our production deployments. Your actual results depend on process complexity.</p>
+      </div>
+      <div class="roi-output">
+        <div class="roi-metric">
+          <span class="roi-metric-label">Annual manual cost</span>
+          <span class="roi-metric-value" id="roi-v-manual">$26,000</span>
+        </div>
+        <div class="roi-metric">
+          <span class="roi-metric-label">Post-automation cost</span>
+          <span class="roi-metric-value" id="roi-v-post">$1,300</span>
+        </div>
+        <div class="roi-metric highlight">
+          <span class="roi-metric-label">Annual savings</span>
+          <span class="roi-metric-value" id="roi-v-savings">$24,700</span>
+        </div>
+        <div class="roi-metric">
+          <span class="roi-metric-label">Payback period</span>
+          <span class="roi-metric-value" id="roi-v-payback">2.4 mo</span>
+        </div>
+        <div class="roi-metric highlight">
+          <span class="roi-metric-label">5-year net return</span>
+          <span class="roi-metric-value" id="roi-v-5yr">$118,500</span>
+        </div>
+        <a href="/offer#audit" style="display:block;text-align:center;margin-top:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;letter-spacing:.04em;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Get an accurate number for your business →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DEMO -->
 <section id="demo-section" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 48px">
   <div class="demo-wrap">
@@ -226,90 +286,71 @@
   </div>
 </section>
 
-<!-- CASE EVIDENCE -->
-<section id="problems-section" style="padding:100px 48px">
-  <div class="problems-wrap">
-    <div class="rev">
-      <div class="section-eyebrow">Case studies</div>
-      <h2 class="section-h2">We have solved this<br><em>before.</em></h2>
-      <p class="section-sub">Real deployments — the problem, what we built, and what changed. Click any card for the full story.</p>
+<!-- CASE EVIDENCE — compact keyword grid -->
+<section class="cases-compact-section" id="problems-section">
+  <div class="cases-compact-wrap">
+    <div class="cases-compact-header rev">
+      <div>
+        <div class="section-eyebrow">Case studies</div>
+        <h2 class="section-h2" style="margin-bottom:0">9 problems.<br><em>9 production solutions.</em></h2>
+      </div>
+      <a href="/case-studies" class="btn-ghost" style="font-size:13px;white-space:nowrap">See all case studies →</a>
     </div>
-    <div class="case-grid rev d1">
-      <a href="/case/revenue" class="case-card">
-        <span class="case-accent-bar bar-revenue"></span>
-        <span class="case-tag tag-revenue">Revenue Operations</span>
-        <div class="case-question">"Our revenue data lives in five different places and no one has the full picture."</div>
-        <div class="case-teaser">Disconnected CRMs, spreadsheets, and accounting tools meant leadership was always flying blind. We unified everything into a single intelligence layer.</div>
-        <div class="case-metrics"><div><div class="metric-val">94%</div><div class="metric-lab">Reporting time saved</div></div><div><div class="metric-val">8 hrs/wk</div><div class="metric-lab">Given back</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+    <div class="cases-kw-grid rev d1">
+      <a href="/case/revenue" class="cases-kw-card" style="--bar:#f59e0b"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Revenue Operations</div>
+        <div class="cases-kw-name">Unified RevOps Intelligence</div>
+        <div class="cases-kw-metric">94% reporting time saved · 8 hrs/wk back</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/invoice" class="case-card">
-        <span class="case-accent-bar bar-finance"></span>
-        <span class="case-tag tag-finance">Finance & Accounting</span>
-        <div class="case-question">"Invoice generation takes our team two full days every month."</div>
-        <div class="case-teaser">Manual invoice creation, chasing approvals, and reconciling payments was burning hours every billing cycle. We automated the entire pipeline end to end.</div>
-        <div class="case-metrics"><div><div class="metric-val">2 days</div><div class="metric-lab">Saved per cycle</div></div><div><div class="metric-val">Zero</div><div class="metric-lab">Manual errors</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/invoice" class="cases-kw-card" style="--bar:#ec4899"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Finance & Accounting</div>
+        <div class="cases-kw-name">Invoice Automation</div>
+        <div class="cases-kw-metric">2 days → 20 minutes · Zero errors</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/commission" class="case-card">
-        <span class="case-accent-bar bar-sales"></span>
-        <span class="case-tag tag-sales">Sales Commission</span>
-        <div class="case-question">"Calculating commissions every month is a spreadsheet nightmare. Sales reps don't trust the numbers."</div>
-        <div class="case-teaser">Tiered structures, split deals, and clawbacks calculated manually. We built a real-time engine transparent to every rep.</div>
-        <div class="case-metrics"><div><div class="metric-val">100%</div><div class="metric-lab">Accuracy</div></div><div><div class="metric-val">Zero</div><div class="metric-lab">Disputes</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/commission" class="cases-kw-card" style="--bar:#8b5cf6"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Sales Operations</div>
+        <div class="cases-kw-name">Commission Engine</div>
+        <div class="cases-kw-metric">100% accuracy · Zero disputes since launch</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/followup" class="case-card">
-        <span class="case-accent-bar bar-sales"></span>
-        <span class="case-tag tag-sales">Sales Follow-ups</span>
-        <div class="case-question">"Leads go cold because no one followed up. Our response rate is embarrassing."</div>
-        <div class="case-teaser">Hot leads slipping through because follow-ups depended on human memory. Voice AI now never misses one.</div>
-        <div class="case-metrics"><div><div class="metric-val">3.4x</div><div class="metric-lab">Response rate lift</div></div><div><div class="metric-val">60s</div><div class="metric-lab">First contact</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/followup" class="cases-kw-card" style="--bar:#8b5cf6"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Lead Generation</div>
+        <div class="cases-kw-name">Voice AI Follow-up</div>
+        <div class="cases-kw-metric">3.4x response lift · 60s first contact</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/healthcare" class="case-card">
-        <span class="case-accent-bar bar-ops"></span>
-        <span class="case-tag tag-ops">Healthcare</span>
-        <div class="case-question">"Our front desk spends four hours a day on scheduling and still misses 30% of calls."</div>
-        <div class="case-teaser">A multi-specialty clinic losing new patients after hours. Voice AI now answers every call in two rings, around the clock.</div>
-        <div class="case-metrics"><div><div class="metric-val">73%</div><div class="metric-lab">Call deflection</div></div><div><div class="metric-val">24/7</div><div class="metric-lab">Availability</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/healthcare" class="cases-kw-card" style="--bar:#10b981"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Healthcare</div>
+        <div class="cases-kw-name">Patient Scheduling AI</div>
+        <div class="cases-kw-metric">73% call deflection · 24/7 availability</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/ecommerce" class="case-card">
-        <span class="case-accent-bar bar-inventory"></span>
-        <span class="case-tag tag-inventory">E-Commerce</span>
-        <div class="case-question">"We are paying for great acquisition and losing 78% of carts. Support is overwhelmed."</div>
-        <div class="case-teaser">Strong funnel, two critical leaks — abandoned carts and 18-hour support response time. We automated both simultaneously.</div>
-        <div class="case-metrics"><div><div class="metric-val">31%</div><div class="metric-lab">Cart recovery</div></div><div><div class="metric-val">6x</div><div class="metric-lab">Support capacity</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/ecommerce" class="cases-kw-card" style="--bar:#0ea5e9"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">E-Commerce</div>
+        <div class="cases-kw-name">Cart Recovery & Support AI</div>
+        <div class="cases-kw-metric">31% cart recovery · 6x support capacity</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/reporting" class="case-card">
-        <span class="case-accent-bar bar-ops"></span>
-        <span class="case-tag tag-ops">Executive Reporting</span>
-        <div class="case-question">"Our board packs take three days to prepare and are outdated by the time they're done."</div>
-        <div class="case-teaser">Manual data gathering and narrative writing consumed the finance team every month. We automated the entire executive summary pipeline.</div>
-        <div class="case-metrics"><div><div class="metric-val">3 days</div><div class="metric-lab">Saved per cycle</div></div><div><div class="metric-val">Always</div><div class="metric-lab">Current data</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/reporting" class="cases-kw-card" style="--bar:#10b981"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Executive Reporting</div>
+        <div class="cases-kw-name">Automated Board Packs</div>
+        <div class="cases-kw-metric">3 days saved · Always current data</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/inventory" class="case-card">
-        <span class="case-accent-bar bar-inventory"></span>
-        <span class="case-tag tag-inventory">Inventory</span>
-        <div class="case-question">"We keep running out of stock without warning — or sitting on inventory we don't need."</div>
-        <div class="case-teaser">No predictive visibility meant reactive purchasing. AI-driven monitoring with automatic reorder triggers changed that permanently.</div>
-        <div class="case-metrics"><div><div class="metric-val">68%</div><div class="metric-lab">Stockout reduction</div></div><div><div class="metric-val">22%</div><div class="metric-lab">Carrying cost down</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/inventory" class="cases-kw-card" style="--bar:#0ea5e9"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Supply Chain</div>
+        <div class="cases-kw-name">Inventory Intelligence</div>
+        <div class="cases-kw-metric">68% fewer stockouts · 22% cost reduction</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-      <a href="/case/recruiting" class="case-card">
-        <span class="case-accent-bar bar-hr"></span>
-        <span class="case-tag tag-hr">Talent & Recruiting</span>
-        <div class="case-question">"By the time we call a qualified candidate, they've already accepted another offer."</div>
-        <div class="case-teaser">72-hour screening lag. AI pipeline now scores, ranks, and initiates personalised outreach within 12 minutes of application.</div>
-        <div class="case-metrics"><div><div class="metric-val">87%</div><div class="metric-lab">Screening time saved</div></div><div><div class="metric-val">12 min</div><div class="metric-lab">To first contact</div></div></div>
-        <div style="margin-top:16px"><span class="case-link">Read the case study</span></div>
+      <a href="/case/recruiting" class="cases-kw-card" style="--bar:#6b7280"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Talent & Recruiting</div>
+        <div class="cases-kw-name">Candidate Screening Pipeline</div>
+        <div class="cases-kw-metric">87% screening time saved · 12 min contact</div>
+        <span class="cases-kw-arrow">›</span>
       </a>
-    </div>
-    <div style="margin-top:28px;text-align:center">
-      <a href="/case-studies" class="btn-ghost" style="font-size:13px">View all case studies →</a>
     </div>
   </div>
 </section>
@@ -560,6 +601,28 @@ function renderDemo(key){
   tick(); demoAnim=setInterval(tick,1400);
 }
 renderDemo('revops');
+
+// ── ROI CALCULATOR ──
+function calcROI() {
+  const rate   = +document.getElementById('roi-rate').value;
+  const hours  = +document.getElementById('roi-hours').value;
+  const deploy = +document.getElementById('roi-deploy').value;
+  const annualManual = rate * hours * 52;
+  const postAuto     = annualManual * 0.05;
+  const savings      = annualManual - postAuto;
+  const payback      = savings > 0 ? (deploy / (savings / 12)) : 0;
+  const fiveYear     = savings * 5 - deploy;
+  const fmt = n => '$' + Math.round(n).toLocaleString();
+  document.getElementById('roi-rate-disp').textContent   = '$' + rate + ' / hr';
+  document.getElementById('roi-hours-disp').textContent  = hours + ' hrs / wk';
+  document.getElementById('roi-deploy-disp').textContent = '$' + deploy.toLocaleString();
+  document.getElementById('roi-v-manual').textContent  = fmt(annualManual);
+  document.getElementById('roi-v-post').textContent    = fmt(postAuto);
+  document.getElementById('roi-v-savings').textContent = fmt(savings);
+  document.getElementById('roi-v-payback').textContent = payback > 0 ? payback.toFixed(1) + ' mo' : '—';
+  document.getElementById('roi-v-5yr').textContent     = fmt(fiveYear);
+}
+calcROI();
 
 // ── SCROLL REVEAL ──
 function initReveal(){
