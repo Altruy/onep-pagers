@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://altyur.cloud/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://altyur.cloud/offer</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://altyur.cloud/how-it-works</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://altyur.cloud/case-studies</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://altyur.cloud/industries</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://altyur.cloud/insights</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://altyur.cloud/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/revenue</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/invoice</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/commission</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/inventory</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/followup</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/reporting</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/healthcare</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/ecommerce</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/case/recruiting</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/insights/fail</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/insights/mcp</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/insights/voice</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/services/workflow-automation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/services/ai-agents</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/services/revops-mcp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/services/voice-ai</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/services/executive-intelligence</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://altyur.cloud/services/rag-knowledge</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
