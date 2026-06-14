@@ -598,57 +598,145 @@ footer{background:var(--text);color:#fff;padding:0}
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
-  .booking-panel{width:100vw}
-  .start-grid{grid-template-columns:1fr}
-  .start-section,.roi-section,.cases-compact-section{padding-left:20px;padding-right:20px}
-  .mobile-sticky.visible{display:flex}
-  .exit-popup{padding:32px 24px}
-  .exit-popup-form{flex-direction:column}
-  .roi-cta-bar{flex-direction:column;align-items:flex-start}
-  .hero-split{grid-template-columns:1fr;gap:40px;padding:100px 20px 60px}
-  .testimonials-grid{grid-template-columns:1fr}
-  .flagship-wrap{grid-template-columns:1fr;gap:40px}
-  .glass-box-compare{grid-template-columns:1fr}
-  .glass-box-pillars{grid-template-columns:1fr}
-  .glass-box-section{padding-left:20px;padding-right:20px}
-  .testimonials-section,.flagship-section,.roi-section,.cases-compact-section{padding-left:20px;padding-right:20px}
-  .roi-layout{grid-template-columns:1fr;gap:48px}
-  .cases-kw-grid{grid-template-columns:1fr 1fr}
-  .cases-compact-header{flex-direction:column;align-items:flex-start}
-  .case-screenshots-pair{grid-template-columns:1fr}
-  .cost-cards{grid-template-columns:1fr}
-  .about-cta-inner{grid-template-columns:1fr;gap:28px}
-  .about-cta-actions{align-items:flex-start}
-  .float-cta{bottom:16px;right:16px}
+  /* ── NAV ── */
   nav{padding:0 20px}
   .nav-center{display:none}
   .hamburger{display:flex}
-  .stages-grid{grid-template-columns:1fr;gap:16px}
-  .stage-connector{display:none}
-  .offer-fit-grid{grid-template-columns:1fr}
-  .offer-hero,.offer-stages-section,.offer-guarantee-section,.offer-fit-section,.offer-faq-section,.offer-close-section{padding-left:20px;padding-right:20px}
-  .offer-guarantee-card{padding:28px 24px}
-  .about-wrap{grid-template-columns:1fr}
-  .about-body-wrap{grid-template-columns:1fr}
+
+  /* ── HERO ── */
+  .hero-split{grid-template-columns:1fr;gap:36px;padding:88px 20px 52px}
+  .hero-h1{font-size:clamp(34px,8vw,52px)}
+  .hero-sub{max-width:100%;font-size:15px}
+  .hero-creds{gap:14px}
+
+  /* ── LIVE FEED ── */
+  .live-feed{max-height:340px;overflow:hidden}
+
+  /* ── TICKER ── */
+  .ticker-item{padding:0 28px}
+
+  /* ── GLASS BOX ── */
+  .glass-box-section{padding:64px 20px}
+  .glass-box-compare{grid-template-columns:1fr}
+  .glass-box-pillars{grid-template-columns:1fr}
+
+  /* ── COST SECTION ── */
+  .cost-section{padding:64px 20px}
+  .cost-cards{grid-template-columns:1fr}
+  .cost-num{font-size:52px}
+
+  /* ── ROI CALCULATOR ── */
+  .roi-section{padding:64px 20px}
+  .roi-layout{grid-template-columns:1fr;gap:40px}
+  .roi-cta-bar{flex-direction:column;align-items:flex-start}
+
+  /* ── DEMO ── */
+  #demo-section{padding:64px 20px !important}
+
+  /* ── CASE STUDIES COMPACT ── */
+  .cases-compact-section{padding:64px 20px}
+  .cases-compact-header{flex-direction:column;align-items:flex-start}
+  .cases-kw-grid{grid-template-columns:1fr 1fr}
+  .case-screenshots-pair{grid-template-columns:1fr}
+
+  /* ── PROCESS ── */
+  #process-section{padding:64px 20px}
   .process-steps{grid-template-columns:1fr 1fr}
-  .case-grid{grid-template-columns:1fr}
-  .stack-grid{grid-template-columns:1fr}
-  .ind-grid{grid-template-columns:1fr 1fr;padding-left:20px;padding-right:20px}
-  .footer-brand-row{grid-template-columns:1fr;gap:32px}
-  .footer-contact-block{text-align:left}
-  .footer-brand-row,.footer-cols-row,.footer-bottom{padding-left:20px;padding-right:20px}
-  .footer-cols{grid-template-columns:1fr 1fr}
-  #hero-section,#demo-section,#problems-section,#process-section,#services-section,#stack-section,#about-section{padding-left:20px;padding-right:20px}
-  footer{padding:40px 20px 24px}
+
+  /* ── SERVICES ── */
+  #services-section{padding:64px 20px}
   .service-row{grid-template-columns:1fr;gap:8px}
   .srv-arrow{display:none}
-  .case-hero,.case-body,.article-hero,.article-body-wrap,.ind-hero,.insights-hero,.articles-list,.about-hero,.about-body-wrap,.process-hero,.case-studies-hero{padding-left:20px;padding-right:20px}
+
+  /* ── STACK ── */
+  #stack-section{padding:64px 20px}
+  .stack-grid{grid-template-columns:1fr}
+
+  /* ── ABOUT ── */
+  #about-section{padding:64px 20px}
+  .about-wrap{grid-template-columns:1fr}
+  .about-body-wrap{grid-template-columns:1fr;padding:40px 20px 60px}
+
+  /* ── FLAGSHIP ── */
+  .flagship-section{padding:64px 20px}
+  .flagship-wrap{grid-template-columns:1fr;gap:36px}
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section{padding:64px 20px}
+  .testimonials-grid{grid-template-columns:1fr}
+
+  /* ── THREE WAYS TO START ── */
+  .start-section{padding:64px 20px}
+  .start-grid{grid-template-columns:1fr}
+
+  /* ── OFFER PAGE ── */
+  .offer-hero{padding:64px 20px 48px}
+  .offer-stages-section,.offer-guarantee-section,.offer-fit-section,.offer-faq-section,.offer-close-section{padding-left:20px;padding-right:20px}
+  .offer-guarantee-card{padding:28px 24px}
+  .offer-fit-grid{grid-template-columns:1fr}
+  .stages-grid{grid-template-columns:1fr;gap:16px}
+  .stage-connector{display:none}
+  .offer-close-h2{font-size:22px}
+
+  /* ── ENGAGEMENTS PAGE ── */
+  .eng-hero,.eng-tiers,.eng-faq{padding-left:20px;padding-right:20px}
+  .eng-tier{grid-template-columns:1fr !important;gap:24px}
+
+  /* ── SERVICE DETAIL PAGES ── */
+  .service-page-hero{padding-left:20px;padding-right:20px}
+  .service-body{grid-template-columns:1fr !important;padding-left:20px;padding-right:20px}
+  .service-sidebar{position:static;padding:0}
+
+  /* ── CASE / ARTICLE PAGES ── */
+  .case-hero,.case-body,.article-hero,.article-body-wrap,.ind-hero,.insights-hero,.articles-list,.about-hero,.process-hero,.case-studies-hero{padding-left:20px;padding-right:20px}
+  .case-stats-row{gap:20px}
+  .case-stat-val{font-size:22px}
+
+  /* ── INDUSTRIES ── */
+  .ind-grid{grid-template-columns:1fr 1fr;padding-left:20px;padding-right:20px}
+  .ind-hero{padding:64px 20px 48px}
+
+  /* ── ABOUT CTA STRIP ── */
+  .about-cta-strip{padding:64px 20px}
+  .about-cta-inner{grid-template-columns:1fr;gap:28px}
+  .about-cta-actions{align-items:flex-start}
+
+  /* ── FOOTER (new structure) ── */
+  footer{padding:0}
+  .footer-brand-row{grid-template-columns:1fr;gap:28px;padding:48px 20px 36px}
+  .footer-contact-block{text-align:left}
+  .footer-cols-row{padding:32px 20px 28px}
+  .footer-cols{grid-template-columns:1fr 1fr}
+  .footer-bottom{padding:16px 20px;flex-direction:column;gap:6px;text-align:center}
+
+  /* ── BOOKING / OVERLAYS ── */
+  .booking-panel{width:100vw}
+  .exit-popup{padding:32px 20px}
+  .exit-popup-form{flex-direction:column}
+  .float-cta{display:none !important}
+  .mobile-sticky.visible{display:flex}
 }
+
 @media(max-width:600px){
+  /* ── HERO ── */
+  .hero-split{padding:80px 16px 48px}
+  .hero-h1{font-size:clamp(30px,9vw,44px)}
+
+  /* ── GRIDS → single column ── */
+  .cases-kw-grid{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr}
   .ind-grid{grid-template-columns:1fr}
-  .footer-cols{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
-  .hero-creds{flex-wrap:wrap;gap:16px}
+  .cost-cards{grid-template-columns:1fr}
+  .footer-cols{grid-template-columns:1fr 1fr}
+  .hero-creds{flex-wrap:wrap;gap:12px}
   .demo-tabs{flex-wrap:wrap}
+  .flagship-card{padding:24px 20px}
+
+  /* ── FONT SIZES ── */
+  .section-h2{font-size:26px}
+  .cost-num{font-size:44px}
+  .cost-suffix{font-size:18px}
+
+  /* ── SECTION PADDING ── */
+  .glass-box-section,.cost-section,.roi-section,.start-section,.testimonials-section,.cases-compact-section{padding-top:48px;padding-bottom:48px}
 }
