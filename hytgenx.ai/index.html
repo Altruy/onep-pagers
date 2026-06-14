@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hytGenX — AI Systems Engineering for the Enterprise</title>
+<meta name="description" content="hytGenX builds AI systems for mid-market enterprises — intelligent automation, full-stack AI products, multi-agent pipelines, and cloud infrastructure. Private. Auditable. Owned by you.">
+<meta name="keywords" content="AI systems engineering, enterprise AI, AI automation, multi-agent systems, LangGraph, custom AI development, AI infrastructure, hytGenX">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hytgenx.ai">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hytgenx.ai">
+<meta property="og:site_name" content="hytGenX">
+<meta property="og:title" content="hytGenX — AI Systems Engineering for the Enterprise">
+<meta property="og:description" content="We design, build, and deploy production-grade AI systems for mid-market enterprises. From intelligent automation to full-stack AI products — private, auditable, and owned by you.">
+<meta property="og:image" content="https://hytgenx.ai/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="hytGenX — AI Systems Engineering">
+<meta name="twitter:description" content="AI systems for the enterprise. Private pipelines. Full-stack AI products. Production-grade infrastructure. Built to run in your environment.">
+<meta name="twitter:image" content="https://hytgenx.ai/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://hytgenx.ai/#org",
+  "name": "hytGenX",
+  "url": "https://hytgenx.ai",
+  "description": "AI systems engineering firm — intelligent automation, full-stack AI products, multi-agent pipelines, and private cloud infrastructure for mid-market enterprises.",
+  "address": {"@type": "PostalAddress", "streetAddress": "522 W Riverside Ave", "addressLocality": "Spokane", "addressRegion": "WA", "postalCode": "99201", "addressCountry": "US"},
+  "telephone": "+1-206-665-5160",
+  "email": "business@hytgenx.ai",
+  "sameAs": ["https://altyur.cloud", "https://www.linkedin.com/in/turyal-neeshat/"]
+}
+</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="/" class="nav-logo">hytGen<span>X</span></a>
+  <div class="nav-center">
+    <a href="#services-section">What we build</a>
+    <a href="#work-section">Work</a>
+    <a href="#process-section">How we work</a>
+    <a href="#roi-calculator">ROI</a>
+    <a href="#start">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="mailto:business@hytgenx.ai" class="btn-ghost">business@hytgenx.ai</a>
+    <button onclick="openBooking()" class="btn-dark">Start a project</button>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero-full" id="hero-wrap">
+  <div class="hero-split">
+    <div class="hero-content">
+      <div class="hero-kicker">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent2);display:inline-block;flex-shrink:0"></span>
+        AI Systems Engineering · Spokane, WA
+      </div>
+      <h1 class="hero-h1">We build AI systems<br>that work in<br><em>production.</em></h1>
+      <p class="hero-sub">hytGenX is an AI systems engineering firm. We design and deploy intelligent infrastructure for mid-market enterprises — from automated operations to full-stack AI products, multi-agent pipelines, and the cloud infrastructure to run them.</p>
+      <div class="hero-actions">
+        <button onclick="openBooking()" class="btn-dark" style="font-size:14px;padding:13px 26px">Start a project →</button>
+        <a href="#work-section" class="btn-ghost" style="font-size:14px;padding:13px 26px">See the work</a>
+      </div>
+      <div class="hero-creds">
+        <div class="cred-item"><div class="cred-num">50+</div><div class="cred-lab">Systems in production</div></div>
+        <div class="cred-sep"></div>
+        <div class="cred-item"><div class="cred-num">US firm</div><div class="cred-lab">Spokane, WA</div></div>
+        <div class="cred-sep"></div>
+        <div class="cred-item"><div class="cred-num">Private</div><div class="cred-lab">Your infrastructure</div></div>
+        <div class="cred-sep"></div>
+        <div class="cred-item"><div class="cred-num">Glass Box</div><div class="cred-lab">Full auditability</div></div>
+      </div>
+    </div>
+
+    <div class="live-feed">
+      <div class="lf-header">
+        <div class="lf-header-left">
+          <div class="lf-pulse"></div>
+          <span class="lf-title">Active deployments — live</span>
+        </div>
+        <span class="lf-badge">Running now</span>
+      </div>
+      <div class="lf-items" id="live-feed-items"></div>
+      <div class="lf-footer">
+        <span class="lf-footer-text">Running <strong>inside client infrastructure</strong> · zero third-party data access</span>
+        <a href="#work-section" class="lf-all-link">See the work →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item"><strong>AI automation</strong> pipelines</span>
+    <span class="ticker-item"><strong>Multi-agent</strong> systems</span>
+    <span class="ticker-item"><strong>LangGraph</strong> orchestration</span>
+    <span class="ticker-item"><strong>Voice AI</strong> agents</span>
+    <span class="ticker-item"><strong>RAG</strong> knowledge systems</span>
+    <span class="ticker-item"><strong>Full-stack</strong> AI products</span>
+    <span class="ticker-item"><strong>MCP</strong> RevOps intelligence</span>
+    <span class="ticker-item"><strong>Cloud</strong> AI infrastructure</span>
+    <span class="ticker-item"><strong>Python</strong> · FastAPI · Node.js</span>
+    <span class="ticker-item"><strong>Claude</strong> · GPT-4o · Gemini</span>
+    <span class="ticker-item"><strong>Private</strong> · Auditable · Owned</span>
+    <span class="ticker-item"><strong>AI automation</strong> pipelines</span>
+    <span class="ticker-item"><strong>Multi-agent</strong> systems</span>
+    <span class="ticker-item"><strong>LangGraph</strong> orchestration</span>
+    <span class="ticker-item"><strong>Voice AI</strong> agents</span>
+    <span class="ticker-item"><strong>RAG</strong> knowledge systems</span>
+    <span class="ticker-item"><strong>Full-stack</strong> AI products</span>
+    <span class="ticker-item"><strong>MCP</strong> RevOps intelligence</span>
+    <span class="ticker-item"><strong>Cloud</strong> AI infrastructure</span>
+    <span class="ticker-item"><strong>Python</strong> · FastAPI · Node.js</span>
+    <span class="ticker-item"><strong>Claude</strong> · GPT-4o · Gemini</span>
+    <span class="ticker-item"><strong>Private</strong> · Auditable · Owned</span>
+  </div>
+</div>
+
+<!-- WHAT WE BUILD -->
+<section id="services-section">
+  <div class="services-wrap">
+    <div class="rev">
+      <div class="section-eyebrow">What we build</div>
+      <h2 class="section-h2">Six capabilities.<br><em>One engineering team.</em></h2>
+      <p class="section-sub">We bring together AI research, software engineering, and systems architecture to build infrastructure that runs reliably in your environment.</p>
+    </div>
+    <div class="services-grid rev d1">
+      <div class="service-card">
+        <div class="service-card-icon">⚙️</div>
+        <div class="service-card-name">AI Operations Automation</div>
+        <div class="service-card-desc">End-to-end intelligent pipelines that replace manual operations — RevOps, billing, reporting, lead qualification, and workflow automation. Built on n8n, Python, and direct API integrations.</div>
+        <div class="service-card-tools"><span class="service-card-tool">n8n</span><span class="service-card-tool">Python</span><span class="service-card-tool">HubSpot</span><span class="service-card-tool">Make</span><span class="service-card-tool">Zapier</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🤖</div>
+        <div class="service-card-name">Multi-Agent Systems</div>
+        <div class="service-card-desc">Orchestrated LLM pipelines where specialised agents research, validate, decide, and act in sequence — replacing analyst workflows in finance, legal, recruiting, and operations.</div>
+        <div class="service-card-tools"><span class="service-card-tool">LangGraph</span><span class="service-card-tool">LangChain</span><span class="service-card-tool">Claude</span><span class="service-card-tool">OpenAI</span><span class="service-card-tool">FastAPI</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🎙️</div>
+        <div class="service-card-name">Voice AI Agents</div>
+        <div class="service-card-desc">Inbound and outbound voice agents for lead qualification, appointment scheduling, and customer support — handling calls 24/7 with CRM write-back and full escalation paths.</div>
+        <div class="service-card-tools"><span class="service-card-tool">Vapi</span><span class="service-card-tool">Retell</span><span class="service-card-tool">Twilio</span><span class="service-card-tool">LangGraph</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">📦</div>
+        <div class="service-card-name">Full-Stack AI Products</div>
+        <div class="service-card-desc">Custom web applications with AI woven in — React/Next.js frontends, Python backends, and LLM-powered features built for scale from the first commit.</div>
+        <div class="service-card-tools"><span class="service-card-tool">React</span><span class="service-card-tool">Next.js</span><span class="service-card-tool">Python</span><span class="service-card-tool">FastAPI</span><span class="service-card-tool">Node.js</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🔍</div>
+        <div class="service-card-name">RAG &amp; Knowledge Systems</div>
+        <div class="service-card-desc">Private AI trained on your internal documentation, SOPs, and institutional knowledge. Staff get source-cited answers in seconds from Google Workspace, SharePoint, Notion, or custom stores.</div>
+        <div class="service-card-tools"><span class="service-card-tool">Pinecone</span><span class="service-card-tool">FAISS</span><span class="service-card-tool">LangChain</span><span class="service-card-tool">Claude</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">☁️</div>
+        <div class="service-card-name">Cloud Infrastructure for AI</div>
+        <div class="service-card-desc">Architecture, deployment, and management of AI workloads on AWS, Azure, and GCP — container orchestration, model serving, monitoring, and the DevOps layer to keep everything running.</div>
+        <div class="service-card-tools"><span class="service-card-tool">AWS</span><span class="service-card-tool">Azure</span><span class="service-card-tool">GCP</span><span class="service-card-tool">Docker</span><span class="service-card-tool">Kubernetes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLASS BOX -->
+<section class="glass-box-section">
+  <div class="glass-box-wrap">
+    <div class="glass-box-header rev">
+      <div class="section-eyebrow">The Glass Box methodology</div>
+      <h2 class="section-h2">We don't build black boxes.<br><em>Everything is auditable.</em></h2>
+      <p>Mid-market enterprises in logistics, legal, and FinTech cannot route operational data through SaaS tools they don't control. We build private pipelines that run inside your infrastructure — fully auditable, with zero vendor dependency.</p>
+    </div>
+    <div class="glass-box-compare rev d1">
+      <div class="gbc gbc-bad">
+        <div class="gbc-label">✗ &nbsp;Standard SaaS AI tools</div>
+        <div class="gbc-items">
+          <div class="gbc-item">Your data processed on the vendor's servers — you don't know where it goes</div>
+          <div class="gbc-item">No audit trail — you can't see what decisions were made or why</div>
+          <div class="gbc-item">System stops working the moment you stop paying</div>
+          <div class="gbc-item">Third-party API access to your financial, client, or operational data</div>
+          <div class="gbc-item">Vendor lock-in — impossible to migrate without losing everything</div>
+        </div>
+      </div>
+      <div class="gbc gbc-good">
+        <div class="gbc-label">✓ &nbsp;Glass Box — hytGenX</div>
+        <div class="gbc-items">
+          <div class="gbc-item">Every pipeline runs inside your infrastructure — AWS, Azure, VPC, or on-premise</div>
+          <div class="gbc-item">Every data flow, model call, and decision is logged and auditable by your team</div>
+          <div class="gbc-item">You own the code — if we stop working together, your systems keep running</div>
+          <div class="gbc-item">No third-party vendor has ongoing access to your operational data</div>
+          <div class="gbc-item">Documented, maintainable, extensible by your internal team</div>
+        </div>
+      </div>
+    </div>
+    <div class="glass-box-pillars rev d2">
+      <div class="gbp">
+        <div class="gbp-icon">🔒</div>
+        <div class="gbp-title">Private by architecture</div>
+        <div class="gbp-desc">We deploy directly into your infrastructure. No SaaS middleware. No third-party processing. Your data stays in your environment from ingestion to output.</div>
+      </div>
+      <div class="gbp">
+        <div class="gbp-icon">🔍</div>
+        <div class="gbp-title">Auditable by design</div>
+        <div class="gbp-desc">Every pipeline includes comprehensive logging. You can trace exactly what was processed, when, by which model, and what decision was made. Required for compliance.</div>
+      </div>
+      <div class="gbp">
+        <div class="gbp-icon">📦</div>
+        <div class="gbp-title">Owned, not licensed</div>
+        <div class="gbp-desc">The code belongs to you. Documented and maintainable. No subscription to hytGenX required for your systems to keep running.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work-section">
+  <div class="work-wrap">
+    <div class="rev">
+      <div class="section-eyebrow">Selected work</div>
+      <h2 class="section-h2">Production systems<br><em>we have shipped.</em></h2>
+      <p class="section-sub">Every engagement below is a live production system — not a prototype, not a proof of concept.</p>
+    </div>
+    <div class="work-grid rev d1">
+      <a href="#" class="work-card">
+        <div class="work-card-bar" style="background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div>
+        <span class="work-tag">Revenue Operations</span>
+        <div class="work-title">Unified RevOps Intelligence — B2B SaaS</div>
+        <div class="work-result">HubSpot, QuickBooks, and five data sources unified into a single intelligence layer. Claude via MCP gives leadership real-time revenue answers in plain English.</div>
+        <div class="work-metrics">
+          <div><div class="work-metric-val">94%</div><div class="work-metric-lab">Reporting time saved</div></div>
+          <div><div class="work-metric-val">8 hrs/wk</div><div class="work-metric-lab">Given back</div></div>
+        </div>
+        <span class="work-link">View case study</span>
+      </a>
+      <a href="#" class="work-card">
+        <div class="work-card-bar" style="background:linear-gradient(90deg,#8b5cf6,#a78bfa)"></div>
+        <span class="work-tag">Sales Operations</span>
+        <div class="work-title">Real-time Commission Engine — 25-person sales team</div>
+        <div class="work-result">Tiered commission structures, split deals, and clawbacks automated in Python + HubSpot. Live dashboard gives every rep full transparency into their numbers.</div>
+        <div class="work-metrics">
+          <div><div class="work-metric-val">100%</div><div class="work-metric-lab">Accuracy</div></div>
+          <div><div class="work-metric-val">Zero</div><div class="work-metric-lab">Disputes since launch</div></div>
+        </div>
+        <span class="work-link">View case study</span>
+      </a>
+      <a href="#" class="work-card">
+        <div class="work-card-bar" style="background:linear-gradient(90deg,#6366f1,#818cf8)"></div>
+        <span class="work-tag">Voice AI</span>
+        <div class="work-title">Voice AI Lead Pipeline — Construction company</div>
+        <div class="work-result">Inbound leads called within 60 seconds, qualified via AI conversation, and logged to CRM automatically. Outreach scheduling managed end to end without human input.</div>
+        <div class="work-metrics">
+          <div><div class="work-metric-val">3.4x</div><div class="work-metric-lab">Response rate lift</div></div>
+          <div><div class="work-metric-val">60s</div><div class="work-metric-lab">First contact</div></div>
+        </div>
+        <span class="work-link">View case study</span>
+      </a>
+      <a href="#" class="work-card">
+        <div class="work-card-bar" style="background:linear-gradient(90deg,#ec4899,#f472b6)"></div>
+        <span class="work-tag">Finance</span>
+        <div class="work-title">Invoice Automation Pipeline — Professional services</div>
+        <div class="work-result">Milestone-triggered invoice generation, Slack approval routing, client dispatch, and payment reconciliation — fully automated end to end.</div>
+        <div class="work-metrics">
+          <div><div class="work-metric-val">2 days</div><div class="work-metric-lab">Saved per cycle</div></div>
+          <div><div class="work-metric-val">99%</div><div class="work-metric-lab">On-time dispatch</div></div>
+        </div>
+        <span class="work-link">View case study</span>
+      </a>
+      <a href="#" class="work-card">
+        <div class="work-card-bar" style="background:linear-gradient(90deg,#10b981,#34d399)"></div>
+        <span class="work-tag">Healthcare</span>
+        <div class="work-title">24/7 Patient Scheduling Agent — Multi-specialty clinic</div>
+        <div class="work-result">Voice AI answers every call within two rings — booking, rescheduling, confirmations, and reminders around the clock. Integrated directly with Jane App scheduling.</div>
+        <div class="work-metrics">
+          <div><div class="work-metric-val">73%</div><div class="work-metric-lab">Call deflection</div></div>
+          <div><div class="work-metric-val">24/7</div><div class="work-metric-lab">Availability</div></div>
+        </div>
+        <span class="work-link">View case study</span>
+      </a>
+      <a href="#" class="work-card">
+        <div class="work-card-bar" style="background:linear-gradient(90deg,#6b7280,#9ca3af)"></div>
+        <span class="work-tag">Talent & Recruiting</span>
+        <div class="work-title">AI Candidate Screening Pipeline — Staffing agency</div>
+        <div class="work-result">LangGraph multi-agent pipeline ingests CVs from all channels, scores against role criteria, and sends personalised outreach within 12 minutes of application.</div>
+        <div class="work-metrics">
+          <div><div class="work-metric-val">87%</div><div class="work-metric-lab">Screening time saved</div></div>
+          <div><div class="work-metric-val">12 min</div><div class="work-metric-lab">To first contact</div></div>
+        </div>
+        <span class="work-link">View case study</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process-section">
+  <div class="process-wrap">
+    <div class="rev">
+      <div class="section-eyebrow">How we work</div>
+      <h2 class="section-h2">Discovery to deployment.<br><em>Owned by you at every step.</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="p-step rev d1">
+        <div class="p-num">01</div><div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">Discovery</div>
+        <div class="p-desc">We map your operations, audit your stack, and identify where AI creates the most leverage. You get an honest answer on what to build — and what not to.</div>
+        <div class="p-items"><div class="p-item">Workflow and stack audit</div><div class="p-item">AI opportunity mapping</div><div class="p-item">ROI and effort estimation</div></div>
+      </div>
+      <div class="p-step rev d2">
+        <div class="p-num">02</div><div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">Architecture</div>
+        <div class="p-desc">We design the system — tool selection, data flows, integration points, and the infrastructure model. You review and approve before any build begins.</div>
+        <div class="p-items"><div class="p-item">System design and tool selection</div><div class="p-item">Data flow and integration mapping</div><div class="p-item">Risk and compliance review</div></div>
+      </div>
+      <div class="p-step rev d3">
+        <div class="p-num">03</div><div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">Build</div>
+        <div class="p-desc">We build, test, and deploy to your infrastructure. Every system includes error handling, monitoring, and a full documentation set your team can operate.</div>
+        <div class="p-items"><div class="p-item">Production build and deployment</div><div class="p-item">QA, testing, and monitoring setup</div><div class="p-item">Full documentation</div></div>
+      </div>
+      <div class="p-step rev d4">
+        <div class="p-num">04</div><div class="p-circle"><div class="p-circle-inner"></div></div>
+        <div class="p-name">Handover</div>
+        <div class="p-desc">Complete handover with training, documentation, and a support window. Your team operates the system independently. The code is yours entirely.</div>
+        <div class="p-items"><div class="p-item">Team training and onboarding</div><div class="p-item">Code ownership transfer</div><div class="p-item">Ongoing support available</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI CALCULATOR -->
+<section class="roi-section" id="roi-calculator">
+  <div class="roi-wrap">
+    <div class="roi-header rev">
+      <div class="section-eyebrow">ROI Calculator</div>
+      <h2 class="section-h2">What is manual work<br><em style="color:#a78bfa">costing your business?</em></h2>
+      <p>Model your specific situation. Most businesses are surprised how quickly AI infrastructure pays for itself.</p>
+    </div>
+    <div class="roi-layout">
+      <div class="roi-sliders">
+        <div class="roi-slider-group">
+          <div class="roi-slider-top">
+            <span class="roi-slider-label">Team hourly rate</span>
+            <span class="roi-slider-number" id="roi-rate-disp">$50 / hr</span>
+          </div>
+          <input type="range" class="roi-slider" id="roi-rate" min="15" max="200" value="50" oninput="calcROI()">
+        </div>
+        <div class="roi-slider-group">
+          <div class="roi-slider-top">
+            <span class="roi-slider-label">Manual hours per week</span>
+            <span class="roi-slider-number" id="roi-hours-disp">10 hrs / wk</span>
+          </div>
+          <input type="range" class="roi-slider" id="roi-hours" min="1" max="80" value="10" oninput="calcROI()">
+        </div>
+        <div class="roi-slider-group">
+          <div class="roi-slider-top">
+            <span class="roi-slider-label">Estimated build cost</span>
+            <span class="roi-slider-number" id="roi-deploy-disp">$20,000</span>
+          </div>
+          <input type="range" class="roi-slider" id="roi-deploy" min="5000" max="100000" step="1000" value="20000" oninput="calcROI()">
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,.25);line-height:1.7;margin-top:8px">Based on a 95% reduction in manual time — consistent with our production deployments.</p>
+      </div>
+      <div class="roi-output">
+        <div class="roi-metric"><span class="roi-metric-label">Annual manual cost</span><span class="roi-metric-value" id="roi-v-manual">$26,000</span></div>
+        <div class="roi-metric"><span class="roi-metric-label">Post-build cost</span><span class="roi-metric-value" id="roi-v-post">$1,300</span></div>
+        <div class="roi-metric highlight"><span class="roi-metric-label">Annual savings</span><span class="roi-metric-value" id="roi-v-savings">$24,700</span></div>
+        <div class="roi-metric"><span class="roi-metric-label">Payback period</span><span class="roi-metric-value" id="roi-v-payback">9.7 mo</span></div>
+        <div class="roi-metric highlight"><span class="roi-metric-label">5-year net return</span><span class="roi-metric-value" id="roi-v-5yr">$103,500</span></div>
+        <div class="roi-cta-bar" id="roi-cta-bar">
+          <span class="roi-cta-text" id="roi-cta-msg"><strong>Strong case.</strong> Book a session to validate these numbers against your actual operations.</span>
+          <button id="roi-cta-btn" onclick="openBooking()" class="btn-dark" style="font-size:13px;padding:10px 20px;white-space:nowrap;flex-shrink:0">Start a project →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE WAYS TO START -->
+<section class="start-section" id="start">
+  <div class="start-wrap">
+    <div class="start-header rev">
+      <div class="section-eyebrow">Work with hytGenX</div>
+      <h2 class="section-h2">Choose your<br><em>starting point.</em></h2>
+      <p>Every engagement starts with a conversation. Pick the format that works for your situation — no commitment required.</p>
+    </div>
+    <div class="start-grid rev d1">
+      <div class="start-card">
+        <span class="start-card-badge badge-low">Lowest friction</span>
+        <div class="start-card-num">✉</div>
+        <h3 class="start-card-title">Send a message</h3>
+        <p class="start-card-desc">Tell us what you're building or what's breaking. We respond within one business day with an honest take on whether and how we can help.</p>
+        <a href="mailto:business@hytgenx.ai" class="btn-ghost" style="font-size:13px;padding:10px 18px;text-align:center;display:block">business@hytgenx.ai</a>
+        <div class="start-card-note">Response within 24 hours · No pitch</div>
+      </div>
+      <div class="start-card start-card-primary">
+        <span class="start-card-badge badge-recommended">Recommended</span>
+        <div class="start-card-num">📞</div>
+        <h3 class="start-card-title">Book a discovery call</h3>
+        <p class="start-card-desc">30 minutes with our engineering lead. We map your use case, assess feasibility, and give you an honest estimate — whether that leads to an engagement with us or not.</p>
+        <button onclick="openBooking()" class="btn-dark" style="font-size:14px;padding:12px 20px;border:none;cursor:pointer;font-family:'Inter',sans-serif;width:100%;background:var(--accent)">Book now — it's free</button>
+        <div class="start-card-proof">No commitment. No proposal. <strong>Just a real conversation.</strong></div>
+      </div>
+      <div class="start-card">
+        <span class="start-card-badge badge-value">Most thorough</span>
+        <div class="start-card-num">📋</div>
+        <h3 class="start-card-title">AI Operations Audit</h3>
+        <p class="start-card-desc">5 working days. We document your operations, rank automation opportunities by ROI, model the returns, and deliver a roadmap your leadership team can approve and act on.</p>
+        <a href="mailto:business@hytgenx.ai?subject=AI Operations Audit enquiry" class="btn-ghost" style="font-size:13px;padding:10px 18px;text-align:center;display:block">Request the Audit →</a>
+        <div class="start-card-note">Fixed scope · Deliverable you keep</div>
+      </div>
+    </div>
+
+    <div class="rev" style="margin-top:40px;padding:20px 28px;background:var(--white);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,.15)"></div>
+        <span style="font-size:13px;font-weight:600;color:var(--text)">Currently accepting new projects</span>
+        <span style="font-size:13px;color:var(--muted)">— US-based team, global clients, CTO-led delivery</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:11px;color:var(--muted)">522 W Riverside Ave, Spokane WA</span>
+        <span style="color:var(--border2)">·</span>
+        <span style="font-size:11px;color:var(--muted)">+1-206-665-5160</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="main-footer">
+  <div class="footer-brand-row">
+    <div>
+      <a href="/" class="footer-brand-name">hytGen<span>X</span></a>
+      <p class="footer-brand-desc">AI systems engineering for mid-market enterprises. We design, build, and deploy intelligent infrastructure — private pipelines, full auditability, code you own.</p>
+      <p class="footer-brand-meta">Led by <a href="https://altyur.cloud" target="_blank">Turyal Neeshat, CTO</a> · hytGenX LLC · Spokane, WA</p>
+      <a href="mailto:business@hytgenx.ai" class="footer-contact-email" style="margin-top:14px;display:inline-block;font-size:13px;color:rgba(255,255,255,.4)">business@hytgenx.ai</a>
+    </div>
+    <div class="footer-contact-block">
+      <p class="footer-contact-label">New project enquiries</p>
+      <a href="mailto:business@hytgenx.ai" class="footer-contact-email">business@hytgenx.ai</a>
+      <span class="footer-contact-phone">+1-206-665-5160</span>
+      <span class="footer-contact-address">522 W Riverside Ave<br>Spokane, WA 99201<br>United States</span>
+    </div>
+  </div>
+  <div class="footer-cols-row">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>What we build</h4>
+        <a href="#services-section">AI Operations Automation</a>
+        <a href="#services-section">Multi-Agent Systems</a>
+        <a href="#services-section">Voice AI Agents</a>
+        <a href="#services-section">Full-Stack AI Products</a>
+        <a href="#services-section">RAG Knowledge Systems</a>
+        <a href="#services-section">Cloud AI Infrastructure</a>
+      </div>
+      <div class="footer-col">
+        <h4>Work</h4>
+        <a href="#work-section">Case Studies</a>
+        <a href="#process-section">How We Work</a>
+        <a href="#roi-calculator">ROI Calculator</a>
+        <a href="https://altyur.cloud" target="_blank">altyur.cloud</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="mailto:business@hytgenx.ai">Contact us</a>
+        <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
+        <a href="https://altyur.cloud/about" target="_blank">About our CTO</a>
+        <a href="mailto:business@hytgenx.ai?subject=Careers at hytGenX">Careers</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 hytGenX LLC · 522 W Riverside Ave, Spokane WA 99201</p>
+    <p>Glass Box AI · Private pipelines · Built to last</p>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="float-cta" id="float-cta">
+  <button onclick="openBooking()" class="float-cta-btn">
+    Start a project <span class="float-cta-arrow">→</span>
+  </button>
+</div>
+
+<!-- MOBILE STICKY -->
+<div class="mobile-sticky" id="mobile-sticky">
+  <button onclick="openBooking()" class="mobile-sticky-cta">Book a discovery call</button>
+  <a href="tel:+12066655160" class="mobile-sticky-email">+1-206-665-5160</a>
+</div>
+
+<!-- BOOKING PANEL -->
+<div class="booking-panel-overlay" id="booking-overlay" onclick="closeBooking()"></div>
+<div class="booking-panel" id="booking-panel">
+  <div class="booking-panel-head">
+    <span class="booking-panel-title">Book a discovery call</span>
+    <button class="booking-panel-close" onclick="closeBooking()">✕</button>
+  </div>
+  <div class="booking-panel-trust">
+    <span class="bpt">✓ <strong>Free</strong> 30-minute call</span>
+    <span class="bpt">✓ <strong>US-based</strong> engineering team</span>
+    <span class="bpt">✓ <strong>50+</strong> systems shipped</span>
+  </div>
+  <div style="padding:28px">
+    <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:20px">Tell us about your project and we'll set up a 30-minute discovery call with our engineering lead.</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div><label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px">Name</label><input id="bp-name" class="form-input" placeholder="Your name" style="width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:4px;font-family:'Inter',sans-serif;font-size:13px;background:var(--bg);outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border2)'"></div>
+      <div><label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px">Email</label><input id="bp-email" type="email" class="form-input" placeholder="you@company.com" style="width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:4px;font-family:'Inter',sans-serif;font-size:13px;background:var(--bg);outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border2)'"></div>
+      <div><label style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px">What are you building?</label><textarea id="bp-msg" placeholder="Describe your project or challenge..." style="width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:4px;font-family:'Inter',sans-serif;font-size:13px;background:var(--bg);outline:none;transition:border .2s;min-height:80px;resize:vertical" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border2)'"></textarea></div>
+      <button onclick="submitBooking()" style="background:var(--accent);color:#fff;font-size:14px;font-weight:600;padding:13px;border:none;border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;width:100%;transition:background .2s" onmouseover="this.style.background='var(--accent2)'" onmouseout="this.style.background='var(--accent)'">Send — we'll respond within 24 hours</button>
+    </div>
+    <p style="font-size:11px;color:var(--light);text-align:center;margin-top:14px">Or call us directly: <a href="tel:+12066655160" style="color:var(--accent);text-decoration:none">+1-206-665-5160</a></p>
+  </div>
+</div>
+
+<script src="/shared.js"></script>
+<script>
+// ── LIVE FEED ──
+const FEED = [
+  {text:'Multi-agent pipeline deployed — logistics client',tag:'LangGraph · Python · AWS',time:'09:14 AM'},
+  {text:'Voice AI handling inbound calls — 24/7 scheduling',tag:'Vapi · LangGraph · CRM',time:'09:22 AM'},
+  {text:'Commission engine updated — 3 deals closed',tag:'Python · HubSpot · Real-time',time:'09:31 AM'},
+  {text:'RAG knowledge base query resolved — legal team',tag:'Pinecone · Claude · SharePoint',time:'09:38 AM'},
+  {text:'Revenue report generated and distributed',tag:'n8n · Claude MCP · Google Slides',time:'09:45 AM'},
+  {text:'Candidate outreach sent — 4 new applicants scored',tag:'LangGraph · LLM pipeline',time:'09:52 AM'},
+];
+function initFeed() {
+  const c = document.getElementById('live-feed-items');
+  if (!c) return;
+  function cycle() {
+    c.innerHTML = FEED.map(f => `
+      <div class="lf-item">
+        <div class="lf-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <div class="lf-body"><div class="lf-text">${f.text}</div><div class="lf-tag">${f.tag}</div></div>
+        <div class="lf-time">${f.time}</div>
+      </div>`).join('');
+    c.querySelectorAll('.lf-item').forEach((el,i) => setTimeout(() => el.classList.add('visible'), 300 + i*650));
+    setTimeout(cycle, 300 + FEED.length*650 + 4000);
+  }
+  cycle();
+}
+initFeed();
+
+// ── ROI CALCULATOR ──
+function calcROI() {
+  const rate   = +document.getElementById('roi-rate').value;
+  const hours  = +document.getElementById('roi-hours').value;
+  const deploy = +document.getElementById('roi-deploy').value;
+  const annualManual = rate * hours * 52;
+  const postAuto     = annualManual * 0.05;
+  const savings      = annualManual - postAuto;
+  const payback      = savings > 0 ? (deploy / (savings / 12)) : 0;
+  const fiveYear     = savings * 5 - deploy;
+  const fmt = n => '$' + Math.round(n).toLocaleString();
+  document.getElementById('roi-rate-disp').textContent   = '$' + rate + ' / hr';
+  document.getElementById('roi-hours-disp').textContent  = hours + ' hrs / wk';
+  document.getElementById('roi-deploy-disp').textContent = '$' + deploy.toLocaleString();
+  document.getElementById('roi-v-manual').textContent  = fmt(annualManual);
+  document.getElementById('roi-v-post').textContent    = fmt(postAuto);
+  document.getElementById('roi-v-savings').textContent = fmt(savings);
+  document.getElementById('roi-v-payback').textContent = payback > 0 ? payback.toFixed(1) + ' mo' : '—';
+  document.getElementById('roi-v-5yr').textContent     = fmt(fiveYear);
+  const bar = document.getElementById('roi-cta-bar');
+  const msg = document.getElementById('roi-cta-msg');
+  const btn = document.getElementById('roi-cta-btn');
+  if (bar && msg && btn) {
+    if (savings > 50000) {
+      bar.className = 'roi-cta-bar high-value';
+      msg.innerHTML = '<strong>High-impact opportunity.</strong> At these numbers, the build pays back within months.';
+      btn.textContent = 'Request the AI Operations Audit →';
+      btn.onclick = () => { window.location.href = 'mailto:business@hytgenx.ai?subject=AI Operations Audit'; };
+    } else if (savings > 15000) {
+      bar.className = 'roi-cta-bar high-value';
+      msg.innerHTML = '<strong>Strong case.</strong> Book a call to validate these numbers against your operations.';
+      btn.textContent = 'Book a discovery call →';
+      btn.onclick = openBooking;
+    } else {
+      bar.className = 'roi-cta-bar';
+      msg.innerHTML = '<strong>Smaller operation.</strong> Email us — we\'ll tell you honestly if it makes sense.';
+      btn.textContent = 'Send us a message →';
+      btn.onclick = () => { window.location.href = 'mailto:business@hytgenx.ai'; };
+    }
+  }
+}
+calcROI();
+
+// ── BOOKING PANEL ──
+function openBooking() {
+  document.getElementById('booking-overlay').classList.add('open');
+  document.getElementById('booking-panel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBooking() {
+  document.getElementById('booking-overlay').classList.remove('open');
+  document.getElementById('booking-panel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitBooking() {
+  const name  = document.getElementById('bp-name').value;
+  const email = document.getElementById('bp-email').value;
+  const msg   = document.getElementById('bp-msg').value;
+  if (!name || !email) { alert('Please fill in your name and email.'); return; }
+  const subject = encodeURIComponent('Project enquiry from hytgenx.ai — ' + name);
+  const body    = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg);
+  window.location.href = `mailto:business@hytgenx.ai?subject=${subject}&body=${body}`;
+  closeBooking();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBooking(); });
+
+// ── FLOATING CTA (desktop) ──
+const floatEl = document.getElementById('float-cta');
+window.addEventListener('scroll', () => {
+  const hero = document.getElementById('hero-wrap');
+  if (floatEl && hero && window.innerWidth > 960)
+    floatEl.classList.toggle('visible', hero.getBoundingClientRect().bottom < 0);
+},{passive:true});
+
+// ── MOBILE STICKY ──
+const mobileSticky = document.getElementById('mobile-sticky');
+window.addEventListener('scroll', () => {
+  const hero = document.getElementById('hero-wrap');
+  if (mobileSticky && hero && window.innerWidth <= 960)
+    mobileSticky.classList.toggle('visible', hero.getBoundingClientRect().bottom < 0);
+},{passive:true});
+
+// ── SCROLL REVEAL ──
+function initReveal(){
+  const els = document.querySelectorAll('.rev');
+  const io = new IntersectionObserver(e => {
+    e.forEach(el => { if (el.isIntersecting) el.target.classList.add('vis'); });
+  },{threshold:.06});
+  els.forEach(el => { el.classList.remove('vis'); io.observe(el); });
+}
+initReveal();
+</script>
+</body>
+</html>
