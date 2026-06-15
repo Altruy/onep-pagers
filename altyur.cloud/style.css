@@ -672,6 +672,23 @@ footer{background:var(--text);color:#fff;padding:64px 48px 32px}
   .mobile-sticky.visible{display:flex}
 }
 
+/* ── DEMO MOBILE ── hide complex SVG diagram, keep timeline ── */
+@media(max-width:768px){
+  .demo-canvas{padding:20px 16px;min-height:auto}
+  #demo-display > div:first-child{display:none !important}
+  .timeline-strip{flex-direction:column;gap:8px;overflow-x:visible}
+  .tl-step{display:flex;align-items:center;gap:12px;min-width:0;padding:10px 0;border-bottom:1px solid var(--border);text-align:left}
+  .tl-step:last-child{border-bottom:none}
+  .tl-step::before{display:none}
+  .tl-dot{margin:0;flex-shrink:0;width:24px;height:24px}
+  .tl-label{font-size:13px;font-weight:500}
+}
+
+/* ── HOW-IT-WORKS BEFORE/AFTER grid ── */
+@media(max-width:768px){
+  .hiw-compare{grid-template-columns:1fr !important}
+}
+
 @media(max-width:600px){
   /* ── HERO ── */
   .hero-split{padding:80px 16px 48px}
