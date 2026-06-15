@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Automation Insights — Lessons from Production Deployments | altyur.cloud</title>
-<meta name="description" content="Practical notes from 50+ production AI deployments — why most AI projects fail, how MCP works in practice, and what voice AI actually looks like in production.">
+<title>AI Automation Insights - Lessons from Production Deployments | altyur.cloud</title>
+<meta name="description" content="Practical notes from 50+ production AI deployments - why most AI projects fail, how MCP works in practice, and what voice AI actually looks like in production.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://altyur.cloud/insights">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://altyur.cloud/insights">
 <meta property="og:site_name" content="altyur.cloud">
-<meta property="og:title" content="AI Automation Insights — Lessons from Production Deployments | altyur.cloud">
-<meta property="og:description" content="Practical lessons from 50+ production AI deployments. Strategy, technical deep-dives, and voice AI — what actually works in the real world.">
+<meta property="og:title" content="AI Automation Insights - Lessons from Production Deployments | altyur.cloud">
+<meta property="og:description" content="Practical lessons from 50+ production AI deployments. Strategy, technical deep-dives, and voice AI - what actually works in the real world.">
 <meta property="og:image" content="https://altyur.cloud/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI Automation Insights | altyur.cloud">
 <meta name="twitter:description" content="Why most AI projects fail. MCP in production. Voice AI lessons from live deployments. Practical notes from 50+ systems shipped.">
 <meta name="twitter:image" content="https://altyur.cloud/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"altyur.cloud Insights","url":"https://altyur.cloud/insights","description":"Practical notes on building AI systems that run in production — strategy, technical deep-dives, and voice AI.","publisher":{"@type":"Organization","name":"altyur.cloud","url":"https://altyur.cloud"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"altyur.cloud Insights","url":"https://altyur.cloud/insights","description":"Practical notes on building AI systems that run in production - strategy, technical deep-dives, and voice AI.","publisher":{"@type":"Organization","name":"altyur.cloud","url":"https://altyur.cloud"}}</script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -26,98 +26,98 @@
 </head>
 <body>
 <nav id="main-nav">
-  <a href="/" class="nav-logo">altyur<span>.cloud</span></a>
-  <div class="nav-center">
-    <a href="/how-it-works">How it works</a>
-    <a href="/case-studies">Case studies</a>
-    <a href="/#services-section">Services</a>
-    <a href="/industries">Industries</a>
-    <a href="/insights">Insights</a>
-    <a href="/about">About</a>
-  </div>
-  <div class="nav-right">
-    <a href="/about#contact" class="btn-ghost">Send a message</a>
-    <a href="/offer" class="btn-dark">Work with us</a>
-  </div>
-  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+ <a href="/" class="nav-logo">altyur<span>.cloud</span></a>
+ <div class="nav-center">
+ <a href="/how-it-works">How it works</a>
+ <a href="/case-studies">Case studies</a>
+ <a href="/#services-section">Services</a>
+ <a href="/industries">Industries</a>
+ <a href="/insights">Insights</a>
+ <a href="/about">About</a>
+ </div>
+ <div class="nav-right">
+ <a href="/about#contact" class="btn-ghost">Send a message</a>
+ <a href="/offer" class="btn-dark">Work with us</a>
+ </div>
+ <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="page-top">
-  <div class="insights-hero">
-    <a href="/" class="case-back">← Back to home</a>
-    <div class="section-eyebrow">Insights</div>
-    <h1 class="section-h2" style="max-width:560px">Practical notes on<br><em>building with AI.</em></h1>
-    <p style="font-size:15px;color:var(--muted);line-height:1.8;max-width:500px;margin-top:8px">Lessons from 50+ production AI deployments — what works, what does not, and what to think about before you start.</p>
-  </div>
-  <div class="articles-list">
-    <a href="/insights/fail" class="article-card">
-      <div class="article-meta">
-        <span class="article-tag">Strategy</span>
-        <span class="article-read">5 min read</span>
-        <span class="article-date">May 2025</span>
-      </div>
-      <div class="article-h2">Why Most AI Automation Projects Fail Before They Start</div>
-      <div class="article-excerpt">After 50+ production deployments, the failure pattern is consistent — and it almost never has anything to do with the technology.</div>
-      <span class="article-cta">Read article</span>
-    </a>
-    <a href="/insights/mcp" class="article-card">
-      <div class="article-meta">
-        <span class="article-tag">Technical</span>
-        <span class="article-read">6 min read</span>
-        <span class="article-date">April 2025</span>
-      </div>
-      <div class="article-h2">MCP in Production: Giving Your Team a Natural Language Interface to Their Own Business</div>
-      <div class="article-excerpt">Most dashboards answer the questions you thought to ask when you built them. MCP changes that — your data becomes something you can have a conversation with.</div>
-      <span class="article-cta">Read article</span>
-    </a>
-    <a href="/insights/voice" class="article-card">
-      <div class="article-meta">
-        <span class="article-tag">Voice AI</span>
-        <span class="article-read">7 min read</span>
-        <span class="article-date">March 2025</span>
-      </div>
-      <div class="article-h2">Voice AI in 2025: Lessons from Live Deployments</div>
-      <div class="article-excerpt">Voice AI has moved from demo to production. These are the lessons that do not show up in the product demos — latency, fallback design, CRM integration, and when not to deploy it.</div>
-      <span class="article-cta">Read article</span>
-    </a>
-  </div>
+ <div class="insights-hero">
+ <a href="/" class="case-back">← Back to home</a>
+ <div class="section-eyebrow">Insights</div>
+ <h1 class="section-h2" style="max-width:560px">Practical notes on<br><em>building with AI.</em></h1>
+ <p style="font-size:15px;color:var(--muted);line-height:1.8;max-width:500px;margin-top:8px">Lessons from 50+ production AI deployments - what works, what does not, and what to think about before you start.</p>
+ </div>
+ <div class="articles-list">
+ <a href="/insights/fail" class="article-card">
+ <div class="article-meta">
+ <span class="article-tag">Strategy</span>
+ <span class="article-read">5 min read</span>
+ <span class="article-date">May 2025</span>
+ </div>
+ <div class="article-h2">Why Most AI Automation Projects Fail Before They Start</div>
+ <div class="article-excerpt">After 50+ production deployments, the failure pattern is consistent - and it almost never has anything to do with the technology.</div>
+ <span class="article-cta">Read article</span>
+ </a>
+ <a href="/insights/mcp" class="article-card">
+ <div class="article-meta">
+ <span class="article-tag">Technical</span>
+ <span class="article-read">6 min read</span>
+ <span class="article-date">April 2025</span>
+ </div>
+ <div class="article-h2">MCP in Production: Giving Your Team a Natural Language Interface to Their Own Business</div>
+ <div class="article-excerpt">Most dashboards answer the questions you thought to ask when you built them. MCP changes that - your data becomes something you can have a conversation with.</div>
+ <span class="article-cta">Read article</span>
+ </a>
+ <a href="/insights/voice" class="article-card">
+ <div class="article-meta">
+ <span class="article-tag">Voice AI</span>
+ <span class="article-read">7 min read</span>
+ <span class="article-date">March 2025</span>
+ </div>
+ <div class="article-h2">Voice AI in 2025: Lessons from Live Deployments</div>
+ <div class="article-excerpt">Voice AI has moved from demo to production. These are the lessons that do not show up in the product demos - latency, fallback design, CRM integration, and when not to deploy it.</div>
+ <span class="article-cta">Read article</span>
+ </a>
+ </div>
 </div>
 
 <footer id="main-footer">
-  <div class="footer-top">
-    <div>
-      <div class="footer-brand-name">altyur<span>.cloud</span></div>
-      <p class="footer-brand-desc">A specialist AI automation practice. We build the systems. You own them.</p>
-      <a href="mailto:turyal.neeshat@hytgenx.ai" style="display:inline-block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.55);text-decoration:none" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.55)'">turyal.neeshat@hytgenx.ai</a>
-    </div>
-    <div class="footer-cols">
-      <div class="footer-col">
-        <h4>Services</h4>
-        <a href="/services/workflow-automation">Workflow Automation</a>
-        <a href="/services/ai-agents">Multi-Agent Systems</a>
-        <a href="/services/voice-ai">Voice AI Agents</a>
-        <a href="/services/revops-mcp">RevOps via MCP</a>
-      </div>
-      <div class="footer-col">
-        <h4>Work</h4>
-        <a href="/case-studies">Case Studies</a>
-        <a href="/industries">Industries</a>
-        <a href="/insights">Insights</a>
-        <a href="/offer">Work with us</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="/about">About</a>
-        
-        <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
-        <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 altyur.cloud</p>
-    <p>A tight practice. Built on the tools we build for clients.</p>
-  </div>
+ <div class="footer-top">
+ <div>
+ <div class="footer-brand-name">altyur<span>.cloud</span></div>
+ <p class="footer-brand-desc">A specialist AI automation practice. We build the systems. You own them.</p>
+ <a href="mailto:turyal.neeshat@hytgenx.ai" style="display:inline-block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.55);text-decoration:none" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.55)'">turyal.neeshat@hytgenx.ai</a>
+ </div>
+ <div class="footer-cols">
+ <div class="footer-col">
+ <h4>Services</h4>
+ <a href="/services/workflow-automation">Workflow Automation</a>
+ <a href="/services/ai-agents">Multi-Agent Systems</a>
+ <a href="/services/voice-ai">Voice AI Agents</a>
+ <a href="/services/revops-mcp">RevOps via MCP</a>
+ </div>
+ <div class="footer-col">
+ <h4>Work</h4>
+ <a href="/case-studies">Case Studies</a>
+ <a href="/industries">Industries</a>
+ <a href="/insights">Insights</a>
+ <a href="/offer">Work with us</a>
+ </div>
+ <div class="footer-col">
+ <h4>Company</h4>
+ <a href="/about">About</a>
+ 
+ <a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a>
+ <a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a>
+ </div>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <p>© 2025 altyur.cloud</p>
+ <p>A tight practice. Built on the tools we build for clients.</p>
+ </div>
 </footer>
 <script src="/shared.js"></script>
 </body>

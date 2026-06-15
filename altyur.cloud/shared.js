@@ -10,7 +10,7 @@ function sendMsg() {
   const c = document.getElementById('fc').value;
   const m = document.getElementById('fm').value;
   if (!n || !e || !m) { alert('Please fill in your name, email, and message.'); return; }
-  const s = encodeURIComponent('Enquiry from altyur.cloud' + (c ? ' — ' + c : ''));
+  const s = encodeURIComponent('Enquiry from altyur.cloud' + (c ? ' - ' + c : ''));
   const b = encodeURIComponent('Name: ' + n + '\nEmail: ' + e + '\nCompany: ' + (c || '—') + '\n\n' + m);
   window.location.href = `mailto:turyal@hytgenx.ai?subject=${s}&body=${b}`;
 }

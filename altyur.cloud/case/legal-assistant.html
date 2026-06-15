@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Legal Research Assistant - RAG on State Statutes | altyur.cloud</title>
+<meta name="description" content="How we built a persistent, multi-jurisdiction AI legal research assistant with a RAG knowledge base, document analysis, conversation history, and LLM-agnostic architecture for a law firm.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://altyur.cloud/case/legal-assistant">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://altyur.cloud/case/legal-assistant">
+<meta property="og:site_name" content="altyur.cloud">
+<meta property="og:title" content="AI Legal Research Assistant - RAG on State Statutes | altyur.cloud">
+<meta property="og:description" content="A persistent AI legal research assistant with a RAG knowledge base on state statutes, document upload, multi-region support, and LLM-agnostic architecture.">
+<meta property="og:image" content="https://altyur.cloud/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Legal Research Assistant | altyur.cloud">
+<meta name="twitter:description" content="RAG on state statutes, document analysis, persistent history, multi-jurisdiction, LLM-agnostic. Built for a law firm.">
+<meta name="twitter:image" content="https://altyur.cloud/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI Legal Research Assistant with RAG on State Statutes","description":"A persistent, multi-jurisdiction AI legal research assistant with a RAG knowledge base, document analysis, conversation history, and LLM-agnostic architecture.","author":{"@type":"Organization","name":"altyur.cloud","url":"https://altyur.cloud"},"publisher":{"@type":"Organization","name":"altyur.cloud","url":"https://altyur.cloud"},"url":"https://altyur.cloud/case/legal-assistant","mainEntityOfPage":"https://altyur.cloud/case/legal-assistant"}</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav id="main-nav">
+  <a href="/" class="nav-logo">altyur<span>.cloud</span></a>
+  <div class="nav-center">
+    <a href="/how-it-works">How it works</a>
+    <a href="/case-studies">Case studies</a>
+    <a href="/#services-section">Services</a>
+    <a href="/industries">Industries</a>
+    <a href="/insights">Insights</a>
+    <a href="/about">About</a>
+  </div>
+  <div class="nav-right">
+    <a href="/about#contact" class="btn-ghost">Send a message</a>
+    <a href="/offer" class="btn-dark">Work with us</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-top">
+  <div style="height:220px;overflow:hidden;border-bottom:1px solid var(--border)"><img src="/img/banner-ops.png" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+
+  <div class="case-hero">
+    <a href="/case-studies" class="case-back">- All case studies</a>
+    <span class="case-tag tag-ops case-page-tag">Legal Technology</span>
+    <h1 class="case-page-h1">AI Legal Research Assistant with RAG on State Statutes</h1>
+    <p class="case-page-sub">Attorneys and paralegals were spending hours on statute research that should take minutes. We built a persistent, conversational AI assistant with a live knowledge base of state legal codes, document analysis, and full conversation history - LLM-agnostic, multi-jurisdiction, and running inside the firm's own infrastructure.</p>
+    <div class="case-stats-row">
+      <div><div class="case-stat-val">70%</div><div class="case-stat-lab">Reduction in research time</div></div>
+      <div><div class="case-stat-val">6</div><div class="case-stat-lab">Jurisdictions supported</div></div>
+      <div><div class="case-stat-val">1,000+</div><div class="case-stat-lab">Statutes indexed</div></div>
+      <div><div class="case-stat-val">100%</div><div class="case-stat-lab">Cited responses</div></div>
+    </div>
+  </div>
+
+  <div class="case-body">
+
+    <h3>The problem</h3>
+    <p>A multi-state law firm handling real estate, landlord-tenant, and property law across Washington, Oregon, California, and New York had a research bottleneck that was limiting paralegal autonomy and adding attorney time to routine matters. When a client asked "what are the notice requirements for a 3-day eviction notice in Washington?" - a question with a specific, documented answer in the state code - an attorney or senior paralegal had to look it up, verify the current code section, check for recent amendments, and draft a response. That process was taking 20-40 minutes per query.</p>
+    <p>The same pattern repeated across dozens of routine legal questions daily: notice periods, filing deadlines, statutory damages caps, landlord entry rules, lease termination procedures. Every one had a specific, citable answer in state statute. Every one required manual research.</p>
+    <div class="problem-box"><p>"Our paralegals were capable of answering 80% of client questions independently. The bottleneck was not their legal judgment - it was that they had no fast, reliable way to look up the specific statute and cite it correctly. They were spending half their day doing what a well-trained AI could do in seconds."</p></div>
+
+    <h3>Context</h3>
+    <p>The firm operated across 6 jurisdictions with different statute structures, amendment histories, and search conventions. The Revised Code of Washington (RCW) alone runs to thousands of sections. State legal codes are publicly available but not designed for fast lookup - they are organized for legislative reference, not conversational query. A paralegal trying to answer a specific client question had to know which code section to look in, navigate the legislative website, read the full text, identify the relevant subsection, check the effective date, and verify whether there had been recent amendments. This was not a knowledge problem. It was an access problem.</p>
+    <p>The firm had experimented with generic AI tools but found them unreliable for legal research. The problem with general-purpose LLMs for legal work is not intelligence - it is grounding. A hallucinated statute citation in a client communication is worse than no answer. The firm needed a system that would only answer from verified, current source material, cite every response to a specific code section, and refuse to speculate when it did not know.</p>
+
+    <figure class="case-screenshot">
+      <img src="/img/screenshots/law-assistant-1.jpg" alt="AI legal research assistant landing page showing instant legal research, multi-region support, and document analysis capabilities" loading="lazy">
+      <figcaption>The legal research platform: instant statute lookup, multi-region coverage, and document upload for contract and lease analysis.</figcaption>
+    </figure>
+
+    <h3>What we built</h3>
+    <div class="solution-box"><p>A full-stack AI legal research platform with a RAG knowledge base indexed from live state legal codes, a persistent conversational interface with full history, document upload for contract and lease review, and an LLM-agnostic architecture that lets the firm swap models without rebuilding the system. Every response includes citations to the specific code section and subsection that supports it.</p></div>
+
+    <p>The knowledge base is built on a vector store indexed from state statutes scraped and refreshed on a schedule - so the system reflects current law, not a snapshot. When a paralegal asks a question, the retrieval layer finds the most relevant statute sections, passes them to the language model as grounding context, and generates a response that is explicitly bounded by that context. If the retrieved content does not contain an answer, the system says so rather than generating a plausible-sounding but unsupported response.</p>
+
+    <p>Conversation history is persistent across sessions. A paralegal researching a landlord-tenant matter can start a conversation, save it, return the next day, and continue in context. The system understands the thread of what has already been established. This was particularly important for complex multi-step matters where the research unfolds over several days.</p>
+
+    <div class="case-screenshots-pair">
+      <figure class="case-screenshot">
+        <img src="/img/screenshots/law-assistant-2.jpg" alt="Region selection interface showing jurisdiction choice across Washington, Oregon, California, New York, Canada, and All Regions modes" loading="lazy">
+        <figcaption>Jurisdiction selection: each session is scoped to a region, ensuring responses draw only from the relevant state code.</figcaption>
+      </figure>
+      <figure class="case-screenshot">
+        <img src="/img/screenshots/law-assistant-3.jpg" alt="Legal AI assistant answering a query about 3-day eviction notice requirements with specific legal citations and source references" loading="lazy">
+        <figcaption>A sample response: the assistant answers a specific landlord-tenant question with exact statutory citations, legal implications, and source references.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Technical approach</h3>
+    <p>The system is built on a RAG architecture with several layers designed specifically for legal use cases. The ingestion pipeline crawls state legislative websites on a weekly schedule, parses statute structure (title, chapter, section, subsection), and stores chunks with rich metadata - jurisdiction, code section, effective date, and amendment history. Chunks are sized to preserve legal context: a statute subsection is typically kept intact rather than split mid-sentence, because legal meaning often turns on the exact clause structure.</p>
+    <p>The retrieval layer uses hybrid search - combining dense vector similarity with keyword matching on code section numbers. This matters because legal queries are often half-semantic ("what are the notice requirements") and half-exact ("RCW 59.18.057") - the same retrieval approach needs to handle both. Results are re-ranked by a cross-encoder before being passed to the generation model.</p>
+    <p>The LLM-agnostic architecture uses a model abstraction layer that currently supports Claude, GPT-4o, and local Llama variants. The firm wanted flexibility to switch models as the market evolved without rebuilding the platform. The system prompt and retrieval pipeline are model-independent; swapping the generation model requires one configuration change, not a rebuild.</p>
+
+    <figure class="case-screenshot">
+      <img src="/img/screenshots/law-assistant-4.jpg" alt="Knowledge base browser showing indexed Washington state statutes (RCW codes) with search and browse functionality across 1000+ chunks" loading="lazy">
+      <figcaption>The knowledge base browser: attorneys and paralegals can search and browse the full indexed statute library, with chunk counts and source links per code section.</figcaption>
+    </figure>
+
+    <h3>The automation flow</h3>
+    <div class="auto-timeline">
+      <div class="auto-timeline-title">Legal research pipeline - how it runs</div>
+      <div class="auto-flow">
+        <div class="auto-node"><div class="auto-node-dot lit"><span class="auto-node-icon">1</span></div><div class="auto-node-label">Query received</div><div class="auto-node-sub">Trigger</div></div>
+        <div class="auto-node"><div class="auto-node-dot"><span class="auto-node-icon">2</span></div><div class="auto-node-label">Jurisdiction scoped</div><div class="auto-node-sub">Auto</div></div>
+        <div class="auto-node"><div class="auto-node-dot"><span class="auto-node-icon">3</span></div><div class="auto-node-label">Statute retrieval</div><div class="auto-node-sub">Auto</div></div>
+        <div class="auto-node"><div class="auto-node-dot"><span class="auto-node-icon">4</span></div><div class="auto-node-label">Re-rank &amp; ground</div><div class="auto-node-sub">Auto</div></div>
+        <div class="auto-node"><div class="auto-node-dot"><span class="auto-node-icon">5</span></div><div class="auto-node-label">Response generated</div><div class="auto-node-sub">Auto</div></div>
+        <div class="auto-node"><div class="auto-node-dot lit-green"><span class="auto-node-icon">6</span></div><div class="auto-node-label">Cited &amp; saved</div><div class="auto-node-sub">Complete</div></div>
+      </div>
+    </div>
+
+    <h3>Challenges and how we solved them</h3>
+    <p>The hardest problem was hallucination prevention for legal citations. Standard RAG systems will sometimes generate a response that blends retrieved content with model knowledge - acceptable for many use cases, unacceptable for legal citations. We solved this with two mechanisms: a strict system prompt that instructs the model to cite only material present in the retrieved context and to explicitly flag gaps, plus a post-generation verification step that checks every code citation in the response against the retrieved chunks. Responses with unverifiable citations are flagged for review rather than delivered.</p>
+    <p>The second challenge was keeping the knowledge base current. State statutes are amended by the legislature on an ongoing basis. We built a change detection system that tracks legislative updates published by each state and triggers re-indexing for affected code sections. The platform shows users the effective date of the statute section used in each response, so they can see exactly when the source material was last verified.</p>
+
+    <h3>Results</h3>
+    <p>Paralegal research time on routine statute questions dropped by approximately 70%. Questions that previously required escalation to an attorney - because the paralegal could not quickly find the governing statute - are now answered directly with full citations. The firm's client response time on routine matters improved from same-day (at best) to within the hour.</p>
+    <p>The citation reliability changed the nature of the work. Previously, paralegals were cautious about sharing research with clients because they were not confident in the sourcing. With every response grounded in a specific, verifiable code section, they could share the output directly - sometimes verbatim - as the basis for a client response. Attorney review shifted from "checking the research" to "adding judgment and strategy."</p>
+    <p>Document analysis became a new capability the firm had not previously had. Paralegals can upload lease agreements and receive an immediate analysis of how the terms interact with the relevant jurisdiction's statutory requirements - flagging clauses that may be unenforceable, missing required disclosures, or inconsistent with local law. What had been a billable task for an attorney became a 3-minute automated pre-screen.</p>
+
+    <h3>Key learning</h3>
+    <p>The difference between a useful AI legal research tool and a dangerous one is grounding. Most AI tools are optimized to always provide an answer. Legal work requires a tool that knows when it does not have sufficient grounded material to answer, and says so explicitly. The investment in hallucination prevention - strict citation requirements, verification steps, explicit uncertainty handling - was not a technical formality. It was the entire basis on which the firm was willing to use the system with clients. Every implementation detail that supports that reliability is load-bearing.</p>
+
+    <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://calendly.com/turyal-neeshat-hytgenx/ai-discovery-call-with-turyal-cto-hytgenx" target="_blank" class="btn-dark" style="font-size:14px;padding:12px 24px">Book a discovery session</a>
+      <a href="/case-studies" class="btn-ghost" style="font-size:14px;padding:12px 24px">See more case studies</a>
+    </div>
+
+  </div>
+</div>
+
+<footer id="main-footer">
+  <div class="footer-brand-row">
+    <div>
+      <a href="/" class="footer-brand-name">altyur<span>.cloud</span></a>
+      <p class="footer-brand-desc">A specialist AI automation practice. We build the systems. You own them.</p>
+      <p style="font-size:11px;color:rgba(255,255,255,.25);margin-top:12px">Led by <a href="https://hytgenx.ai" target="_blank" style="color:rgba(255,255,255,.3);text-decoration:none">Turyal Neeshat, CTO - hytGenX</a></p>
+      <a href="mailto:turyal.neeshat@hytgenx.ai" style="display:inline-block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.55);text-decoration:none">turyal.neeshat@hytgenx.ai</a>
+    </div>
+    <div class="footer-contact-block">
+      <p class="footer-contact-label">New project enquiries</p>
+      <a href="mailto:turyal.neeshat@hytgenx.ai" class="footer-contact-email">turyal.neeshat@hytgenx.ai</a>
+    </div>
+  </div>
+  <div class="footer-cols-row">
+    <div class="footer-cols">
+      <div class="footer-col"><h4>Solutions</h4><a href="/services/workflow-automation">Workflow Automation</a><a href="/services/ai-agents">Multi-Agent Systems</a><a href="/services/voice-ai">Voice AI Agents</a><a href="/services/revops-mcp">RevOps via MCP</a></div>
+      <div class="footer-col"><h4>Work</h4><a href="/case-studies">Case Studies</a><a href="/industries">Industries</a><a href="/insights">Insights</a><a href="/offer">Work with us</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="https://www.linkedin.com/in/turyal-neeshat/" target="_blank">LinkedIn</a><a href="https://www.upwork.com/freelancers/~011d282fd80f3035f2" target="_blank">Upwork</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 altyur.cloud</p>
+    <p>A tight practice. Built on the tools we build for clients.</p>
+  </div>
+</footer>
+<script src="/shared.js"></script>
+<script>
+setTimeout(()=>{
+  const nodes = document.querySelectorAll('.auto-node-dot:not(.lit):not(.lit-green)');
+  nodes.forEach((n,i) => setTimeout(()=>n.classList.add('lit'), i*400+300));
+},400);
+</script>
+</body>
+</html>
