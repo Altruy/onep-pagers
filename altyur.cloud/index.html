@@ -81,7 +81,7 @@
  <div class="nav-center">
  <a href="/how-it-works">How it works</a>
  <a href="/case-studies">Case studies</a>
- <a href="#services-section">Services</a>
+ <a href="/services">Services</a>
  <a href="/industries">Industries</a>
  <a href="/insights">Insights</a>
  <a href="/about">About</a>
@@ -395,21 +395,54 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services-section">
- <div class="services-wrap">
- <div class="rev">
- <div class="section-eyebrow">Services</div>
- <h2 class="section-h2">What we build<br>for <em>clients.</em></h2>
- </div>
- <div class="services-list rev d1">
- <a href="/services/workflow-automation" class="service-row"><div class="srv-cat">Automation</div><div><div class="srv-name">Workflow & Process Automation</div><div class="srv-desc">End-to-end automation of repetitive business processes - CRM updates, reporting, notifications, approvals, and data syncing across your stack.</div><div class="srv-tools"><span class="srv-tool">n8n</span><span class="srv-tool">Zapier</span><span class="srv-tool">Make</span><span class="srv-tool">HubSpot</span><span class="srv-tool">GHL</span></div></div><div class="srv-arrow">›</div></a>
- <a href="/services/ai-agents" class="service-row"><div class="srv-cat">AI Agents</div><div><div class="srv-name">Multi-Agent Conversational Systems</div><div class="srv-desc">Orchestrated agent pipelines using LangGraph and Claude that research, validate, decide, and deliver - replacing manual analyst workflows in production.</div><div class="srv-tools"><span class="srv-tool">LangGraph</span><span class="srv-tool">LangChain</span><span class="srv-tool">Claude</span><span class="srv-tool">OpenAI</span><span class="srv-tool">FastAPI</span></div></div><div class="srv-arrow">›</div></a>
- <a href="/services/revops-mcp" class="service-row"><div class="srv-cat">RevOps</div><div><div class="srv-name">Claude via MCP - RevOps Intelligence</div><div class="srv-desc">Expose your existing stack to Claude using Model Context Protocol. Your team queries live revenue data, pipeline health, and operations in plain language.</div><div class="srv-tools"><span class="srv-tool">MCP</span><span class="srv-tool">Claude</span><span class="srv-tool">Python</span><span class="srv-tool">HubSpot</span></div></div><div class="srv-arrow">›</div></a>
- <a href="/services/voice-ai" class="service-row"><div class="srv-cat">Voice AI</div><div><div class="srv-name">Voice AI Agents</div><div class="srv-desc">Inbound and outbound voice agents that qualify leads, handle support, and update CRMs in real time - operating around the clock without human intervention.</div><div class="srv-tools"><span class="srv-tool">Vapi</span><span class="srv-tool">Retell</span><span class="srv-tool">Twilio</span><span class="srv-tool">LangGraph</span></div></div><div class="srv-arrow">›</div></a>
- <a href="/services/executive-intelligence" class="service-row"><div class="srv-cat">Analytics</div><div><div class="srv-name">Executive Intelligence Dashboards</div><div class="srv-desc">Custom dashboards surfacing revenue operations, pipeline health, and team performance - with automated AI-generated executive summaries on your schedule.</div><div class="srv-tools"><span class="srv-tool">Python</span><span class="srv-tool">Looker</span><span class="srv-tool">G Suite</span><span class="srv-tool">Office 365</span></div></div><div class="srv-arrow">›</div></a>
- <a href="/services/rag-knowledge" class="service-row"><div class="srv-cat">Knowledge</div><div><div class="srv-name">RAG Knowledge Systems</div><div class="srv-desc">AI trained on your internal documentation and SOPs. Staff get source-cited answers in seconds from G Suite, SharePoint, Notion, or custom document stores.</div><div class="srv-tools"><span class="srv-tool">LangChain</span><span class="srv-tool">Pinecone</span><span class="srv-tool">FAISS</span><span class="srv-tool">G Suite</span></div></div><div class="srv-arrow">›</div></a>
- </div>
- </div>
+<section id="services-section" style="padding:80px 48px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="rev" style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="section-eyebrow">Services</div>
+        <h2 class="section-h2" style="margin-bottom:0">Six things<br>we <em>build.</em></h2>
+      </div>
+      <a href="/services" class="btn-ghost" style="font-size:13px;white-space:nowrap">See full service detail →</a>
+    </div>
+    <div class="cases-kw-grid rev d1" style="grid-template-columns:repeat(3,1fr)">
+      <a href="/services/workflow-automation" class="cases-kw-card" style="--bar:#f59e0b"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Automation</div>
+        <div class="cases-kw-name">Workflow Automation</div>
+        <div class="cases-kw-metric">Manual processes that run themselves</div>
+        <span class="cases-kw-arrow">›</span>
+      </a>
+      <a href="/services/ai-agents" class="cases-kw-card" style="--bar:#7c3aed"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">AI Agents</div>
+        <div class="cases-kw-name">Multi-Agent Systems</div>
+        <div class="cases-kw-metric">Research, validate, decide, act in sequence</div>
+        <span class="cases-kw-arrow">›</span>
+      </a>
+      <a href="/services/voice-ai" class="cases-kw-card" style="--bar:#6366f1"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Voice AI</div>
+        <div class="cases-kw-name">Voice AI Agents</div>
+        <div class="cases-kw-metric">Every call handled, 24/7, 60s response</div>
+        <span class="cases-kw-arrow">›</span>
+      </a>
+      <a href="/services/revops-mcp" class="cases-kw-card" style="--bar:#1d4ed8"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">RevOps</div>
+        <div class="cases-kw-name">Revenue Intelligence via MCP</div>
+        <div class="cases-kw-metric">Plain English answers from live business data</div>
+        <span class="cases-kw-arrow">›</span>
+      </a>
+      <a href="/services/rag-knowledge" class="cases-kw-card" style="--bar:#0ea5e9"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Knowledge</div>
+        <div class="cases-kw-name">RAG Knowledge Systems</div>
+        <div class="cases-kw-metric">Your documents, searchable in seconds</div>
+        <span class="cases-kw-arrow">›</span>
+      </a>
+      <a href="/services/executive-intelligence" class="cases-kw-card" style="--bar:#10b981"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar)"></span>
+        <div class="cases-kw-industry">Intelligence</div>
+        <div class="cases-kw-name">Executive Reporting</div>
+        <div class="cases-kw-metric">Board packs generated before 8am on day 1</div>
+        <span class="cases-kw-arrow">›</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- FLAGSHIP OFFER -->
